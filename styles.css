@@ -1,0 +1,20 @@
+.appBorder {
+    border: 5px solid red;
+    height: 500px;
+    width: 100%;
+}
+
+.topbar {
+    width: 100%;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+
+@media screen and (max-width: 600px) {
+    .appBorder {
+        background-color: lightgrey;
+    }
+}
