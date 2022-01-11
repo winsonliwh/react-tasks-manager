@@ -1,4 +1,4 @@
-# React Tasks Manager
+# React Tasks Manager By Immortal B
 # Junior Front End Web Developer - Final Project - Task Planner Web App
 
 
