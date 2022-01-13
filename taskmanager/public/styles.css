@@ -3,7 +3,8 @@ label {
 }
 
 form input,
-form textarea {
+form textarea,
+form select {
     display: block;
     width: 100%;
 }
