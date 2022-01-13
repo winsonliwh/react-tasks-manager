@@ -1,0 +1,47 @@
+label {
+    margin-top: 10px;
+}
+
+form input,
+form textarea {
+    display: block;
+    width: 100%;
+}
+
+/* .info {
+} */
+
+.appBorder,
+.showTask {
+    border: solid red;
+    padding: 32px;
+}
+
+.topbar {
+    width: 100%;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.newTaskInfo {
+    text-align: center;
+}
+
+.submitButton {
+    align-items: center;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    .appBorder {
+        background-color: lightgrey;
+    }
+}
