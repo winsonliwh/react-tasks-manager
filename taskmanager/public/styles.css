@@ -41,6 +41,10 @@ button {
     font-weight: bold;
 }
 
+.hide {
+    display: none;
+}
+
 @media screen and (max-width: 600px) {
     .appBorder {
         background-color: lightgrey;
