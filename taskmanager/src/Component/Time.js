@@ -1,18 +1,24 @@
-import React from "react";
+import { useState } from "react";
 
-export default class Time extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { date: new Date() };
-    }
-    render() {
-      return <div>{this.state.date.toLocaleTimeString()}</div>;
-    }
-    componentDidMount() {
+export default function Time() {
+    const [date, setDate] = useState(new Date());
+
+    const componentDidMount = () => {
       // Paste your code here.
       const oneSecond = 1000;
       setInterval(() => {
-        this.setState({ date: new Date() });
+        setDate(new Date());
       }, oneSecond);
-    }
-  }
+    };
+    
+    return (
+        <div onChange={componentDidMount()}>
+            <div>
+                {date.toLocaleDateString('en-US')}
+            </div>
+            <div>
+                {date.toLocaleTimeString('en-US')}
+            </div>
+        </div>
+    );
+};

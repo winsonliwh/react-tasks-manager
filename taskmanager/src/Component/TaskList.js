@@ -3,6 +3,8 @@ import { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
+// import NewTask from "./NewTask.js";
+// import {Abc} from "./NewTask.js";
 
 
 let taskSample = [{
@@ -21,6 +23,10 @@ let taskSample = [{
     status: 'TODO'
 }]
 
+// taskSample.push(abc)
+// console.log(Abc)
+// console.log(taskSample)
+
 export default function TaskList() {
     const [show, setShow] = useState(false);
     const [taskIndex, setTaskIndex] = useState(0);
@@ -30,6 +36,7 @@ export default function TaskList() {
 
     return (
         <div>
+            {/* {props.Tasks.map(task => ( */}
             {taskSample.map(task => (
                 <div key={task.id}>
                     <div className="d-grid gap-2" onClick={(e) => { setTaskIndex(e.target.id - 1) }}>
@@ -41,7 +48,7 @@ export default function TaskList() {
             ))}
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton onHide={handleClose}>
+                <Modal.Header closeButton>
                     <Modal.Title>{taskSample[taskIndex].name}</Modal.Title>
                 </Modal.Header>
 
