@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
 
 
-const taskSample = [{
+let taskSample = [{
     id: 1,
     name: 'Take out the trash',
     description: 'Take out the trash to the front of the house',
@@ -23,86 +23,73 @@ const taskSample = [{
 
 export default function TaskList() {
     const [show, setShow] = useState(false);
+    const [taskIndex, setTaskIndex] = useState(0);
 
-    const handleClose = (task) => setShow(false);
-    const handleShow = (task) => setShow(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-    // const addTask() {
-    //     this.tasks.push({ taskSample })
-    // }
-
-    // render() {
     return (
         <div>
             {taskSample.map(task => (
                 <div key={task.id}>
-                    {console.log(task)}
-                    <div className="d-grid gap-2">
-                        <Button variant="secondary" size="lg" onClick={() => handleShow(task)}>
+                    <div className="d-grid gap-2" onClick={(e) => { setTaskIndex(e.target.id - 1) }}>
+                        <Button id={task.id} variant="secondary" size="lg" onClick={handleShow}>
                             {task.name}
                         </Button>
                     </div>
-
-                        <Modal key={task.id} show={show} onHide={() => setShow(false)}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>{task.name}</Modal.Title>
-                            </Modal.Header>
-
-                            <Modal.Body>
-                                <Form>
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Name</Form.Label>
-                                        <Form.Control value={task.name} placeholder="Name" />
-                                    </Form.Group>
-
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Description</Form.Label>
-                                        <Form.Control as="textarea" value={task.description} placeholder="Description" />
-                                    </Form.Group>
-
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Assigned To</Form.Label>
-                                        <Form.Control value={task.assignedTo} placeholder="Assigned To" />
-                                    </Form.Group>
-
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Due Date</Form.Label>
-                                        <Form.Control value={task.dueDate} type="date" placeholder="Due Date" />
-                                    </Form.Group>
-
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Status</Form.Label>
-                                        <Form.Select>
-                                            <option value="new">NEW</option>
-                                            <option value="done">DONE</option>
-                                        </Form.Select>
-                                    </Form.Group>
-
-                                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                        <Form.Check type="checkbox" label="Task1" />
-                                    </Form.Group>
-                                </Form>
-                            </Modal.Body>
-
-                            <Modal.Footer>
-                                <Button variant="secondary" onClick={handleClose}>
-                                    Close
-                                </Button>
-                                <Button variant="primary" onClick={handleClose} type="submit">
-                                    Save Changes
-                                </Button>
-                            </Modal.Footer>
-                        </Modal>
-                    {/* <div show={show} onHide={handleClose}>
-                        Name: {task.name}<br />
-                        Description: {task.description}<br />
-                        Assigned To: {task.assignedTo}<br />
-                        Due Date: {task.dueDate}<br />
-                        Status: {task.status}<br /><br />
-                    </div> */}
                 </div>
             ))}
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton onHide={handleClose}>
+                    <Modal.Title>{taskSample[taskIndex].name}</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <Form>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control value={taskSample[taskIndex].name} onChange={() => { }} placeholder="Name" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control as="textarea" value={taskSample[taskIndex].description} onChange={() => { }} placeholder="Description" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Assigned To</Form.Label>
+                            <Form.Control value={taskSample[taskIndex].assignedTo} onChange={() => { }} placeholder="Assigned To" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Due Date</Form.Label>
+                            <Form.Control value={taskSample[taskIndex].dueDate} onChange={() => { }} type="date" placeholder="Due Date" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Status</Form.Label>
+                            <Form.Select onChange={() => { }}>
+                                <option value="new">NEW</option>
+                                <option value="done">DONE</option>
+                            </Form.Select>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Task1" />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose} type="submit">
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     )
-    // }
 }
