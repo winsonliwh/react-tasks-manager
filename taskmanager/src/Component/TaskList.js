@@ -2,16 +2,23 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-const task1 = {
+const task1 = [{
     id: 1,
     name: 'Take out the trash',
     description: 'Take out the trash to the front of the house',
     assignedTo: 'Nick',
     dueDate: '2020-09-20',
     status: 'TODO'
-};
+}, {
+    id: 2,
+    name: 'Cook Dinner',
+    description: 'Prepare a healthy serving of pancakes for the family tonight',
+    assignedTo: 'Nick',
+    dueDate: '2020-09-20',
+    status: 'TODO'
+}]
 
-export default class TaskManager extends React.Component {
+export default class TaskList extends React.Component {
     constructor(props) {
         super(props)
         this.tasks = [task1]

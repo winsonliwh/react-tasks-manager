@@ -4,21 +4,21 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export default function EditTask() {
+export default function NewTask() {
 	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
 	return (
-		<>
-			<Button variant="primary" onClick={handleShow}>
-				Edit Task
+		<div className="d-grid gap-2" >
+			<Button variant="primary" size="lg" onClick={handleShow}>
+				New Task
 			</Button>
 
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
-					<Modal.Title>Edit Task</Modal.Title>
+					<Modal.Title>New Task</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
@@ -46,13 +46,13 @@ export default function EditTask() {
 						<Form.Group className="mb-3">
 							<Form.Label>Status</Form.Label>
 							<Form.Select>
-								<option>NEW</option>
-								<option>DONE</option>
+								<option value="new">NEW</option>
+								<option value="done">DONE</option>
 							</Form.Select>
 						</Form.Group>
 
 						<Form.Group className="mb-3" controlId="formBasicCheckbox">
-							<Form.Check type="checkbox" label="Check me out" />
+							<Form.Check type="checkbox" label="Task1" />
 						</Form.Group>
 					</Form>
 				</Modal.Body>
@@ -66,7 +66,7 @@ export default function EditTask() {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-		</>
+		</div>
 	);
 }
 

@@ -1,12 +1,12 @@
-import TaskManager from './Component/taskManager.js';
-import EditTask from './Component/EditTask.js';
+import TaskList from './Component/TaskList.js';
+import NewTask from './Component/NewTask.js';
 
 function App() {
   return (
-    <div>
-      <TaskManager />
-      <EditTask />
-    </div>
+      <div>
+        <NewTask />
+        <TaskList />
+      </div>
   );
 }
 
