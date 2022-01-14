@@ -16,7 +16,7 @@ export default function NewTask() {
 				New Task
 			</Button>
 
-			<Modal show={show} onHide={handleClose}>
+			<Modal show={show} onHide={handleClose} backdrop="static">
 				<Modal.Header closeButton>
 					<Modal.Title>New Task</Modal.Title>
 				</Modal.Header>
