@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-import './App.css';
 import TaskManager from './Component/taskManager.js';
 import EditTask from './Component/EditTask.js';
 
