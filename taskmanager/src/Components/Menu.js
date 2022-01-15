@@ -2,19 +2,43 @@ import React, { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Menu({ ...props }) {
+// const options = [
+// {
+//   name: 'Enable backdrop (default)',
+//   scroll: false,
+//   backdrop: true,
+// },
+// {
+//   name: 'Disable backdrop',
+//   scroll: false,
+//   backdrop: false,
+// },
+// {
+//   name: 'Enable body scrolling',
+//   scroll: true,
+//   backdrop: false,
+// },
+// {
+//   name: 'Enable both scrolling & backdrop',
+//   scroll: true,
+//   backdrop: true,
+// },
+// ];
+
+export default function Menu() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => setShow((s) => !s);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="me-2">
+      <Button variant="flat" onClick={handleShow} className="me-2">
         Menu
       </Button>
-      <Offcanvas show={show} onHide={handleClose} {...props}>
+      <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Task Manager</Offcanvas.Title>
         </Offcanvas.Header>
