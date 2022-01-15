@@ -1,9 +1,9 @@
 // import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
-import Task from "./Task"
+import { apiHost } from "./const.js";
 
 // let taskSample = [{
 //     id: 1,
@@ -21,13 +21,12 @@ import Task from "./Task"
 //     status: 'TODO'
 // }]
 
-export default function TaskList({ taskList, deleteTask }) {
+export default function TaskList({ taskList, deleteTask, submittingStatus }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const [taskIndex, setTaskIndex] = useState(0);
-
 
     return (
         <div>
@@ -48,7 +47,7 @@ export default function TaskList({ taskList, deleteTask }) {
                 //         />
                 //     </div>
                 // )
-
+                submittingStatus.current = true
                 const handleDelete = () => {
                     deleteTask(prev => {
                         return prev.filter(task => task.id !== id)

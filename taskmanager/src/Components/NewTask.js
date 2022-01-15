@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export default function NewTask({ addTask }) {
+export default function NewTask({ addTask, submittingStatus }) {
 	const [show, setShow] = useState(false);
 	const handleShow = () => setShow(true);
 	const handleClose = () => setShow(false);
@@ -36,6 +36,7 @@ export default function NewTask({ addTask }) {
 	}
 
 	const handleSubmit = e => {
+		submittingStatus.current = true
 		e.preventDefault()
 		setId(prev => prev + 1)
 		addTask(prevTask => {
