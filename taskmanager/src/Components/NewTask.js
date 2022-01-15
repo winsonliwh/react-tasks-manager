@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { v4 } from "uuid";
 
 export default function NewTask({ addTask, submittingStatus }) {
 	const [show, setShow] = useState(false);
@@ -36,11 +37,12 @@ export default function NewTask({ addTask, submittingStatus }) {
 	}
 
 	const handleSubmit = e => {
-		submittingStatus.current = true
 		e.preventDefault()
+		submittingStatus.current = true
 		setId(prev => prev + 1)
 		addTask(prevTask => {
 			return [...prevTask, {
+				key: v4(),
 				id: id,
 				name: name,
 				description: description,
@@ -49,6 +51,11 @@ export default function NewTask({ addTask, submittingStatus }) {
 				status: status
 			}]
 		})
+		setName("")
+		setDescription("")
+		setAssignTo("")
+		setDueDate("")
+		setStatus("")
 	}
 
 	return (

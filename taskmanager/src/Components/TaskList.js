@@ -1,9 +1,9 @@
 // import React from 'react';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
-import { apiHost } from "./const.js";
+import { Link } from "react-router-dom";
 
 // let taskSample = [{
 //     id: 1,
@@ -27,12 +27,39 @@ export default function TaskList({ taskList, deleteTask, submittingStatus }) {
     const handleShow = () => setShow(true);
 
     const [taskIndex, setTaskIndex] = useState(0);
+    // console.log(taskList)
+    // console.log(taskList[taskIndex])
+
+    // const [name, setName] = useState("");
+	// const nameChange = e => {
+	// 	setName(e.target.value)
+	// }
+
+	// const [description, setDescription] = useState("");
+	// const descriptionChange = e => {
+	// 	setDescription(e.target.value)
+	// }
+
+	// const [assignTo, setAssignTo] = useState("");
+	// const assignToChange = e => {
+	// 	setAssignTo(e.target.value)
+	// }
+
+	// const [dueDate, setDueDate] = useState("");
+	// const dueDateChange = e => {
+	// 	setDueDate(e.target.value)
+	// }
+
+	// const [status, setStatus] = useState("");
+	// const statusChange = e => {
+	// 	setStatus(e.target.value)
+	// }
 
     return (
         <div>
             {taskList.map(task => {
                 const { id, name, description, dueDate, assignedTo, status } = task
-      
+
                 // return (
                 //     <div key={id}>
                 //         <Task 
@@ -54,14 +81,16 @@ export default function TaskList({ taskList, deleteTask, submittingStatus }) {
                     })
                 }
                 return (
-                    <div key={task.id}>
+                    <div key={task.key}>
                         <div className="d-grid gap-2" onClick={e => setTaskIndex(e.target.id - 1)}>
+                            <Link to={`/taskData/1/${id}`}>Go to</Link>
                             <Button id={id} variant="secondary" size="lg" onClick={handleShow}>
                                 {name}
                             </Button>
                             <Button onClick={handleDelete} >
                                 Delete
                             </Button>
+                            {console.log(taskIndex)}
                         </div>
                     </div>
                 )
