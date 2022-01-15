@@ -1,44 +1,37 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import TaskList from './Component/TaskList.js';
-import NewTask from './Component/NewTask.js';
-import TopBar from './Component/TopBar.js';
-import Time from './Component/Time.js';
-import Calendarfunc from './Component/Calendarfunc.js';
-
-// let taskList = [{
-//   id: 1,
-//   name: 'Take out the trash',
-//   description: 'Take out the trash to the front of the house',
-//   assignedTo: 'Nick',
-//   dueDate: '2020-09-20',
-//   status: 'TODO'
-// }, {
-//   id: 2,
-//   name: 'Cook Dinner',
-//   description: 'Prepare a healthy serving of pancakes for the family tonight',
-//   assignedTo: 'Nick',
-//   dueDate: '2020-09-20',
-//   status: 'TODO'
-// }]
+import { useState } from 'react';
+import TaskList from './Components/TaskList';
+import NewTask from './Components/NewTask';
+import TopBar from './Components/TopBar';
+import Time from './Components/Time';
+import Calendarfunc from './Components/Calendarfunc';
+import Menu from './Components/Menu';
 
 function App() {
+  const [task, setTask] = useState([]);
+
   return (
     <div>
-      <BrowserRouter>
-        <Link to="/calendar">Calendar</Link>
-        <Link to="/newTask">New Task</Link>
+      {/* <Menu /> */}
+        {/* <Link to="/">HOME</Link> */}
+        {/* <Link to="/newTask">New Task</Link>
         <Link to="/taskList">Task List</Link>
-        <Link to="/">HOME</Link>
+      <Link to="/calendar">Calendar</Link> */}
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={
             <>
+              <Menu />
               <Time />
               <TopBar />
-              <NewTask />
-              <TaskList />
+              <NewTask addTask={setTask} />
+              <TaskList taskList={task} deleteTask={setTask} />
             </>
-          }/>
-          <Route path="/calendar" element={<Calendarfunc />}/>
+          } />
+
+          <Route path="/taskList" element={<TaskList taskList={task} />} />
+
+          <Route path="/calendar" element={<Calendarfunc />} />
         </Routes>
       </BrowserRouter>
     </div>
