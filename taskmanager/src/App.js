@@ -25,7 +25,7 @@ function App() {
               <Time />
               <TopBar />
               <NewTask addTask={setTask} />
-              <TaskList taskList={task} />
+              <TaskList taskList={task} deleteTask={setTask} />
             </>
           } />
 

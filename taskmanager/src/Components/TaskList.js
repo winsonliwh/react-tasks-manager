@@ -3,6 +3,7 @@ import { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
+import Task from "./Task"
 
 // let taskSample = [{
 //     id: 1,
@@ -20,24 +21,52 @@ import Form from "react-bootstrap/Form";
 //     status: 'TODO'
 // }]
 
-export default function TaskList({ taskList }) {
+export default function TaskList({ taskList, deleteTask }) {
     const [show, setShow] = useState(false);
-    const [taskIndex, setTaskIndex] = useState(0);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [taskIndex, setTaskIndex] = useState(0);
+
+
     return (
         <div>
-            {taskList.map(task => (
-                <div key={task.id}>
-                    <div className="d-grid gap-2" onClick={e => setTaskIndex(e.target.id - 1)}>
-                        <Button id={task.id} variant="secondary" size="lg" onClick={handleShow}>
-                            {task.name}
-                        </Button>
+            {taskList.map(task => {
+                const { id, name, description, dueDate, assignedTo, status } = task
+      
+                // return (
+                //     <div key={id}>
+                //         <Task 
+                //             id={id}
+                //             name={name}
+                //             description={description}
+                //             assignedTo={assignedTo}
+                //             dueDate={dueDate}
+                //             status={status}
+                //             deleteTask={deleteTask}
+                //             setTaskIndex={setTaskIndex}
+                //         />
+                //     </div>
+                // )
+
+                const handleDelete = () => {
+                    deleteTask(prev => {
+                        return prev.filter(task => task.id !== id)
+                    })
+                }
+                return (
+                    <div key={task.id}>
+                        <div className="d-grid gap-2" onClick={e => setTaskIndex(e.target.id - 1)}>
+                            <Button id={id} variant="secondary" size="lg" onClick={handleShow}>
+                                {name}
+                            </Button>
+                            <Button onClick={handleDelete} >
+                                Delete
+                            </Button>
+                        </div>
                     </div>
-                </div>
-            ))}
+                )
+            })}
 
             {taskList[taskIndex] &&
                 <Modal show={show} onHide={handleClose}>

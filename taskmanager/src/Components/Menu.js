@@ -19,10 +19,10 @@ export default function Menu({ ...props }) {
           <Offcanvas.Title>Task Manager</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <Link to="/">HOME</Link><br />
-          <Link to="/newTask">New Task</Link><br />
-          <Link to="/taskList">Task List</Link><br />
-          <Link to="/calendar">Calendar</Link><br />
+          <div><Link to="/">HOME</Link></div>
+          <div><Link to="/newTask">New Task</Link></div>
+          <div><Link to="/taskList">Task List</Link></div>
+          <div><Link to="/calendar">Calendar</Link></div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
