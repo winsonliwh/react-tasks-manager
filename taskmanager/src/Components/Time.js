@@ -1,4 +1,5 @@
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Time() {
     const [date, setDate] = useState(new Date());
@@ -13,10 +14,10 @@ export default function Time() {
     
     return (
         <div onChange={componentDidMount()}>
-            <div>
+            <div className="text-dark mx-3">
                 {date.toLocaleDateString('en-US')}
             </div>
-            <div>
+            <div className="text-dark mx-3">
                 {date.toLocaleTimeString('en-US')}
             </div>
         </div>

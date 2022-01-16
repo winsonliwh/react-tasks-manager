@@ -35,7 +35,7 @@ export default function Menu() {
 
   return (
     <>
-      <Button variant="flat" onClick={handleShow} className="me-2">
+      <Button variant="light" onClick={handleShow}>
         Menu
       </Button>
       <Offcanvas show={show} onHide={handleClose}>
@@ -43,10 +43,10 @@ export default function Menu() {
           <Offcanvas.Title>Task Manager</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <div><Link to="/">HOME</Link></div>
-          <div><Link to="/newTask">New Task</Link></div>
-          <div><Link to="/taskList">Task List</Link></div>
-          <div><Link to="/calendar">Calendar</Link></div>
+          <div><Link className="linkText" to="/">HOME</Link></div>
+          <div><Link className="linkText" to="/newTask">New Task</Link></div>
+          <div><Link className="linkText" to="/taskList">Task List</Link></div>
+          <div><Link className="linkText" to="/calendar">Calendar</Link></div>
         </Offcanvas.Body>
       </Offcanvas>
     </>

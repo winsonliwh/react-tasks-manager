@@ -31,7 +31,7 @@ export default function NewTask({ addTask, submittingStatus }) {
 		setDueDate(e.target.value)
 	}
 
-	const [status, setStatus] = useState("");
+	const [status, setStatus] = useState("NEW");
 	const statusChange = e => {
 		setStatus(e.target.value)
 	}
@@ -55,22 +55,22 @@ export default function NewTask({ addTask, submittingStatus }) {
 		setDescription("")
 		setAssignedTo("")
 		setDueDate("")
-		setStatus("")
+		setStatus("NEW")
 	}
 
 	return (
-		<div className="d-grid gap-2" >
+		<div className="d-grid newTask" >
 			<Button variant="primary" size="lg" onClick={handleShow}>
 				New Task
 			</Button>
 
-			<Modal onSubmit={handleSubmit} show={show} onHide={handleClose} backdrop="static">
+			<Modal show={show} onHide={handleClose} backdrop="static">
 				<Modal.Header closeButton>
 					<Modal.Title>New Task</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
-					<Form>
+					<Form onSubmit={handleSubmit} className="d-grid">
 						<Form.Group className="mb-3">
 							<Form.Label>Name</Form.Label>
 							<Form.Control id="name" placeholder="Name" value={name} onChange={nameChange} />
@@ -94,15 +94,15 @@ export default function NewTask({ addTask, submittingStatus }) {
 						<Form.Group className="mb-3">
 							<Form.Label>Status</Form.Label>
 							<Form.Select value={status} onChange={statusChange} >
-								<option value="new">NEW</option>
-								<option value="done">DONE</option>
+								<option value="NEW">NEW</option>
+								<option value="DONE">DONE</option>
 							</Form.Select>
 						</Form.Group>
 
 						<Form.Group className="mb-3" controlId="formBasicCheckbox">
 							<Form.Check type="checkbox" label="Task1" />
 						</Form.Group>
-						<Button variant="primary" onClick={handleClose} type="submit">
+						<Button variant="success" onClick={handleClose} type="submit">
 							Submit
 						</Button>
 					</Form>
@@ -111,9 +111,6 @@ export default function NewTask({ addTask, submittingStatus }) {
 				<Modal.Footer>
 					<Button variant="secondary" onClick={handleClose}>
 						Close
-					</Button>
-					<Button variant="primary" onClick={handleClose} type="submit" >
-						Save Changes
 					</Button>
 				</Modal.Footer>
 			</Modal>

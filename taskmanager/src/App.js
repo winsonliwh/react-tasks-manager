@@ -53,9 +53,9 @@ function App() {
 					{/* <Route path="/" element={<Menu />}> */}
 						<Route path="/" element={
 							<>
-								<Menu />
-								<Time />
 								<TopBar />
+								{/* <Menu /> */}
+								{/* <Time /> */}
 								<NewTask addTask={setTask} submittingStatus={submittingStatus} />
 								<TaskList taskList={task} editTask={setTask} submittingStatus={submittingStatus} />
 							</>

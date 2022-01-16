@@ -1,44 +1,69 @@
-label {
-    margin-top: 10px;
-}
-
-form input,
-form textarea,
-form select {
-    display: block;
-    width: 100%;
-}
-
-/* .info {
-} */
-
-.appBorder,
-.showTask {
+.appBorder {
     border: solid red;
-    padding: 32px;
+    /* padding: 32px; */
 }
 
-.topbar {
-    width: 100%;
+.topBar {
+    padding: 0px 10px;
+    border-radius: 10px;
 }
+
+.navbar-brand {
+    display: block;
+    float: left;
+    /* margin-left: 35vw; */
+    text-align: center;
+    /* width: 100%; */
+}
+
+/* .topBarTitle {
+    float: left;
+    display: block;
+    margin-left: auto;
+} */
 
 .navbar-nav {
     margin-left: auto;
 }
 
-.newTaskInfo {
-    text-align: center;
+.offcanvas {
+    background-color: rgb(255, 255, 255) !important;
 }
 
-.submitButton {
-    align-items: center;
+.offcanvas-start {
+    width: 250px !important;
 }
 
-button {
+.linkText {
     display: block;
-    margin: 10px auto;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: rgba(65, 103, 255, 0);
     border-radius: 10px;
-    font-weight: bold;
+    text-decoration: none;
+    color: rgb(111, 111, 111);
+}
+
+.newTask {
+    margin: 10px 0px;
+}
+
+.listRow {
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+    border-radius: 10px;
+    background-color: lightgrey;
+}
+
+.listStatus {
+    display: block;
+    width: 60px;
+    margin-left: 20px;
+}
+
+.listButton {
+    margin-left: auto;
 }
 
 .hide {
@@ -46,7 +71,7 @@ button {
 }
 
 @media screen and (max-width: 600px) {
-    .appBorder {
+    /* .appBorder {
         background-color: lightgrey;
-    }
+    } */
 }
