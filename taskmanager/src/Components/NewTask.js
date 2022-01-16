@@ -21,9 +21,9 @@ export default function NewTask({ addTask, submittingStatus }) {
 		setDescription(e.target.value)
 	}
 
-	const [assignTo, setAssignTo] = useState("");
-	const assignToChange = e => {
-		setAssignTo(e.target.value)
+	const [assignedTo, setAssignedTo] = useState("");
+	const assignedToChange = e => {
+		setAssignedTo(e.target.value)
 	}
 
 	const [dueDate, setDueDate] = useState("");
@@ -38,7 +38,7 @@ export default function NewTask({ addTask, submittingStatus }) {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		submittingStatus.current = true
+		// submittingStatus.current = true
 		setId(prev => prev + 1)
 		addTask(prevTask => {
 			return [...prevTask, {
@@ -46,14 +46,14 @@ export default function NewTask({ addTask, submittingStatus }) {
 				id: id,
 				name: name,
 				description: description,
-				assignTo: assignTo,
+				assignedTo: assignedTo,
 				dueDate: dueDate,
 				status: status
 			}]
 		})
 		setName("")
 		setDescription("")
-		setAssignTo("")
+		setAssignedTo("")
 		setDueDate("")
 		setStatus("")
 	}
@@ -83,7 +83,7 @@ export default function NewTask({ addTask, submittingStatus }) {
 
 						<Form.Group className="mb-3">
 							<Form.Label>Assigned To</Form.Label>
-							<Form.Control placeholder="Assigned To" value={assignTo} onChange={assignToChange} />
+							<Form.Control placeholder="Assigned To" value={assignedTo} onChange={assignedToChange} />
 						</Form.Group>
 
 						<Form.Group className="mb-3">

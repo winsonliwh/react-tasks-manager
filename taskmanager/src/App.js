@@ -57,7 +57,7 @@ function App() {
 								<Time />
 								<TopBar />
 								<NewTask addTask={setTask} submittingStatus={submittingStatus} />
-								<TaskList taskList={task} deleteTask={setTask} submittingStatus={submittingStatus} />
+								<TaskList taskList={task} editTask={setTask} submittingStatus={submittingStatus} />
 							</>
 						} />
 
