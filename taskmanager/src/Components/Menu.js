@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ReactComponent as Menuimg } from '../img/menu.svg';
 
 // const options = [
 // {
@@ -35,8 +36,9 @@ export default function Menu() {
 
   return (
     <>
+      {/* <CustomToggle aria-controls="offcanvasNavbar" /> */}
       <Button variant="light" onClick={handleShow}>
-        Menu
+        <Menuimg />
       </Button>
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
@@ -44,7 +46,6 @@ export default function Menu() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div><Link className="linkText" to="/">HOME</Link></div>
-          <div><Link className="linkText" to="/newTask">New Task</Link></div>
           <div><Link className="linkText" to="/taskList">Task List</Link></div>
           <div><Link className="linkText" to="/calendar">Calendar</Link></div>
         </Offcanvas.Body>

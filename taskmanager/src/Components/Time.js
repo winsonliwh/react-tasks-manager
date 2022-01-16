@@ -13,13 +13,13 @@ export default function Time() {
     };
     
     return (
-        <div onChange={componentDidMount()}>
-            <div className="text-dark mx-3">
+        <div className="topBarDateTime" onChange={componentDidMount()}>
+            <span>
                 {date.toLocaleDateString('en-US')}
-            </div>
-            <div className="text-dark mx-3">
-                {date.toLocaleTimeString('en-US')}
-            </div>
+            </span>
+            <span>
+                {date.toLocaleTimeString('en-US', { hour12: false })}
+            </span>
         </div>
     );
 };

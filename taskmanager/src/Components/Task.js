@@ -3,8 +3,8 @@ import { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
-import { Row, Col } from "react-bootstrap";
-
+import { ReactComponent as Edit } from '../img/pencil.svg';
+import { ReactComponent as Minus } from '../img/minus.svg';
 
 export default function Task({ task, editTask }) {
 
@@ -63,26 +63,31 @@ export default function Task({ task, editTask }) {
     }
 
     return (
-        <div>
-            <div className="listRow">
-                <span className="listStatus">
-                    <input type="checkbox" value=""></input>
-                    {task.status}
-                </span>
-                <span>
-                    {task.name}
-                </span>
-                <div className="listButton">
-                    <Button onClick={handleShow}>
-                        Edit
-                    </Button>
-                    <Button variant="secondary" onClick={handleDelete} >
-                        Delete
-                    </Button>
+        <div class="">
+            <div class="card">
+                <div class="card-body">
+                    <p className="cardTitle">
+                        <input type="checkbox" value=""></input>
+                        <h5 class="card-title">{task.name}</h5>
+                        <span className="listButton">
+                            <Button className="btn-sm listEdit" onClick={handleShow}>
+                                <Edit />
+                            </Button>
+                            <Button className="btn-sm listDelete" onClick={handleDelete} >
+                                <Minus />
+                            </Button>
+                        </span>
+                    </p>
+                    <p class="card-text">
+                        {/* {task.status} */}
+                        {/* <br /> */}
+                        {task.description}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
             </div>
-        </div>
-
-        
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

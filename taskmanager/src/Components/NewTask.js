@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { v4 } from "uuid";
+import { ReactComponent as AddTask } from '../img/addTask.svg';
 
 export default function NewTask({ addTask, submittingStatus }) {
 	const [show, setShow] = useState(false);
@@ -59,9 +60,9 @@ export default function NewTask({ addTask, submittingStatus }) {
 	}
 
 	return (
-		<div className="d-grid newTask" >
-			<Button variant="primary" size="lg" onClick={handleShow}>
-				New Task
+		<div className="newTask" >
+			<Button className="addTaskbtn rounded-circle" size="lg" onClick={handleShow}>
+				<AddTask />
 			</Button>
 
 			<Modal show={show} onHide={handleClose} backdrop="static">

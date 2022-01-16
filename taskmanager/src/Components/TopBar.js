@@ -4,6 +4,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './Menu';
 import Time from './Time';
+import { ReactComponent as Setting } from '../img/setting.svg';
 
 export default function TopBar() {
     return (
@@ -14,7 +15,7 @@ export default function TopBar() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
                         <Time />
-                        <NavDropdown title="Setting" id="basic-nav-dropdown">
+                        <NavDropdown align="end" title={<Setting />} id="basic-nav-dropdown">
                             <NavDropdown.Item>Dark Mode</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>

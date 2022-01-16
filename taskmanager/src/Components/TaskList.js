@@ -24,10 +24,10 @@ import Task from "./Task";
 export default function TaskList({ taskList, editTask, submittingStatus }) {
 
     return (
-        <div>
+        <div class="d-flex taskList">
             {taskList.map(task => {
                 return (
-                    <div key={task.key} >
+                    <div class="eachTask col-6" key={task.key} >
                         {submittingStatus.current = true}
                         <Task task={task} editTask={editTask} />
                     </div>
