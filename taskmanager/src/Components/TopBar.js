@@ -11,7 +11,7 @@ export default function TopBar() {
         <div>
             <Navbar className="topBar rounded-0" variant="light" sticky="top" bg="light">
                 <Menu />
-                <Navbar.Brand>Task Manager</Navbar.Brand>
+                <Navbar.Brand className='font'>Task Manager</Navbar.Brand>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
                         <Time />
