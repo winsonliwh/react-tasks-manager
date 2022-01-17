@@ -1,3 +1,8 @@
+* {
+    font-family: 'Outfit', sans-serif;
+    color: rgb(70, 70, 70);
+}
+
 /* .appBorder {
     border: solid red;
     padding: 32px;
@@ -8,10 +13,10 @@
     border-radius: 10px;
 }
 
-.navbar-brand {
+/* .navbar-brand {
     width: 100%;
     text-align: center;
-}
+} */
 
 /* .topBarTitle {
     display: block;
@@ -106,6 +111,12 @@
 
 .hide {
     display: none;
+}
+
+.react-calendar {
+    width: 70vw !important;
+    padding: 32px 16px !important;
+    margin: 64px auto 0px;
 }
 
 @media screen and (max-width: 500px) {

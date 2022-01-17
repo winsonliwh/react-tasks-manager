@@ -6,7 +6,7 @@ import TopBar from './Components/TopBar';
 import Time from './Components/Time';
 import Calendarfunc from './Components/Calendarfunc';
 import Menu from './Components/Menu';
-import { apiHost } from './Components/Const';
+import { apiHost } from './Components/const';
 
 async function fetchData(setTask) {
 	const res = await fetch(`${apiHost}`)
