@@ -84,7 +84,7 @@ p {
 
 .listButton {
     margin-left: auto;
-    border-radius: 10px;
+    display: flex;
 }
 
 .btn-sm {
@@ -107,7 +107,7 @@ p {
     right: 0;
     bottom: 0;
     padding: 20px;
-    opacity: 80%;
+    opacity: 65%;
 }
 
 .hide {

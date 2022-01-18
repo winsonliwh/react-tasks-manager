@@ -61,7 +61,7 @@ export default function NewTask({ addTask, submittingStatus }) {
 
 	return (
 		<div className="newTask" >
-			<Button className="addTaskbtn rounded-circle" size="lg" onClick={handleShow}>
+			<Button className="addTaskbtn rounded-circle" size="md" onClick={handleShow}>
 				<AddTask />
 			</Button>
 
