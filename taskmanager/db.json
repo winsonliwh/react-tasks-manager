@@ -3,57 +3,84 @@
     {
       "task": [
         {
-          "key": "bf30b9ea-ab93-4e84-8963-3d9c501f4c28",
+          "key": "e7fb2a31-da8a-4631-bb8a-fe0a3e43ebaf",
           "id": 1,
-          "name": "sing",
-          "description": "adad",
-          "assignedTo": "sdad",
+          "name": "Task 1: Design your App Wireframes",
+          "description": "Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.",
+          "assignedTo": "F-P",
           "dueDate": "",
           "status": "NEW"
         },
         {
-          "key": "9cdbcfbf-2f0e-41c5-81f0-72d401c01afa",
+          "key": "798a9926-bbb3-49ba-88ae-4589898113ad",
           "id": 1,
-          "name": "f eef",
-          "description": "fafaff",
-          "assignedTo": "affaf",
+          "name": "Task 2: Implement your Wireframes using Bootstrap",
+          "description": "Implement the basic HTML structure of your Wireframes design.\nCreate a private Github repository for your project that is shared with your instructor.",
+          "assignedTo": "F-P",
           "dueDate": "",
           "status": "NEW"
         },
         {
-          "key": "fd9defbc-652d-4068-9590-edc34ae5ef8e",
+          "key": "06fc119a-b381-4cd9-b445-9e7e21863c40",
           "id": 1,
-          "name": "123",
-          "description": "",
-          "assignedTo": "",
+          "name": "Task 3: Create a Task Card layout and a Task List component",
+          "description": "Implement the card layout bootstrap component that contains the task information:\n\nName\nDescription\nAssignedTo\nDueDate\nStatus",
+          "assignedTo": "F-P",
           "dueDate": "",
           "status": "NEW"
         },
         {
-          "key": "4b9d3987-90f7-4c0b-adee-a50443a33df1",
+          "key": "60c19537-2c08-49bc-af4c-b7b84ed944f8",
           "id": 2,
-          "name": "42131",
-          "description": "",
-          "assignedTo": "",
+          "name": "Task 4: Adding Tasks",
+          "description": "\nFor this task, we'll be creating a class to manage the tasks, adding a method to the class to keep track of tasks in our application, and connecting up the New Task form to create tasks.",
+          "assignedTo": "F-P",
           "dueDate": "",
           "status": "NEW"
         },
         {
-          "key": "74c4ec3a-4ae6-4a95-a497-4bd5e2005271",
-          "id": 2,
-          "name": "",
-          "description": "fjshfiushgishsoefjjoifeoifjiofijfuck",
-          "assignedTo": "",
-          "dueDate": "",
-          "status": "NEW"
-        },
-        {
-          "key": "98e15b34-9998-4949-8264-b061eff9a477",
+          "key": "076ff668-c37a-484f-a81f-cb48ba14481e",
           "id": 3,
-          "name": "fdsgd",
-          "description": "sfsdf",
-          "assignedTo": "sfsdgbfbvxvd",
-          "dueDate": "2022-01-12",
+          "name": "Task 5: Display The Tasks",
+          "description": "For this task, we'll be writing the code to display the TaskManager's tasks array on the page.",
+          "assignedTo": "F-P",
+          "dueDate": "",
+          "status": "NEW"
+        },
+        {
+          "key": "6fb2ba57-bac9-46dc-9e3c-e995a7666a04",
+          "id": 4,
+          "name": "Task 6: Task Form Inputs Validation",
+          "description": "Implement a form that captures the fields required to create a task.",
+          "assignedTo": "F-P",
+          "dueDate": "",
+          "status": "NEW"
+        },
+        {
+          "key": "e32de5eb-658c-4121-bafc-d83cec74b1ce",
+          "id": 5,
+          "name": "Task 7: Update A Task",
+          "description": "For this task, we'll write the code to update a task's status to \"DONE\" once a \"Mark As Done\" button on the task is clicked.\n\nNote, for this task, we are not using the \"Update Task\" form. This is part of the re-structuring of the project. This step will be added as a stretch goal to the end of the course.",
+          "assignedTo": "F-P",
+          "dueDate": "",
+          "status": "NEW"
+        },
+        {
+          "key": "93120826-59e4-4268-b942-3f33fc748c72",
+          "id": 6,
+          "name": "Task 8: Persisting Tasks to LocalStorage",
+          "description": "In this task, we'll persist (ie: save) our tasks to LocalStorage, so that we can load them again the next time we visit our page.",
+          "assignedTo": "F-P",
+          "dueDate": "",
+          "status": "NEW"
+        },
+        {
+          "key": "c0628959-ef1c-497e-b6ac-ee194d61401c",
+          "id": 7,
+          "name": "Task 9: Deleting Tasks",
+          "description": "Now that we are persisting tasks to localStorage, we need a way to delete old tasks so that they don't fill up the list over time.",
+          "assignedTo": "F-P",
+          "dueDate": "",
           "status": "NEW"
         }
       ],
