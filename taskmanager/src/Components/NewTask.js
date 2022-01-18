@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { v4 } from "uuid";
 import { ReactComponent as AddTask } from '../img/addTask.svg';
+import { Link } from "react-router-dom";
 
 export default function NewTask({ addTask, submittingStatus }) {
 	const [show, setShow] = useState(false);
@@ -19,7 +20,7 @@ export default function NewTask({ addTask, submittingStatus }) {
 
 	const [description, setDescription] = useState("");
 	const descriptionChange = e => {
-		setDescription(e.target.value)
+		setDescription(e.target.value.toString())
 	}
 
 	const [assignedTo, setAssignedTo] = useState("");
@@ -59,8 +60,17 @@ export default function NewTask({ addTask, submittingStatus }) {
 		setStatus("NEW")
 	}
 
+	const handleBackToTop = () => {
+		window.scroll({
+			top: 300,
+			behavior: 'smooth'
+		})
+	}
+
 	return (
 		<div className="newTask" >
+			<Button onClick={handleBackToTop}>back to top</Button>
+
 			<Button className="addTaskbtn rounded-circle" size="md" onClick={handleShow}>
 				<AddTask />
 			</Button>

@@ -12,7 +12,6 @@ async function fetchData(setTask) {
 	const res = await fetch(`${apiHost}`)
 	const { task } = await res.json()
 	setTask(task)
-	console.log(task)
 }
 
 async function fetchSetData(task) {

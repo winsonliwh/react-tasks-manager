@@ -6,7 +6,7 @@
           "key": "e7fb2a31-da8a-4631-bb8a-fe0a3e43ebaf",
           "id": 1,
           "name": "Task 1: Design your App Wireframes",
-          "description": "Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.",
+          "description": "Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\nIs always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\n\n Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.",
           "assignedTo": "F-P",
           "dueDate": "",
           "status": "NEW"
@@ -15,7 +15,7 @@
           "key": "798a9926-bbb3-49ba-88ae-4589898113ad",
           "id": 1,
           "name": "Task 2: Implement your Wireframes using Bootstrap",
-          "description": "Implement the basic HTML structure of your Wireframes design.\nCreate a private Github repository for your project that is shared with your instructor.",
+          "description": "Implement the basic HTML structure of your Wireframes design.",
           "assignedTo": "F-P",
           "dueDate": "",
           "status": "NEW"
@@ -80,6 +80,24 @@
           "name": "Task 9: Deleting Tasks",
           "description": "Now that we are persisting tasks to localStorage, we need a way to delete old tasks so that they don't fill up the list over time.",
           "assignedTo": "F-P",
+          "dueDate": "",
+          "status": "NEW"
+        },
+        {
+          "key": "4f5151b7-4693-458b-bffc-f16af632b178",
+          "id": 1,
+          "name": "test",
+          "description": "Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\nIs always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\n\n Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.",
+          "assignedTo": "",
+          "dueDate": "",
+          "status": "NEW"
+        },
+        {
+          "key": "ccf5b31c-3718-409e-87b4-40f86c9e468b",
+          "id": 2,
+          "name": "1234214",
+          "description": "Is always a good practice to design first before start coding. \n\nThe objective of this task is to create the Task planner app wireframes to understand how it will work and look.\nIs always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\n\n Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.",
+          "assignedTo": "",
           "dueDate": "",
           "status": "NEW"
         }

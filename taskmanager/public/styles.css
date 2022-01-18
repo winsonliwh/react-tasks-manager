@@ -14,6 +14,15 @@ p {
     border-radius: 10px;
 }
 
+*::-webkit-scrollbar {
+    width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: grey;
+    border-radius: 20px;
+  }
+
 /* .navbar-brand {
     width: 100%;
     text-align: center;
@@ -58,10 +67,26 @@ p {
 .cardTitle {
     display: flex;
     align-items: center;
+    padding: 15px 10px;
+    background-color: white;
+    /* z-index: ; */
 }
 
 .cardTitle h5 {
     margin: auto 10px;
+}
+
+.card {
+    height: 250px;
+}
+
+.card-body {
+    overflow: auto;
+    padding: 0px !important;
+}
+
+.card-body p {
+    padding: 0px 20px !important;
 }
 
 .linkText {
@@ -108,6 +133,7 @@ p {
     bottom: 0;
     padding: 20px;
     opacity: 65%;
+    z-index: 9999;
 }
 
 .hide {
