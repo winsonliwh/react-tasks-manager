@@ -42,12 +42,12 @@ export default function Menu() {
       </Button>
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Task Manager</Offcanvas.Title>
+          <Offcanvas.Title><p>Task Manager</p></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <div><Link className="linkText" to="/">HOME</Link></div>
-          <div><Link className="linkText" to="/taskList">Task List</Link></div>
-          <div><Link className="linkText" to="/calendar">Calendar</Link></div>
+          <div><Link className="linkText" to="/"><p>HOME</p></Link></div>
+          <div><Link className="linkText" to="/taskList"><p>Task List</p></Link></div>
+          <div><Link className="linkText" to="/calendar"><p>Calendar</p></Link></div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
