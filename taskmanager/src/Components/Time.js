@@ -15,10 +15,14 @@ export default function Time() {
     return (
         <div className="topBarDateTime" onChange={componentDidMount()}>
             <span>
-                {date.toLocaleDateString('en-US')}
+                <p>
+                    {date.toLocaleDateString('en-US')}
+                </p>
             </span>
             <span>
-                {date.toLocaleTimeString('en-US', { hour12: false })}
+                <p>
+                    {date.toLocaleTimeString('en-US')}
+                </p>
             </span>
         </div>
     );

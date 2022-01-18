@@ -85,7 +85,7 @@ export default function Task({ task, editTask }) {
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
+                    <small class="text-muted"><p>Last updated 3 mins ago</p></small>
                 </div>
             </div>
 

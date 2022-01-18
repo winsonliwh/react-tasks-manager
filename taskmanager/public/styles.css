@@ -1,5 +1,6 @@
-* {
+p {
     font-family: 'Outfit', sans-serif;
+    margin: 0px !important;
     color: rgb(70, 70, 70);
 }
 
