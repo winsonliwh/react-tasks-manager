@@ -136,6 +136,15 @@ p {
     z-index: 9999;
 }
 
+.ArrowUp {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 3px 3px;
+    opacity: 65%;
+    z-index: 9999;
+}
+
 .hide {
     display: none;
 }

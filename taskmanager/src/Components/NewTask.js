@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { v4 } from "uuid";
 import { ReactComponent as AddTask } from '../img/addTask.svg';
+import { ReactComponent as ArrowUp } from '../img/arrowUp.svg';
 import { Link } from "react-router-dom";
 
 export default function NewTask({ addTask, submittingStatus }) {
@@ -69,7 +70,9 @@ export default function NewTask({ addTask, submittingStatus }) {
 
 	return (
 		<div className="newTask" >
-			<Button onClick={handleBackToTop}>back to top</Button>
+			<div className="ArrowUp">
+			<Button className="rounded-circle btn-sm btn-dark" onClick={handleBackToTop}><ArrowUp /></Button>
+			</div>
 
 			<Button className="addTaskbtn rounded-circle" size="md" onClick={handleShow}>
 				<AddTask />
