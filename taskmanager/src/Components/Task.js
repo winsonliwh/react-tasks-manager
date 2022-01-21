@@ -63,7 +63,7 @@ export default function Task({ task, editTask }) {
     }
 
     return (
-        <div class="">
+        <div>
             <div class="card">
                 <div class="card-body">
                     <div className="cardTitle sticky-top">
@@ -82,7 +82,7 @@ export default function Task({ task, editTask }) {
                     </p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted"><p>Last updated 3 mins ago</p></small>
+                    <small class="text-muted"><p><span>{task.status}</span> Last updated 3 mins ago</p></small>
                 </div>
             </div>
 

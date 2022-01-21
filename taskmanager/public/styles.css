@@ -1,13 +1,12 @@
+* {
+    z-index: 1;
+}
+
 p {
     font-family: 'Outfit', sans-serif;
     margin: 0px !important;
     color: rgb(70, 70, 70);
 }
-
-/* .appBorder {
-    border: solid red;
-    padding: 32px;
-} */
 
 .topBar {
     padding: 0px 10px;
@@ -22,18 +21,6 @@ p {
     background-color: grey;
     border-radius: 20px;
   }
-
-/* .navbar-brand {
-    width: 100%;
-    text-align: center;
-} */
-
-/* .topBarTitle {
-    display: block;
-    float: left;
-    align-items: center;
-    width: 100%;
-} */
 
 .taskList {
     flex-wrap: wrap;
@@ -69,7 +56,6 @@ p {
     align-items: center;
     padding: 15px 10px;
     background-color: white;
-    /* z-index: ; */
 }
 
 .cardTitle h5 {
