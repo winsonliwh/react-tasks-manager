@@ -1,9 +1,9 @@
 * {
+    font-family: 'Outfit', sans-serif;
     z-index: 1;
 }
 
 p {
-    font-family: 'Outfit', sans-serif;
     margin: 0px !important;
     color: rgb(70, 70, 70);
 }

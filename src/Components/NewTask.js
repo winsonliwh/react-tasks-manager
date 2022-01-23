@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -7,7 +7,7 @@ import { ReactComponent as AddTask } from '../img/addTask.svg';
 import { ReactComponent as ArrowUp } from '../img/arrowUp.svg';
 import { Link } from "react-router-dom";
 
-export default function NewTask({ addTask, submittingStatus }) {
+export default function NewTask({ addTask }) {
 	const [show, setShow] = useState(false);
 	const handleShow = () => setShow(true);
 	const handleClose = () => setShow(false);
@@ -41,7 +41,6 @@ export default function NewTask({ addTask, submittingStatus }) {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		// submittingStatus.current = true
 		setId(prev => prev + 1)
 		addTask(prevTask => {
 			return [...prevTask, {
@@ -61,18 +60,31 @@ export default function NewTask({ addTask, submittingStatus }) {
 		setStatus("NEW")
 	}
 
+	// Setting of Buttom for Back to top
+	const [showButton, setShowButton] = useState(false);
+
+	useEffect(() => {
+		window.addEventListener("scroll", () => {
+			if (window.pageYOffset > 800) {
+				setShowButton(true);
+			} else {
+				setShowButton(false);
+			}
+		});
+	}, []);
+
 	const handleBackToTop = () => {
 		window.scroll({
-			top: 300,
+			top: 0,
 			behavior: 'smooth'
 		})
 	}
 
 	return (
 		<div className="newTask" >
-			<div className="ArrowUp">
-			<Button className="rounded-circle btn-sm btn-dark" onClick={handleBackToTop}><ArrowUp /></Button>
-			</div>
+			{showButton &&
+				<Button className="ArrowUp rounded-circle btn-sm btn-dark" onClick={handleBackToTop}><ArrowUp /></Button>
+			}
 
 			<Button className="addTaskbtn rounded-circle" size="md" onClick={handleShow}>
 				<AddTask />
@@ -108,8 +120,8 @@ export default function NewTask({ addTask, submittingStatus }) {
 						<Form.Group className="mb-3">
 							<Form.Label><p>Status</p></Form.Label>
 							<Form.Select value={status} onChange={statusChange} >
-								<option value="NEW"><p>NEW</p></option>
-								<option value="DONE"><p>DONE</p></option>
+								<option value="NEW">NEW</option>
+								<option value="DONE">DONE</option>
 							</Form.Select>
 						</Form.Group>
 
