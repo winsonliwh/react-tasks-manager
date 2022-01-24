@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import Menu from './Menu';
 import 'react-calendar/dist/Calendar.css';
 import TopBar from './TopBar';
 

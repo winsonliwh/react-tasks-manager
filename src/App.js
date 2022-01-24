@@ -3,9 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import TaskList from './Components/TaskList';
 import NewTask from './Components/NewTask';
 import TopBar from './Components/TopBar';
-import Time from './Components/Time';
 import Calendarfunc from './Components/Calendarfunc';
-import Menu from './Components/Menu';
 import { apiHost } from './Components/Const';
 
 async function fetchData(setTask) {
@@ -42,29 +40,22 @@ function App() {
 
 	return (
 		<div>
-			{/* <Menu /> */}
-			{/* <Link to="/">HOME</Link> */}
-			{/* <Link to="/newTask">New Task</Link>
-        <Link to="/taskList">Task List</Link>
-      <Link to="/calendar">Calendar</Link> */}
 			<BrowserRouter>
 				<Routes>
-					{/* <Route path="/" element={<Menu />}> */}
-						<Route path="/" element={
-							<>
-								<TopBar />
-								{/* <Menu /> */}
-								{/* <Time /> */}
-								<TaskList taskList={task} editTask={setTask} submittingStatus={submittingStatus} />
-								<NewTask addTask={setTask} submittingStatus={submittingStatus} />
-							</>
-						} />
-
-						<Route path="/taskData/1/:id" element={<TaskList taskList={task} />} />
-
-						<Route path="/calendar" element={<Calendarfunc />} />
-
-					{/* </Route> */}
+					<Route path="/react-tasks-manager" element={
+						<>
+							<TopBar />
+							<TaskList taskList={task} editTask={setTask} submittingStatus={submittingStatus} />
+							<NewTask addTask={setTask} submittingStatus={submittingStatus} />
+						</>
+					} />
+					<Route path="/taskList" element={
+						<>
+							<TopBar />
+							<TaskList taskList={task} editTask={setTask} submittingStatus={submittingStatus} />
+						</>
+					} />
+					<Route path="/calendar" element={<Calendarfunc />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

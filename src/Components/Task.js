@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
@@ -8,11 +7,9 @@ import { ReactComponent as Minus } from '../img/minus.svg';
 
 export default function Task({ task, editTask }) {
 
-    // const { key, id, name, description, dueDate, assignedTo, status } = task
-
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
     const [name, setName] = useState(task.name);
     const nameChange = e => {
@@ -60,14 +57,15 @@ export default function Task({ task, editTask }) {
         editTask(prev => {
             return prev.map(eachTask => eachTask.key === task.key ? updatedTaskData : eachTask)
         })
+        setShow(false)
     }
 
     return (
         <div>
-            <div class="card">
-                <div class="card-body">
+            <div className="card">
+                <div className="card-body">
                     <div className="cardTitle sticky-top">
-                        <h5 class="card-title">{task.name}</h5>
+                        <h5 className="card-title">{task.name}</h5>
                         <span className="listButton">
                             <Button className="btn-sm listEdit" onClick={handleShow}>
                                 <Edit />
@@ -77,12 +75,12 @@ export default function Task({ task, editTask }) {
                             </Button>
                         </span>
                     </div>
-                    <p class="card-body">
+                    <p className="card-body">
                         {task.description}
                     </p>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted"><p><span>{task.status}</span> Last updated 3 mins ago</p></small>
+                <div className="card-footer">
+                    <small className="text-muted"><p><span>{task.status}</span> Last updated 3 mins ago</p></small>
                 </div>
             </div>
 
@@ -95,7 +93,7 @@ export default function Task({ task, editTask }) {
                     <Form onSubmit={handleUpdate} className="d-grid">
                         <Form.Group className="mb-3">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control value={name} onChange={nameChange} placeholder="Name" />
+                            <Form.Control value={name} onChange={nameChange} placeholder="Name" required />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
@@ -110,7 +108,7 @@ export default function Task({ task, editTask }) {
 
                         <Form.Group className="mb-3">
                             <Form.Label>Due Date</Form.Label>
-                            <Form.Control value={dueDate} onChange={dueDateChange} type="date" placeholder="Due Date" />
+                            <Form.Control value={dueDate} onChange={dueDateChange} type="date" />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
@@ -121,10 +119,7 @@ export default function Task({ task, editTask }) {
                             </Form.Select>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Task1" />
-                        </Form.Group>
-                        <Button variant="success" onClick={handleClose} type="submit">
+                        <Button variant="success" type="submit">
                             Save Changes
                         </Button>
                     </Form>
