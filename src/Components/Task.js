@@ -80,7 +80,7 @@ export default function Task({ task, editTask }) {
                     </p>
                 </div>
                 <div className="card-footer">
-                    <small className="text-muted"><p><span>{task.status}</span> Last updated 3 mins ago</p></small>
+                    <span>{task.status}</span><small className="text-muted"> Last updated 3 mins ago</small>
                 </div>
             </div>
 

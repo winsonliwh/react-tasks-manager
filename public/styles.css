@@ -76,6 +76,15 @@ p {
     padding: 0px 20px !important;
 }
 
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-footer small {
+    align-self: center;
+}
+
 .linkText {
     display: block;
     margin: 10px;
