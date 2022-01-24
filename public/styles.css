@@ -69,6 +69,7 @@ p {
 .card-body {
     overflow: auto;
     padding: 0px !important;
+    white-space: pre-line;
 }
 
 .card-body p {
