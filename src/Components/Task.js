@@ -47,9 +47,12 @@ export default function Task({ task, editTask }) {
     };
 
     const handleDelete = () => {
-        editTask(prev => {
-            return prev.filter(eachTask => eachTask.key !== task.key)
-        })
+        const confirmDelete = window.confirm("Want to delete this task?");
+        if (confirmDelete) {
+            editTask(prev => {
+                return prev.filter(eachTask => eachTask.key !== task.key)
+            })
+        }
     }
 
     const handleUpdate = e => {
