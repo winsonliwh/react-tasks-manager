@@ -47,7 +47,7 @@ export default function Task({ task, editTask }) {
     };
 
     const handleDelete = () => {
-        const confirmDelete = window.confirm("Want to delete this task?");
+        const confirmDelete = window.confirm("Are you sure to delete this task?");
         if (confirmDelete) {
             editTask(prev => {
                 return prev.filter(eachTask => eachTask.key !== task.key)
@@ -83,7 +83,7 @@ export default function Task({ task, editTask }) {
                     </p>
                 </div>
                 <div className="card-footer">
-                    <span>{task.status}</span><small className="text-muted"> Last updated 3 mins ago</small>
+                    <span>{task.status}</span><small className="text-muted">{task.dueDate}</small>
                 </div>
             </div>
 

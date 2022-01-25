@@ -35,11 +35,13 @@ export default function NewTask({ addTask }) {
 	const [assignedTo, setAssignedTo] = useState("");
 	const assignedToChange = e => {
 		setAssignedTo(e.target.value)
+		console.log(assignedTo)
 	}
 
 	const [dueDate, setDueDate] = useState("");
 	const dueDateChange = e => {
 		setDueDate(e.target.value)
+		console.log(dueDate)
 	}
 
 	const [status, setStatus] = useState("NEW");
@@ -74,7 +76,7 @@ export default function NewTask({ addTask }) {
 
 	useEffect(() => {
 		window.addEventListener("scroll", () => {
-			if (window.pageYOffset > 800) {
+			if (window.pageYOffset > 400) {
 				setShowButton(true);
 			} else {
 				setShowButton(false);
@@ -108,13 +110,11 @@ export default function NewTask({ addTask }) {
 					<Form onSubmit={handleSubmit} className="d-grid">
 						<Form.Group className="mb-3">
 							<Form.Label><p>Name</p></Form.Label>
-							{/* <Form.Control id="name" placeholder="Name" value={name} onChange={nameChange} /> */}
 							<Form.Control id="name" placeholder="Name" value={name} onChange={nameChange} required />
 						</Form.Group>
 
 						<Form.Group className="mb-3">
 							<Form.Label><p>Description</p></Form.Label>
-							{/* <Form.Control id="description" as="textarea" placeholder="Description" value={description} onChange={descriptionChange} /> */}
 							<Form.Control id="description" as="textarea" placeholder="Description" value={description} onChange={descriptionChange} />
 						</Form.Group>
 

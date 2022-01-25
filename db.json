@@ -8,8 +8,8 @@
           "name": "Task 1: Design your App Wireframes",
           "description": "Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\nIs always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\n\n Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "798a9926-bbb3-49ba-88ae-4589898113ad",
@@ -17,8 +17,8 @@
           "name": "Task 2: Implement your Wireframes using Bootstrap",
           "description": "Implement the basic HTML structure of your Wireframes design.",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "06fc119a-b381-4cd9-b445-9e7e21863c40",
@@ -26,8 +26,8 @@
           "name": "Task 3: Create a Task Card layout and a Task List component",
           "description": "Implement the card layout bootstrap component that contains the task information:\n\nName\nDescription\nAssignedTo\nDueDate\nStatus",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "60c19537-2c08-49bc-af4c-b7b84ed944f8",
@@ -35,8 +35,8 @@
           "name": "Task 4: Adding Tasks",
           "description": "\nFor this task, we'll be creating a class to manage the tasks, adding a method to the class to keep track of tasks in our application, and connecting up the New Task form to create tasks.",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "076ff668-c37a-484f-a81f-cb48ba14481e",
@@ -44,8 +44,8 @@
           "name": "Task 5: Display The Tasks",
           "description": "For this task, we'll be writing the code to display the TaskManager's tasks array on the page.",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "6fb2ba57-bac9-46dc-9e3c-e995a7666a04",
@@ -53,8 +53,8 @@
           "name": "Task 6: Task Form Inputs Validation",
           "description": "Implement a form that captures the fields required to create a task.",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "e32de5eb-658c-4121-bafc-d83cec74b1ce",
@@ -62,8 +62,8 @@
           "name": "Task 7: Update A Task",
           "description": "For this task, we'll write the code to update a task's status to \"DONE\" once a \"Mark As Done\" button on the task is clicked.\n\nNote, for this task, we are not using the \"Update Task\" form. This is part of the re-structuring of the project. This step will be added as a stretch goal to the end of the course.",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "93120826-59e4-4268-b942-3f33fc748c72",
@@ -71,8 +71,8 @@
           "name": "Task 8: Persisting Tasks to LocalStorage",
           "description": "In this task, we'll persist (ie: save) our tasks to LocalStorage, so that we can load them again the next time we visit our page.",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "c0628959-ef1c-497e-b6ac-ee194d61401c",
@@ -80,25 +80,16 @@
           "name": "Task 9: Deleting Tasks",
           "description": "Now that we are persisting tasks to localStorage, we need a way to delete old tasks so that they don't fill up the list over time.",
           "assignedTo": "F-P",
-          "dueDate": "",
-          "status": "NEW"
+          "dueDate": "2022-01-20",
+          "status": "DONE"
         },
         {
           "key": "4f5151b7-4693-458b-bffc-f16af632b178",
           "id": 1,
-          "name": "test",
-          "description": "Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\nIs always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\n\n Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.",
+          "name": "Task 10: Test TaskManager",
+          "description": "Description\nIn our final task, we'll test our TaskManager class using Mocha.",
           "assignedTo": "",
-          "dueDate": "",
-          "status": "NEW"
-        },
-        {
-          "key": "ccf5b31c-3718-409e-87b4-40f86c9e468b",
-          "id": 2,
-          "name": "1234214",
-          "description": "Is always a good practice to design first before start coding. \n\nThe objective of this task is to create the Task planner app wireframes to understand how it will work and look.\nIs always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.\n\n Is always a good practice to design first before start coding. The objective of this task is to create the Task planner app wireframes to understand how it will work and look.",
-          "assignedTo": "",
-          "dueDate": "",
+          "dueDate": "2022-01-20",
           "status": "NEW"
         }
       ],
