@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
 import { ReactComponent as Edit } from '../img/pencil.svg';
 import { ReactComponent as Minus } from '../img/minus.svg';
+import { db } from "../firebase";
+import { update, remove, ref } from "firebase/database";
 
 export default function Task({ task, editTask }) {
 
@@ -46,19 +48,31 @@ export default function Task({ task, editTask }) {
         status: status
     };
 
-    const handleDelete = () => {
-        const confirmDelete = window.confirm("Are you sure to delete this task?");
-        if (confirmDelete) {
-            editTask(prev => {
-                return prev.filter(eachTask => eachTask.key !== task.key)
-            })
-        }
-    }
+    // const handleDelete = () => {
+    //     const confirmDelete = window.confirm("Are you sure to delete this task?");
+    //     if (confirmDelete) {
+    //         editTask(prev => {
+    //             return prev.filter(eachTask => eachTask.key !== task.key)
+    //         })
+    //     }
+    // }
+
+    const handleDelete = key => {
+        remove(ref(db, `/taskData/${key}`));
+    };
 
     const handleUpdate = e => {
         e.preventDefault()
-        editTask(prev => {
-            return prev.map(eachTask => eachTask.key === task.key ? updatedTaskData : eachTask)
+        update(ref(db, `/taskData/${task.key}`), {
+            key: task.key,
+            id: task.id,
+            name: name,
+            description: description,
+            assignedTo: assignedTo,
+            dueDate: dueDate,
+            status: status
+            // editTask(prev => {
+            // return prev.map(eachTask => eachTask.key === task.key ? updatedTaskData : eachTask)
         })
         setShow(false)
     }
@@ -73,7 +87,7 @@ export default function Task({ task, editTask }) {
                             <Button className="btn-sm listEdit" onClick={handleShow}>
                                 <Edit />
                             </Button>
-                            <Button className="btn-sm listDelete" onClick={handleDelete} >
+                            <Button className="btn-sm listDelete" onClick={() => handleDelete(task.key)} >
                                 <Minus />
                             </Button>
                         </span>

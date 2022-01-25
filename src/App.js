@@ -5,6 +5,8 @@ import NewTask from './Components/NewTask';
 import TopBar from './Components/TopBar';
 import Calendarfunc from './Components/Calendarfunc';
 import { apiHost } from './Components/Const';
+import { db } from "./firebase";
+import { onValue, ref, query, orderByChild } from "firebase/database";
 
 async function fetchData(setTask) {
 	const res = await fetch(`${apiHost}`)
@@ -23,20 +25,40 @@ async function fetchSetData(task) {
 }
 
 function App() {
-	const [task, setTask] = useState([]);
+	const [tasks, setTasks] = useState([]);
 	const submittingStatus = useRef(false)
 
 	useEffect(() => {
-		if (!submittingStatus.current) {
-			return
-		}
-		fetchSetData(task)
-			.then(data => submittingStatus.current = false)
-	}, [task])
+		// auth.onAuthStateChanged((user) => {
+		//   if (user) {
+		// read
+		const dbRef = query(ref(db, `/taskData`), orderByChild('id'))
+		onValue(dbRef, snapshot => {
+			setTasks([]);
+			const data = snapshot.val();
+			if (data !== null) {
+				Object.values(data).map(task => {
+					setTasks((oldArray) => [...oldArray, task]);
+				});
+			}
+		});
+		//   } else if (!user) {
+		// 	navigate("/");
+		//   }
+		// });
+	}, []);
 
-	useEffect(() => {
-		fetchData(setTask)
-	}, [])
+	// useEffect(() => {
+	// 	if (!submittingStatus.current) {
+	// 		return
+	// 	}
+	// 	fetchSetData(task)
+	// 		.then(data => submittingStatus.current = false)
+	// }, [task])
+
+	// useEffect(() => {
+	// 	fetchData(setTask)
+	// }, [])
 
 	return (
 		<div>
@@ -45,14 +67,14 @@ function App() {
 					<Route path="/react-tasks-manager" element={
 						<>
 							<TopBar />
-							<TaskList taskList={task} editTask={setTask} submittingStatus={submittingStatus} />
-							<NewTask addTask={setTask} submittingStatus={submittingStatus} />
+							<TaskList taskList={tasks} editTask={setTasks} submittingStatus={submittingStatus} />
+							<NewTask addTask={setTasks} submittingStatus={submittingStatus} />
 						</>
 					} />
 					<Route path="/taskList" element={
 						<>
 							<TopBar />
-							<TaskList taskList={task} editTask={setTask} submittingStatus={submittingStatus} />
+							<TaskList taskList={tasks} editTask={setTasks} submittingStatus={submittingStatus} />
 						</>
 					} />
 					<Route path="/calendar" element={<Calendarfunc />} />
