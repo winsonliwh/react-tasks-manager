@@ -21,14 +21,13 @@ import Task from "./Task";
 //     status: 'TODO'
 // }]
 
-export default function TaskList({ taskList, editTask, submittingStatus }) {
+export default function TaskList({ taskList, editTask }) {
 
     return (
         <div className="d-flex taskList mx-4">
             {taskList.map(task => {
                 return (
                     <div className="eachTask col-12 col-md-6" key={task.key} >
-                        {submittingStatus.current = true}
                         <Task task={task} editTask={editTask} />
                     </div>
                 )

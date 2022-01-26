@@ -1,51 +1,54 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
-import TaskList from './Components/TaskList';
-import NewTask from './Components/NewTask';
-import TopBar from './Components/TopBar';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Home from './Components/pages/Home';
+import Welcome from './Components/pages/Welcome';
 import Calendarfunc from './Components/Calendarfunc';
-import { apiHost } from './Components/Const';
-import { db } from "./firebase";
-import { onValue, ref, query, orderByChild } from "firebase/database";
+// import { apiHost } from './Components/Const';
+import { db, auth } from "./firebase";
+import { onValue, ref } from "firebase/database";
+import orderBy from 'lodash/orderBy'
 
-async function fetchData(setTask) {
-	const res = await fetch(`${apiHost}`)
-	const { task } = await res.json()
-	setTask(task)
-}
+// async function fetchData(setTask) {
+// 	const res = await fetch(`${apiHost}`)
+// 	const { task } = await res.json()
+// 	setTask(task)
+// }
 
-async function fetchSetData(task) {
-	await fetch(apiHost, {
-		method: "PUT",
-		headers: {
-			'Content-type': 'application/json'
-		},
-		body: JSON.stringify({ task })
-	})
-}
+// async function fetchSetData(task) {
+// 	await fetch(apiHost, {
+// 		method: "PUT",
+// 		headers: {
+// 			'Content-type': 'application/json'
+// 		},
+// 		body: JSON.stringify({ task })
+// 	})
+// }
 
 function App() {
 	const [tasks, setTasks] = useState([]);
-	const submittingStatus = useRef(false)
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		// auth.onAuthStateChanged((user) => {
-		//   if (user) {
-		// read
-		const dbRef = query(ref(db, `/taskData`), orderByChild('id'))
-		onValue(dbRef, snapshot => {
-			setTasks([]);
-			const data = snapshot.val();
-			if (data !== null) {
-				Object.values(data).map(task => {
-					setTasks((oldArray) => [...oldArray, task]);
+		auth.onAuthStateChanged((user) => {
+			if (user) {
+				// read user's data
+				const dbRef = ref(db, `/${auth.currentUser.uid}`)
+				onValue(dbRef, snapshot => {
+					setTasks([]);
+					const data = snapshot.val();
+					if (data !== null) {
+						Object.values(data).map(task => {
+							setTasks(oldArray => [...oldArray, task]);
+							setTasks(prevTasks => {
+								return orderBy(prevTasks, ['createDateTime'], ['desc'])
+							})
+						});
+					}
 				});
+			} else if (!user) {
+				navigate("/react-tasks-manager/");
 			}
 		});
-		//   } else if (!user) {
-		// 	navigate("/");
-		//   }
-		// });
 	}, []);
 
 	// useEffect(() => {
@@ -62,24 +65,13 @@ function App() {
 
 	return (
 		<div>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/react-tasks-manager" element={
-						<>
-							<TopBar />
-							<TaskList taskList={tasks} editTask={setTasks} submittingStatus={submittingStatus} />
-							<NewTask addTask={setTasks} submittingStatus={submittingStatus} />
-						</>
-					} />
-					<Route path="/taskList" element={
-						<>
-							<TopBar />
-							<TaskList taskList={tasks} editTask={setTasks} submittingStatus={submittingStatus} />
-						</>
-					} />
-					<Route path="/calendar" element={<Calendarfunc />} />
-				</Routes>
-			</BrowserRouter>
+			<Routes>
+				<Route path="/react-tasks-manager/" element={<Welcome />} />
+				<Route path="/react-tasks-manager/home" element={
+					<Home taskList={tasks} setTasks={setTasks} />
+				} />
+				<Route path="/calendar" element={<Calendarfunc />} />
+			</Routes>
 		</div>
 	);
 }

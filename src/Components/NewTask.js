@@ -5,8 +5,10 @@ import Form from "react-bootstrap/Form";
 import { v4 } from "uuid";
 import { ReactComponent as AddTask } from '../img/addTask.svg';
 import { ReactComponent as ArrowUp } from '../img/arrowUp.svg';
-import { db } from "../firebase";
+import { db, auth } from "../firebase";
 import { set, ref } from "firebase/database";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function NewTask({ addTask }) {
 	const [show, setShow] = useState(false);
@@ -24,6 +26,12 @@ export default function NewTask({ addTask }) {
 	const key = v4()
 	const [id, setId] = useState(1)
 
+	const date = new Date()
+	const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+	const nowDay = date.getFullYear('en-US') + "-" + months[date.getMonth()] + "-" + date.getDate('en-US')
+	const nowTime = date.toLocaleTimeString('en-US', { hour12: false })
+	const createDateTime = nowDay + " " + nowTime
+
 	const [name, setName] = useState("");
 	const nameChange = e => {
 		setName(e.target.value)
@@ -37,13 +45,11 @@ export default function NewTask({ addTask }) {
 	const [assignedTo, setAssignedTo] = useState("");
 	const assignedToChange = e => {
 		setAssignedTo(e.target.value)
-		console.log(assignedTo)
 	}
 
-	const [dueDate, setDueDate] = useState("");
+	const [dueDate, setDueDate] = useState(nowDay);
 	const dueDateChange = e => {
 		setDueDate(e.target.value)
-		console.log(dueDate)
 	}
 
 	const [status, setStatus] = useState("NEW");
@@ -54,20 +60,21 @@ export default function NewTask({ addTask }) {
 	const handleSubmit = e => {
 		e.preventDefault()
 		setId(prev => prev + 1)
-		set(ref(db, `/taskData/${key}`), {
+		set(ref(db, `/${auth.currentUser.uid}/${key}`), {
 			key: key,
 			id: id,
 			name: name,
 			description: description,
 			assignedTo: assignedTo,
 			dueDate: dueDate,
-			status: status
+			status: status,
+			createDateTime: createDateTime
 		})
 		setShow(false)
 		setName("")
 		setDescription("")
 		setAssignedTo("")
-		setDueDate("")
+		setDueDate(nowDay)
 		setStatus("NEW")
 
 		// e.preventDefault()
@@ -111,8 +118,20 @@ export default function NewTask({ addTask }) {
 		})
 	}
 
+	const navigate = useNavigate();
+	const handleSignOut = () => {
+		signOut(auth)
+			.then(() => {
+				navigate("/react-tasks-manager/");
+			})
+			.catch((err) => {
+				alert(err.message);
+			});
+	};
+
 	return (
 		<div className="newTask" >
+			<Button onClick={handleSignOut}>Sign Out</Button>
 			{showButton &&
 				<Button className="ArrowUp rounded-circle btn-sm btn-dark" onClick={handleBackToTop}><ArrowUp /></Button>
 			}

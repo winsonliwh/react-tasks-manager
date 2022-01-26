@@ -151,6 +151,11 @@ p {
     margin: 64px auto 0px;
 }
 
+.logout {
+    cursor: pointer;
+    align-self: center;
+}
+
 @media screen and (max-width: 500px) {
     /* .appBorder {
         background-color: lightgrey;

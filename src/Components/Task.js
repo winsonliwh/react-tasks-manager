@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
 import { ReactComponent as Edit } from '../img/pencil.svg';
 import { ReactComponent as Minus } from '../img/minus.svg';
-import { db } from "../firebase";
+import { db, auth } from "../firebase";
 import { update, remove, ref } from "firebase/database";
 
 export default function Task({ task, editTask }) {
@@ -38,15 +38,15 @@ export default function Task({ task, editTask }) {
         setStatus(e.target.value)
     }
 
-    const updatedTaskData = {
-        key: task.key,
-        id: task.id,
-        name: name,
-        description: description,
-        assignedTo: assignedTo,
-        dueDate: dueDate,
-        status: status
-    };
+    // const updatedTaskData = {
+    //     key: task.key,
+    //     id: task.id,
+    //     name: name,
+    //     description: description,
+    //     assignedTo: assignedTo,
+    //     dueDate: dueDate,
+    //     status: status
+    // };
 
     // const handleDelete = () => {
     //     const confirmDelete = window.confirm("Are you sure to delete this task?");
@@ -58,19 +58,20 @@ export default function Task({ task, editTask }) {
     // }
 
     const handleDelete = key => {
-        remove(ref(db, `/taskData/${key}`));
+        remove(ref(db, `/${auth.currentUser.uid}/${key}`));
     };
 
     const handleUpdate = e => {
         e.preventDefault()
-        update(ref(db, `/taskData/${task.key}`), {
+        update(ref(db, `/${auth.currentUser.uid}/${task.key}`), {
             key: task.key,
             id: task.id,
             name: name,
             description: description,
             assignedTo: assignedTo,
             dueDate: dueDate,
-            status: status
+            status: status,
+            createDateTime: task.createDateTime
             // editTask(prev => {
             // return prev.map(eachTask => eachTask.key === task.key ? updatedTaskData : eachTask)
         })

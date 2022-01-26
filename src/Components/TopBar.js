@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from './Menu';
 import Time from './Time';
 import { ReactComponent as Setting } from '../img/setting.svg';
+import SignOut from './SignOut';
 
 export default function TopBar() {
     return (
@@ -18,6 +19,7 @@ export default function TopBar() {
                         <NavDropdown align="end" title={<Setting />} id="basic-nav-dropdown">
                             <NavDropdown.Item>Dark Mode</NavDropdown.Item>
                         </NavDropdown>
+                        <SignOut />
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
