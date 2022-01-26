@@ -41,8 +41,10 @@ export default function Home() {
     return (
 			<div>
 				<TopBar />
-				{/* <Filter /> */}
-				<TaskList taskList={tasks} />
+				<div className='Homepage'>
+					<Filter />
+					<TaskList taskList={tasks} />
+				</div>
 				<NewTask />
 				<ScrollToTop />
 			</div>
