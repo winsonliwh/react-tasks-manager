@@ -132,7 +132,7 @@ export default function Welcome() {
 								}
 							/>
 						</Form.Group>
-						
+
 						<div className="welcomeBtn">
 							<Button variant="primary" onClick={handleRegister}>
 								Register
@@ -157,7 +157,7 @@ export default function Welcome() {
 
 						<div className="welcomeBtn">
 							<Button variant="primary" onClick={handleSignIn}>
-								Submit
+								Sign In
 							</Button>
 
 							<Button onClick={() => setIsRegistering(true)}>

@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { db, auth } from "../firebase";
 import { onValue, ref } from "firebase/database";
-import orderBy from 'lodash/orderBy'
+import orderBy from 'lodash/orderBy';
+import Filter from './components/Filter';
+
 
 export default function Home() {
 
@@ -37,11 +39,12 @@ export default function Home() {
 	}, []);
 
     return (
-        <div>
-            <TopBar />
-            <TaskList taskList={tasks} />
-            <NewTask />
-            <ScrollToTop />
-        </div>
+			<div>
+				<TopBar />
+				{/* <Filter /> */}
+				<TaskList taskList={tasks} />
+				<NewTask />
+				<ScrollToTop />
+			</div>
     )
 }

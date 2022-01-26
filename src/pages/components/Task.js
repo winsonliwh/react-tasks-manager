@@ -4,6 +4,7 @@ import { ReactComponent as Edit } from '../../img/pencil.svg';
 import { ReactComponent as Minus } from '../../img/minus.svg';
 import { db, auth } from "../../firebase";
 import { update, remove, ref } from "firebase/database";
+import Badge from 'react-bootstrap/Badge';
 
 export default function Task({ task }) {
 
@@ -21,9 +22,9 @@ export default function Task({ task }) {
         setDescription(e.target.value)
     }
 
-    const [assignedTo, setAssignedTo] = useState(task.assignedTo)
-    const assignedToChange = e => {
-        setAssignedTo(e.target.value)
+    const [taskType, setTaskType] = useState(task.taskType)
+    const taskTypeChange = e => {
+        setTaskType(e.target.value)
     }
 
     const [dueDate, setDueDate] = useState(task.dueDate);
@@ -36,25 +37,6 @@ export default function Task({ task }) {
         setStatus(e.target.value)
     }
 
-    // const updatedTaskData = {
-    //     key: task.key,
-    //     id: task.id,
-    //     name: name,
-    //     description: description,
-    //     assignedTo: assignedTo,
-    //     dueDate: dueDate,
-    //     status: status
-    // };
-
-    // const handleDelete = () => {
-    //     const confirmDelete = window.confirm("Are you sure to delete this task?");
-    //     if (confirmDelete) {
-    //         editTask(prev => {
-    //             return prev.filter(eachTask => eachTask.key !== task.key)
-    //         })
-    //     }
-    // }
-
     const handleDelete = key => {
         const confirmDelete = window.confirm("Are you sure to delete this task?");
         if (confirmDelete) {
@@ -65,19 +47,16 @@ export default function Task({ task }) {
     const handleUpdate = e => {
         e.preventDefault()
         update(ref(db, `/${auth.currentUser.uid}/${task.key}`), {
-            key: task.key,
-            id: task.id,
             name: name,
             description: description,
-            assignedTo: assignedTo,
+            taskType: taskType,
             dueDate: dueDate,
-            status: status,
-            createDateTime: task.createDateTime
-            // editTask(prev => {
-            // return prev.map(eachTask => eachTask.key === task.key ? updatedTaskData : eachTask)
+            status: status
         })
         setShow(false)
     }
+
+    const checkStatus = task.status === "DONE" ? "secondary" : "success";
 
     return (
         <div>
@@ -99,7 +78,7 @@ export default function Task({ task }) {
                     </p>
                 </div>
                 <div className="card-footer">
-                    <span>{task.status}</span><small className="text-muted">{task.dueDate}</small>
+                    <Badge bg={checkStatus}>{task.status}</Badge><small className="text-muted">{task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>
                 </div>
             </div>
 
@@ -121,8 +100,12 @@ export default function Task({ task }) {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label>Assigned To</Form.Label>
-                            <Form.Control value={assignedTo} onChange={assignedToChange} placeholder="Assigned To" />
+                            <Form.Label>Task Type</Form.Label>
+                            <Form.Select value={taskType} onChange={taskTypeChange}>
+                                <option value="Work">Work</option>
+                                <option value="Home">Home</option>
+                                <option value="Entertainment">Entertainment</option>
+                            </Form.Select>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
@@ -133,7 +116,7 @@ export default function Task({ task }) {
                         <Form.Group className="mb-3">
                             <Form.Label>Status</Form.Label>
                             <Form.Select value={status} onChange={statusChange}>
-                                <option value="NEW">NEW</option>
+                                <option value="Prograssing">Prograssing</option>
                                 <option value="DONE">DONE</option>
                             </Form.Select>
                         </Form.Group>
