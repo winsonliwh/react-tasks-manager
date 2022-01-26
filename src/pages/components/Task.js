@@ -5,6 +5,7 @@ import { ReactComponent as Minus } from '../../img/minus.svg';
 import { db, auth } from "../../firebase";
 import { update, remove, ref } from "firebase/database";
 import Badge from 'react-bootstrap/Badge';
+import TaskForm from "./TaskForm";
 
 export default function Task({ task }) {
 
@@ -12,30 +13,21 @@ export default function Task({ task }) {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
-    const [name, setName] = useState(task.name);
-    const nameChange = e => {
-        setName(e.target.value)
-    }
+    const [input, setInput] = useState({
+        name: task.name,
+        description: task.description,
+        taskType: task.taskType,
+        dueDate: task.dueDate,
+        status: task.status
+    });
 
-    const [description, setDescription] = useState(task.description);
-    const descriptionChange = e => {
-        setDescription(e.target.value)
-    }
-
-    const [taskType, setTaskType] = useState(task.taskType)
-    const taskTypeChange = e => {
-        setTaskType(e.target.value)
-    }
-
-    const [dueDate, setDueDate] = useState(task.dueDate);
-    const dueDateChange = e => {
-        setDueDate(e.target.value)
-    }
-
-    const [status, setStatus] = useState(task.status);
-    const statusChange = e => {
-        setStatus(e.target.value)
-    }
+    const handleInput = e => {
+        const { id, value } = e.target;
+        setInput({
+            ...input,
+            [id]: value
+        });
+    };
 
     const handleDelete = key => {
         const confirmDelete = window.confirm("Are you sure to delete this task?");
@@ -47,11 +39,7 @@ export default function Task({ task }) {
     const handleUpdate = e => {
         e.preventDefault()
         update(ref(db, `/${auth.currentUser.uid}/${task.key}`), {
-            name: name,
-            description: description,
-            taskType: taskType,
-            dueDate: dueDate,
-            status: status
+            ...input
         })
         setShow(false)
     }
@@ -89,41 +77,7 @@ export default function Task({ task }) {
 
                 <Modal.Body>
                     <Form onSubmit={handleUpdate} className="d-grid">
-                        <Form.Group className="mb-3">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control value={name} onChange={nameChange} placeholder="Name" required />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control value={description} onChange={descriptionChange} placeholder="Description" as="textarea" />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>Task Type</Form.Label>
-                            <Form.Select value={taskType} onChange={taskTypeChange}>
-                                <option value="Work">Work</option>
-                                <option value="Home">Home</option>
-                                <option value="Entertainment">Entertainment</option>
-                            </Form.Select>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>Due Date</Form.Label>
-                            <Form.Control value={dueDate} onChange={dueDateChange} type="date" />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3">
-                            <Form.Label>Status</Form.Label>
-                            <Form.Select value={status} onChange={statusChange}>
-                                <option value="Prograssing">Prograssing</option>
-                                <option value="DONE">DONE</option>
-                            </Form.Select>
-                        </Form.Group>
-
-                        <Button variant="success" type="submit">
-                            Save Changes
-                        </Button>
+                        <TaskForm input={input} handleInput={handleInput} btnText="Save Changes" />
                     </Form>
                 </Modal.Body>
 
@@ -133,6 +87,6 @@ export default function Task({ task }) {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </div>
+        </div >
     )
 }

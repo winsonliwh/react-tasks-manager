@@ -27,7 +27,7 @@ export default function Home() {
 						Object.values(data).map(task => {
 							setTasks(oldArray => [...oldArray, task]);
 							setTasks(prevTasks => {
-								return orderBy(prevTasks, ['createDateTime'], ['desc'])
+								return orderBy(prevTasks, ['createdDate', 'createdTime'], ['desc', 'desc'])
 							})
 						});
 					}
