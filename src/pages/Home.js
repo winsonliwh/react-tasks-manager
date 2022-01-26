@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { db, auth } from "../firebase";
 import { onValue, ref } from "firebase/database";
 import orderBy from 'lodash/orderBy';
-import Filter from './components/Filter';
+// import Filter from './components/Filter';
 
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
 						Object.values(data).map(task => {
 							setTasks(oldArray => [...oldArray, task]);
 							setTasks(prevTasks => {
-								return orderBy(prevTasks, ['createDateTime'], ['desc'])
+								return orderBy(prevTasks, ['createdDate', 'createdTime'], ['desc', 'desc'])
 							})
 						});
 					}
