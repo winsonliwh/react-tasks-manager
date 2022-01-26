@@ -1,10 +1,7 @@
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { ReactComponent as Setting } from '../../img/setting.svg';
 import Menu from './Menu';
 import Time from './Time';
-import { ReactComponent as Setting } from '../img/setting.svg';
 import SignOut from './SignOut';
 
 export default function TopBar() {

@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import Button from "react-bootstrap/Button";
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { ReactComponent as Menuimg } from '../img/menu.svg';
+import { Button, Offcanvas } from 'react-bootstrap';
+import { ReactComponent as Menuimg } from '../../img/menu.svg';
 
 // const options = [
 // {
@@ -46,7 +44,7 @@ export default function Menu() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div><Link className="linkText" to="/react-tasks-manager"><p>HOME</p></Link></div>
-          <div><Link className="linkText" to="/calendar"><p>Calendar</p></Link></div>
+          <div><Link className="linkText" to="/react-tasks-manager/calendar"><p>Calendar</p></Link></div>
         </Offcanvas.Body>
       </Offcanvas>
     </>

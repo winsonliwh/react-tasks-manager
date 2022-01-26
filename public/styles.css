@@ -22,6 +22,16 @@ p {
     border-radius: 20px;
   }
 
+.welcomeForm {
+    font-size: calc(10px + 2vmin);
+    padding: 20% 0;
+}
+
+.welcomeBtn {
+    display: flex;
+    justify-content: space-between;
+}
+
 .taskList {
     flex-wrap: wrap;
 }
@@ -157,10 +167,6 @@ p {
 }
 
 @media screen and (max-width: 500px) {
-    /* .appBorder {
-        background-color: lightgrey;
-    } */
-
     .topBarDateTime {
         display: none;
     }

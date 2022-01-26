@@ -1,12 +1,12 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Home from './Components/pages/Home';
-import Welcome from './Components/pages/Welcome';
-import Calendarfunc from './Components/Calendarfunc';
+import Home from './pages/Home';
+import Welcome from './pages/Welcome';
+import Calendarfunc from './pages/Calendarfunc';
+import { Routes, Route } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
 // import { apiHost } from './Components/Const';
-import { db, auth } from "./firebase";
-import { onValue, ref } from "firebase/database";
-import orderBy from 'lodash/orderBy'
+// import { db, auth } from "./firebase";
+// import { onValue, ref } from "firebase/database";
+// import orderBy from 'lodash/orderBy'
 
 // async function fetchData(setTask) {
 // 	const res = await fetch(`${apiHost}`)
@@ -25,31 +25,6 @@ import orderBy from 'lodash/orderBy'
 // }
 
 function App() {
-	const [tasks, setTasks] = useState([]);
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			if (user) {
-				// read user's data
-				const dbRef = ref(db, `/${auth.currentUser.uid}`)
-				onValue(dbRef, snapshot => {
-					setTasks([]);
-					const data = snapshot.val();
-					if (data !== null) {
-						Object.values(data).map(task => {
-							setTasks(oldArray => [...oldArray, task]);
-							setTasks(prevTasks => {
-								return orderBy(prevTasks, ['createDateTime'], ['desc'])
-							})
-						});
-					}
-				});
-			} else if (!user) {
-				navigate("/react-tasks-manager/");
-			}
-		});
-	}, []);
 
 	// useEffect(() => {
 	// 	if (!submittingStatus.current) {
@@ -64,15 +39,13 @@ function App() {
 	// }, [])
 
 	return (
-		<div>
+		// <div>
 			<Routes>
 				<Route path="/react-tasks-manager/" element={<Welcome />} />
-				<Route path="/react-tasks-manager/home" element={
-					<Home taskList={tasks} setTasks={setTasks} />
-				} />
-				<Route path="/calendar" element={<Calendarfunc />} />
+				<Route path="/react-tasks-manager/home" element={<Home />} />
+				<Route path="/react-tasks-manager/calendar" element={<Calendarfunc />} />
 			</Routes>
-		</div>
+		// </div>
 	);
 }
 

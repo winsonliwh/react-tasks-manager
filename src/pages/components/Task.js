@@ -1,13 +1,11 @@
 import { useState } from "react";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from "react-bootstrap/Form";
-import { ReactComponent as Edit } from '../img/pencil.svg';
-import { ReactComponent as Minus } from '../img/minus.svg';
-import { db, auth } from "../firebase";
+import { Modal, Button, Form } from 'react-bootstrap';
+import { ReactComponent as Edit } from '../../img/pencil.svg';
+import { ReactComponent as Minus } from '../../img/minus.svg';
+import { db, auth } from "../../firebase";
 import { update, remove, ref } from "firebase/database";
 
-export default function Task({ task, editTask }) {
+export default function Task({ task }) {
 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
@@ -58,8 +56,11 @@ export default function Task({ task, editTask }) {
     // }
 
     const handleDelete = key => {
-        remove(ref(db, `/${auth.currentUser.uid}/${key}`));
-    };
+        const confirmDelete = window.confirm("Are you sure to delete this task?");
+        if (confirmDelete) {
+            remove(ref(db, `/${auth.currentUser.uid}/${key}`));
+        }
+    }
 
     const handleUpdate = e => {
         e.preventDefault()

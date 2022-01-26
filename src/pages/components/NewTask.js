@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { useState } from "react";
+import { Modal, Button, Form } from "react-bootstrap";
 import { v4 } from "uuid";
-import { ReactComponent as AddTask } from '../img/addTask.svg';
-import { ReactComponent as ArrowUp } from '../img/arrowUp.svg';
-import { db, auth } from "../firebase";
+import { ReactComponent as AddTask } from '../../img/addTask.svg';
+import { db, auth } from "../../firebase";
 import { set, ref } from "firebase/database";
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
-export default function NewTask({ addTask }) {
+export default function NewTask() {
 	const [show, setShow] = useState(false);
 	const handleShow = () => setShow(true);
 	const handleClose = () => setShow(false);
@@ -76,66 +71,10 @@ export default function NewTask({ addTask }) {
 		setAssignedTo("")
 		setDueDate(nowDay)
 		setStatus("NEW")
-
-		// e.preventDefault()
-		// setId(prev => prev + 1)
-		// addTask(prevTask => {
-		// 	return [{
-		// 		key: v4(),
-		// 		id: id,
-		// 		name: name,
-		// 		description: description,
-		// 		assignedTo: assignedTo,
-		// 		dueDate: dueDate,
-		// 		status: status
-		// 	}, ...prevTask]
-		// })
-		// setShow(false)
-		// setName("")
-		// setDescription("")
-		// setAssignedTo("")
-		// setDueDate("")
-		// setStatus("NEW")
 	}
-
-	// Setting of Buttom for Back to top
-	const [showButton, setShowButton] = useState(false);
-
-	useEffect(() => {
-		window.addEventListener("scroll", () => {
-			if (window.pageYOffset > 400) {
-				setShowButton(true);
-			} else {
-				setShowButton(false);
-			}
-		});
-	}, []);
-
-	const handleBackToTop = () => {
-		window.scroll({
-			top: 0,
-			behavior: 'smooth'
-		})
-	}
-
-	const navigate = useNavigate();
-	const handleSignOut = () => {
-		signOut(auth)
-			.then(() => {
-				navigate("/react-tasks-manager/");
-			})
-			.catch((err) => {
-				alert(err.message);
-			});
-	};
 
 	return (
 		<div className="newTask" >
-			<Button onClick={handleSignOut}>Sign Out</Button>
-			{showButton &&
-				<Button className="ArrowUp rounded-circle btn-sm btn-dark" onClick={handleBackToTop}><ArrowUp /></Button>
-			}
-
 			<Button className="addTaskbtn rounded-circle" size="md" onClick={handleShow}>
 				<AddTask />
 			</Button>
