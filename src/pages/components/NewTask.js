@@ -4,7 +4,6 @@ import { v4 } from "uuid";
 import { ReactComponent as AddTask } from '../../img/addTask.svg';
 import { db, auth } from "../../firebase";
 import { set, ref } from "firebase/database";
-import Days from "react-calendar/dist/umd/MonthView/Days";
 import TaskForm from "./TaskForm";
 
 export default function NewTask() {
@@ -14,13 +13,18 @@ export default function NewTask() {
 
 	const nowDay = () => {
 		const date = new Date()
-		const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
-		return date.getFullYear('en-US') + "-" + months[date.getMonth()] + "-" + date.getDate('en-US')
+		// const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+		// return date.getFullYear('en-US') + "-" + months[date.getMonth()] + "-" + date.getDate('en-US')
+		return date.toLocaleDateString('en-CA', {
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit"
+		})
 	}
 
 	const nowTime = () => {
 		const date = new Date()
-		return date.toLocaleTimeString('en-US', { hour12: false })
+		return date.toLocaleTimeString('en-US', { hourCycle: 'h23' })
 	}
 
 	const [input, setInput] = useState({
@@ -28,7 +32,7 @@ export default function NewTask() {
 		description: "",
 		taskType: "",
 		dueDate: nowDay(),
-		status: "In Progress"
+		done: false
 	});
 
 	const handleInput = e => {
@@ -54,7 +58,7 @@ export default function NewTask() {
 			description: "",
 			taskType: "",
 			dueDate: nowDay(),
-			status: "In Progress"
+			done: false
 		});
 	}
 

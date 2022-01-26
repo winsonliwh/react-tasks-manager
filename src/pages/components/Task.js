@@ -18,7 +18,7 @@ export default function Task({ task }) {
         description: task.description,
         taskType: task.taskType,
         dueDate: task.dueDate,
-        status: task.status
+        done: task.done
     });
 
     const handleInput = e => {
@@ -44,14 +44,21 @@ export default function Task({ task }) {
         setShow(false)
     }
 
-    const checkStatus = task.status === "DONE" ? "secondary" : "success";
+    const handleDone = () => {
+        setInput({ ...input, done: !input.done })
+        update(ref(db, `/${auth.currentUser.uid}/${task.key}`), {
+            ...input, done: !input.done
+        })
+    }
+
+    const checkStatus = input.done ? "secondary" : "success";
 
     return (
         <div>
             <div className="card">
                 <div className="card-body">
                     <div className="cardTitle sticky-top">
-                        <h5 className="card-title">{task.name}</h5>
+                        <h5 className="card-title">{input.name}</h5>
                         <span className="listButton">
                             <Button className="btn-sm listEdit" onClick={handleShow}>
                                 <Edit />
@@ -62,17 +69,17 @@ export default function Task({ task }) {
                         </span>
                     </div>
                     <p className="card-body">
-                        {task.description}
+                        {input.description}
                     </p>
                 </div>
                 <div className="card-footer">
-                    <Badge bg={checkStatus}>{task.status}</Badge><small className="text-muted">{task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>
+                    <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "DONE" : "In Progress"}</Badge><small className="text-muted">{task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>
                 </div>
             </div>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{task.name}</Modal.Title>
+                    <Modal.Title>{input.name}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>

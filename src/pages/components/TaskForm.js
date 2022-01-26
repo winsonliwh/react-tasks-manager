@@ -28,14 +28,6 @@ export default function TaskForm({ input, handleInput, btnText }) {
                 <Form.Control id="dueDate" value={input.dueDate} onChange={handleInput} type="date" />
             </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Status</Form.Label>
-                <Form.Select id="status" value={input.status} onChange={handleInput}>
-                    <option value="In Progress">In Progress</option>
-                    <option value="DONE">DONE</option>
-                </Form.Select>
-            </Form.Group>
-
             <Button variant="success" type="submit">
                 {btnText}
             </Button>

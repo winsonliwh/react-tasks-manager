@@ -166,6 +166,10 @@ p {
     align-self: center;
 }
 
+.doneBtn {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
     .topBarDateTime {
         display: none;
