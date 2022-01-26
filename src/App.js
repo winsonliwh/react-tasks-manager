@@ -2,6 +2,7 @@ import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import Calendarfunc from './pages/Calendarfunc';
 import { Routes, Route } from 'react-router-dom';
+import Filter from './pages/components/Filter';
 // import { useState, useEffect } from 'react';
 // import { apiHost } from './Components/Const';
 // import { db, auth } from "./firebase";
@@ -44,6 +45,7 @@ function App() {
 				<Route path="/react-tasks-manager/" element={<Welcome />} />
 				<Route path="/react-tasks-manager/home" element={<Home />} />
 				<Route path="/react-tasks-manager/calendar" element={<Calendarfunc />} />
+				<Route path="/react-tasks-manager/filter" element={<Filter />} />
 			</Routes>
 		// </div>
 	);

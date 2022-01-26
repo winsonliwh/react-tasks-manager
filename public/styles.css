@@ -13,6 +13,17 @@ p {
     border-radius: 10px;
 }
 
+.filter {
+    height: 100wh;
+    width: 230px;
+    background-color: #434343;
+    color: #FCFAF2;
+}
+
+.Homepage {
+    display: flex;
+}
+
 *::-webkit-scrollbar {
     width: 4px;
 }

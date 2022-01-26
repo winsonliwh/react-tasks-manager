@@ -30,8 +30,13 @@ export default function NewTask() {
 
 	const nowDay = () => {
 		const date = new Date()
-		const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
-		return date.getFullYear('en-US') + "-" + months[date.getMonth()] + "-" + date.getDate('en-US')
+		// const months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+		// return date.getFullYear('en-US') + "-" + months[date.getMonth()] + "-" + date.getDate('en-US')
+		return date.toLocaleDateString('en-CA', {
+			year: "numeric",
+    		month: "2-digit",
+    		day: "2-digit"
+		})
 	}
 
 	const nowTime = () => {
