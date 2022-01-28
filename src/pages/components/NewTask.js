@@ -37,9 +37,11 @@ export default function NewTask() {
 
 	const handleInput = e => {
 		const { id, value } = e.target;
-		setInput({
-			...input,
-			[id]: value
+		setInput(prevInput => {
+			return {
+				...prevInput,
+				[id]: value
+			}
 		});
 	};
 

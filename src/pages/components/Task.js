@@ -23,9 +23,11 @@ export default function Task({ task }) {
 
     const handleInput = e => {
         const { id, value } = e.target;
-        setInput({
-            ...input,
-            [id]: value
+        setInput(prevInput => {
+            return {
+                ...prevInput,
+                [id]: value
+            }
         });
     };
 
@@ -45,7 +47,7 @@ export default function Task({ task }) {
     }
 
     const handleDone = () => {
-        setInput({ ...input, done: !input.done })
+        setInput(prevInput => ({ ...prevInput, done: !prevInput.done }))
         update(ref(db, `/${auth.currentUser.uid}/${task.key}`), {
             ...input, done: !input.done
         })

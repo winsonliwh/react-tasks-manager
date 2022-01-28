@@ -36,7 +36,7 @@ export default function Welcome() {
 				navigate("/react-tasks-manager/home");
 			}
 		});
-	}, []);
+	}, [navigate]);
 
 	const handleSignIn = () => {
 		signInWithEmailAndPassword(auth, email, password)
