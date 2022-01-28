@@ -1,4 +1,4 @@
-import {  Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useState } from "react";
 
 export default function Filter(input, handleInput) {
@@ -19,37 +19,35 @@ export default function Filter(input, handleInput) {
     }
 
     return (
-        <div>
-            <div className="filter">
-                <h4 className="filterTitle">Filter</h4>
-                <Form>
-                    <Form.Group>
-                        <Form.Label className="filterTaskName">Task Name</Form.Label>
-                        <Form.Control className="filterInputBox"/>
-                    </Form.Group>
+        <div className="filter">
+            <h4 className="filterTitle">Filter</h4>
+            <Form>
+                <Form.Group>
+                    <Form.Label className="filterTaskName">Task Name</Form.Label>
+                    <Form.Control className="filterInputBox" />
+                </Form.Group>
 
-                    <Form.Group>
-                        <Form.Label className="filterDueDate">Due Date</Form.Label>
-                        <Form.Control className="filterInputBox" id="dueDate" value={input.dueDate} onChange={handleInput} type="date" />
-                    </Form.Group>
+                <Form.Group>
+                    <Form.Label className="filterDueDate">Due Date</Form.Label>
+                    <Form.Control className="filterInputBox" id="dueDate" value={input.dueDate} onChange={handleInput} type="date" />
+                </Form.Group>
 
-                    <Form.Group>
-                        <Form.Label className="filterTaskType">Task Type</Form.Label>
-                        <Form.Check className="filterCheckBox" checked={WorkCBstatus} onChange={handleWorkCB}
-                            type="checkbox"
-                            label="Work"
-                        />
-                        <Form.Check className="filterCheckBox" checked={HomeCBstatus} onChange={handleHomeCB}
-                            type="checkbox"
-                            label="Home"
-                        />
-                        <Form.Check className="filterCheckBox" checked={EntertainmentCBstatus} onChange={handleEntertainmentCB}
-                            type="checkbox"
-                            label="Entertainment"
-                        />
-                    </Form.Group>
-                </Form>
-            </div>
+                <Form.Group>
+                    <Form.Label className="filterTaskType">Task Type</Form.Label>
+                    <Form.Check className="filterCheckBox" checked={WorkCBstatus} onChange={handleWorkCB}
+                        type="checkbox"
+                        label="Work"
+                    />
+                    <Form.Check className="filterCheckBox" checked={HomeCBstatus} onChange={handleHomeCB}
+                        type="checkbox"
+                        label="Home"
+                    />
+                    <Form.Check className="filterCheckBox" checked={EntertainmentCBstatus} onChange={handleEntertainmentCB}
+                        type="checkbox"
+                        label="Entertainment"
+                    />
+                </Form.Group>
+            </Form>
         </div>
     )
 }

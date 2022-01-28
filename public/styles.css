@@ -89,16 +89,11 @@ p {
     width: 100%;
 }
 
-.taskListOutterBox{
+.taskList {
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
     margin-left: 250px;
     margin-top: 58.31px;
-    justify-content: center;
-}
-
-.taskList {
-    flex-wrap: wrap;
     padding-top: 15px;
 }
 
@@ -236,11 +231,14 @@ p {
     cursor: pointer;
 }
 
-@media screen and (max-width: 500px) {
-    .topBarDateTime {
-        display: none;
-    }
+@media screen and (max-width: 767px) {
+    
+    .topBarDateTime,
     .filter {
         display: none;
+    }
+
+    .taskList {
+        margin-left: 0px; 
     }
 }
