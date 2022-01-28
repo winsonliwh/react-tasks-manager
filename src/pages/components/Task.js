@@ -105,6 +105,6 @@ export default function Task({ task }) {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </div >
+        </div>
     )
 }

@@ -7,7 +7,7 @@ import SignOut from './SignOut';
 export default function TopBar() {
     return (
         <div>
-            <Navbar className="topBar rounded-0" variant="light" sticky="top" bg="light">
+            <Navbar className="topBar rounded-0" variant="light" fixed="top" bg="light">
                 <Menu />
                 <Navbar.Brand><p>Task Manager</p></Navbar.Brand>
                 <Navbar.Collapse id="basic-navbar-nav">

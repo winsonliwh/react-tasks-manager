@@ -24,14 +24,16 @@ import Task from "./Task";
 export default function TaskList({ taskList }) {
 
     return (
-        <div className="d-flex taskList mx-4">
-            {taskList.map(task => {
-                return (
-                    <div className="eachTask col-12 col-md-6" key={task.key} >
-                        <Task task={task} />
-                    </div>
-                )
-            })}
+        <div className="taskListOutterBox">
+            <div className="d-flex taskList">
+                {taskList.map(task => {
+                    return (
+                        <div className="eachTask col-12 col-md-6" key={task.key} >
+                            <Task task={task} />
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
