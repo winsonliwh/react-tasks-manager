@@ -1,7 +1,7 @@
-import { Button, Form } from "react-bootstrap";
+import {  Form } from "react-bootstrap";
 import { useState } from "react";
 
-export default function Filter() {
+export default function Filter(input, handleInput) {
     const [WorkCBstatus, setWorkCBstatus] = useState(false);
     const handleWorkCB = e => {
         setWorkCBstatus(e.target.checked)
@@ -19,37 +19,37 @@ export default function Filter() {
     }
 
     return (
-        <div className="filter">
-            <h4>Filter</h4>
-            <Form>
-                <Form.Group className="mb-3">
-                    <Form.Label>Task Name</Form.Label>
-                    <Form.Control />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Task Type</Form.Label>
-                    <Form.Select>
-                        <option>Work</option>
-                        <option>Home</option>
-                        <option>Entertainment</option>
-                    </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Check checked={WorkCBstatus} onChange={handleWorkCB}
-                        type="checkbox"
-                        label="Work"
-                    />
-                    <Form.Check checked={HomeCBstatus} onChange={handleHomeCB}
-                        type="checkbox"
-                        label="Home"
-                    />
-                    <Form.Check checked={EntertainmentCBstatus} onChange={handleEntertainmentCB}
-                        type="checkbox"
-                        label="Entertainment"
-                    />
-                </Form.Group>
-                <Button type="submit">Submit</Button>
-            </Form>
+        <div>
+            <div className="filter">
+                <h4 className="filterTitle">Filter</h4>
+                <Form>
+                    <Form.Group>
+                        <Form.Label className="filterTaskName">Task Name</Form.Label>
+                        <Form.Control className="filterInputBox"/>
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label className="filterDueDate">Due Date</Form.Label>
+                        <Form.Control className="filterInputBox" id="dueDate" value={input.dueDate} onChange={handleInput} type="date" />
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label className="filterTaskType">Task Type</Form.Label>
+                        <Form.Check className="filterCheckBox" checked={WorkCBstatus} onChange={handleWorkCB}
+                            type="checkbox"
+                            label="Work"
+                        />
+                        <Form.Check className="filterCheckBox" checked={HomeCBstatus} onChange={handleHomeCB}
+                            type="checkbox"
+                            label="Home"
+                        />
+                        <Form.Check className="filterCheckBox" checked={EntertainmentCBstatus} onChange={handleEntertainmentCB}
+                            type="checkbox"
+                            label="Entertainment"
+                        />
+                    </Form.Group>
+                </Form>
+            </div>
         </div>
     )
 }
