@@ -35,12 +35,21 @@ p {
 
 .welcomeForm {
     font-size: calc(10px + 2vmin);
-    padding: 10rem 0;
+    padding: 8rem 0 11rem 0;
+    background-color: silver;
+    border-radius: 20px;
+    margin: 10vw;
 }
 
-.welcomeBtn {
-    display: flex;
-    justify-content: space-between;
+.welcomeInput {
+    display: block;
+    margin: auto !important;
+}
+
+.welcomeBtn button{
+    margin-top: 20px;
+    display: block;
+    width: 100%;
 }
 
 .taskList {

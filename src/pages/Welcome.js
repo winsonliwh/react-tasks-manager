@@ -1,31 +1,57 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Container, Form } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import TopBar from "./components/TopBar";
 import {
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { Button, Box, FormControl, IconButton, Input, InputAdornment, InputLabel } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 export default function Welcome() {
-
-	const [email, setEmail] = useState("");
-	const handleEmailChange = (e) => {
-		setEmail(e.target.value);
-	};
-
-	const [password, setPassword] = useState("");
-	const handlePasswordChange = (e) => {
-		setPassword(e.target.value);
-	};
-
+	
 	const [isRegistering, setIsRegistering] = useState(false);
-	const [registerInfo, setRegisterInfo] = useState({
+
+	const [signInValues, setSignInValues] = useState({
 		email: "",
 		password: "",
-		confirmPassword: ""
+		// showPassword: false
 	});
+
+	const handleSignInValues = e => {
+		const { name, value } = e.target;
+		setSignInValues(prevInput => {
+			return {
+				...prevInput,
+				[name]: value
+			}
+		});
+	};
+
+	const [registerValues, setRegisterValues] = useState({
+		email: "",
+		password: "",
+		confirmPassword: "",
+		// showPassword: false
+	});
+
+	const handleRegisterValues = e => {
+		const { name, value } = e.target;
+		setRegisterValues(prevInput => {
+			return {
+				...prevInput,
+				[name]: value
+			}
+		});
+	};
+
+	const [showPassword, setShowPassword] = useState(false)
+	const handleShowPassword = () => {
+		setShowPassword(!showPassword)
+	};
 
 	const navigate = useNavigate();
 
@@ -39,7 +65,7 @@ export default function Welcome() {
 
 	const handleSignIn = e => {
 		e.preventDefault()
-		signInWithEmailAndPassword(auth, email, password)
+		signInWithEmailAndPassword(auth, signInValues.email, signInValues.password)
 			.then(() => {
 				navigate("/react-tasks-manager/home");
 			})
@@ -48,14 +74,14 @@ export default function Welcome() {
 
 	const handleRegister = e => {
 		e.preventDefault()
-		if (registerInfo.password !== registerInfo.confirmPassword) {
+		if (registerValues.password !== registerValues.confirmPassword) {
 			alert("Please confirm that password are the same!");
 			return;
 		}
 		createUserWithEmailAndPassword(
 			auth,
-			registerInfo.email,
-			registerInfo.password
+			registerValues.email,
+			registerValues.password
 		)
 			.then(() => {
 				navigate("/react-tasks-manager/home");
@@ -67,55 +93,63 @@ export default function Welcome() {
 		<div>
 			<TopBar />
 			<Container className="welcomeForm">
+				<h1 style={{textAlign: "center"}}>LOGIN</h1>
 				{isRegistering ? (
-					<Form onSubmit={handleRegister}>
-						<Form.Group className="mb-3" controlId="formBasicEmail">
-							<Form.Label>Email address</Form.Label>
-							<Form.Control
-								type="email"
-								placeholder="example@example.com"
-								value={registerInfo.email}
-								onChange={(e) =>
-									setRegisterInfo({
-										...registerInfo,
-										email: e.target.value
-									})
+					<Box
+						component="form"
+						// sx={{'& > :not(style)': {m: 3, width: '25ch',}}}
+						sx={{m: 3, width: '25ch',}}
+						noValidate
+						autoComplete="off"
+						onSubmit={handleRegister}
+						className="welcomeInput"
+					>
+						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
+							<InputLabel htmlFor="component-simple">Email</InputLabel>
+							<Input name="email" value={registerValues.email} onChange={handleRegisterValues} />
+						</FormControl>
+
+						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+							<Input
+								name="password"
+								type={showPassword ? 'text' : 'password'}
+								value={registerValues.password}
+								onChange={handleRegisterValues}
+								endAdornment={
+									<InputAdornment position="end">
+										<IconButton
+											aria-label="toggle password visibility"
+											onClick={handleShowPassword}
+										>
+											{showPassword ? <VisibilityOff /> : <Visibility />}
+										</IconButton>
+									</InputAdornment>
 								}
 							/>
-						</Form.Group>
+						</FormControl>
 
-						<Form.Group className="mb-3" controlId="formBasicPassword">
-							<Form.Label>Password</Form.Label>
-							<Form.Control
-								type="password"
-								placeholder="Password"
-								value={registerInfo.password}
-								onChange={(e) =>
-									setRegisterInfo({
-										...registerInfo,
-										password: e.target.value
-									})
+						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-password">Confirm Password</InputLabel>
+							<Input
+								name="confirmPassword"
+								type={showPassword ? 'text' : 'password'}
+								value={registerValues.confirmPassword}
+								onChange={handleRegisterValues}
+								endAdornment={
+									<InputAdornment position="end">
+										<IconButton
+											aria-label="toggle password visibility"
+											onClick={handleShowPassword}
+										>
+											{showPassword ? <VisibilityOff /> : <Visibility />}
+										</IconButton>
+									</InputAdornment>
 								}
 							/>
-						</Form.Group>
-
-						<Form.Group className="mb-3" controlId="confirmPassword">
-							<Form.Label>Confirm Password</Form.Label>
-							<Form.Control
-								type="password"
-								placeholder="Confirm Password"
-								value={registerInfo.confirmPassword}
-								onChange={(e) =>
-									setRegisterInfo({
-										...registerInfo,
-										confirmPassword: e.target.value
-									})
-								}
-							/>
-						</Form.Group>
-
+						</FormControl>
 						<div className="welcomeBtn">
-							<Button variant="primary" type="submit">
+							<Button variant="contained" type="submit">
 								Register
 							</Button>
 
@@ -123,21 +157,44 @@ export default function Welcome() {
 								Go back
 							</Button>
 						</div>
-					</Form>
+					</Box>
+					// </Form>
 				) : (
-					<Form onSubmit={handleSignIn}>
-						<Form.Group className="mb-3" controlId="formBasicEmail">
-							<Form.Label>Email address</Form.Label>
-							<Form.Control type="email" value={email} onChange={handleEmailChange} placeholder="example@example.com" />
-						</Form.Group>
+					<Box
+						component="form"
+						sx={{ width: '25ch', m: 3,}}
+						noValidate
+						autoComplete="off"
+						onSubmit={handleSignIn}
+						className="welcomeInput"
+					>
+						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
+							<InputLabel htmlFor="component-simple">Email</InputLabel>
+							<Input name="email" value={signInValues.email} onChange={handleSignInValues} />
+						</FormControl>
 
-						<Form.Group className="mb-3" controlId="formBasicPassword">
-							<Form.Label>Password</Form.Label>
-							<Form.Control type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
-						</Form.Group>
+						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
+							<InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+							<Input
+								name="password"
+								type={showPassword ? 'text' : 'password'}
+								value={signInValues.password}
+								onChange={handleSignInValues}
+								endAdornment={
+									<InputAdornment position="end">
+										<IconButton
+											aria-label="toggle password visibility"
+											onClick={handleShowPassword}
+										>
+											{showPassword ? <VisibilityOff /> : <Visibility />}
+										</IconButton>
+									</InputAdornment>
+								}
+							/>
+						</FormControl>
 
 						<div className="welcomeBtn">
-							<Button variant="primary" type="submit">
+							<Button variant="contained" type="submit">
 								Sign In
 							</Button>
 
@@ -145,7 +202,7 @@ export default function Welcome() {
 								Create an account
 							</Button>
 						</div>
-					</Form>
+					</Box>
 				)}
 			</Container>
 		</div>
