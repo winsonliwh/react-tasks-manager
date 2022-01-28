@@ -11,7 +11,16 @@ export default function Task({ task }) {
 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setInput({
+            name: task.name,
+            description: task.description,
+            taskType: task.taskType,
+            dueDate: task.dueDate,
+            done: task.done
+        })
+    }
 
     const [input, setInput] = useState({
         name: task.name,
@@ -23,9 +32,11 @@ export default function Task({ task }) {
 
     const handleInput = e => {
         const { id, value } = e.target;
-        setInput({
-            ...input,
-            [id]: value
+        setInput(prevInput => {
+            return {
+                ...prevInput,
+                [id]: value
+            }
         });
     };
 
@@ -45,7 +56,7 @@ export default function Task({ task }) {
     }
 
     const handleDone = () => {
-        setInput({ ...input, done: !input.done })
+        setInput(prevInput => ({ ...prevInput, done: !prevInput.done }))
         update(ref(db, `/${auth.currentUser.uid}/${task.key}`), {
             ...input, done: !input.done
         })

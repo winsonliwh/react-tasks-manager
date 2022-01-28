@@ -13,40 +13,40 @@ import Filter from './components/Filter';
 export default function Home() {
 
     const [tasks, setTasks] = useState([]);
-	const navigate = useNavigate();
+    const navigate = useNavigate();
 
-	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			if (user) {
-				// read user's data
-				const dbRef = ref(db, `/${auth.currentUser.uid}`)
-				onValue(dbRef, snapshot => {
-					setTasks([]);
-					const data = snapshot.val();
-					if (data !== null) {
-						Object.values(data).map(task => {
-							setTasks(oldArray => [...oldArray, task]);
-							setTasks(prevTasks => {
-								return orderBy(prevTasks, ['createdDate', 'createdTime'], ['desc', 'desc'])
-							})
-						});
-					}
-				});
-			} else if (!user) {
-				navigate("/react-tasks-manager/");
-			}
-		});
-	}, []);
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // read user's data
+                const dbRef = ref(db, `/${auth.currentUser.uid}`)
+                onValue(dbRef, snapshot => {
+                    setTasks([]);
+                    const data = snapshot.val();
+                    if (data !== null) {
+                        Object.values(data).forEach(task => {
+                            setTasks(prevTasks => [...prevTasks, task])
+                        });
+                        setTasks(prevTasks => {
+                            return orderBy(prevTasks, ['createdDate', 'createdTime'], ['desc', 'desc'])
+                        })
+                    }
+                });
+            } else if (!user) {
+                navigate("/react-tasks-manager/");
+            }
+        });
+    }, [navigate]);
 
     return (
-			<div>
-				<TopBar />
-				<div className='Homepage'>
-					<Filter />
-					<TaskList taskList={tasks} />
-				</div>
-				<NewTask />
-				<ScrollToTop />
-			</div>
+        <div>
+            <TopBar />
+            <div className='Homepage'>
+                <Filter />
+                <TaskList taskList={tasks} />
+            </div>
+            <NewTask />
+            <ScrollToTop />
+        </div>
     )
 }

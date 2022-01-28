@@ -17,9 +17,7 @@ export default function SignOut() {
 			});
 	};
 
-    return (
-        // <div>
-            <Logout className="logout" onClick={handleSignOut} />
-        // </div>
-    );
+	return (
+		<Logout className="logout" onClick={handleSignOut} />
+	);
 }

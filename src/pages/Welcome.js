@@ -21,9 +21,8 @@ export default function Welcome() {
 	};
 
 	const [isRegistering, setIsRegistering] = useState(false);
-	const [registerInformation, setRegisterInformation] = useState({
+	const [registerInfo, setRegisterInfo] = useState({
 		email: "",
-		confirmEmail: "",
 		password: "",
 		confirmPassword: ""
 	});
@@ -36,9 +35,10 @@ export default function Welcome() {
 				navigate("/react-tasks-manager/home");
 			}
 		});
-	}, []);
+	}, [navigate]);
 
-	const handleSignIn = () => {
+	const handleSignIn = e => {
+		e.preventDefault()
 		signInWithEmailAndPassword(auth, email, password)
 			.then(() => {
 				navigate("/react-tasks-manager/home");
@@ -46,20 +46,16 @@ export default function Welcome() {
 			.catch((err) => alert(err.message));
 	};
 
-	const handleRegister = () => {
-		if (registerInformation.email !== registerInformation.confirmEmail) {
-			alert("Please confirm that email are the same");
-			return;
-		} else if (
-			registerInformation.password !== registerInformation.confirmPassword
-		) {
-			alert("Please confirm that password are the same");
+	const handleRegister = e => {
+		e.preventDefault()
+		if (registerInfo.password !== registerInfo.confirmPassword) {
+			alert("Please confirm that password are the same!");
 			return;
 		}
 		createUserWithEmailAndPassword(
 			auth,
-			registerInformation.email,
-			registerInformation.password
+			registerInfo.email,
+			registerInfo.password
 		)
 			.then(() => {
 				navigate("/react-tasks-manager/home");
@@ -72,32 +68,17 @@ export default function Welcome() {
 			<TopBar />
 			<Container className="welcomeForm">
 				{isRegistering ? (
-					<Form>
+					<Form onSubmit={handleRegister}>
 						<Form.Group className="mb-3" controlId="formBasicEmail">
 							<Form.Label>Email address</Form.Label>
 							<Form.Control
 								type="email"
 								placeholder="example@example.com"
-								value={registerInformation.email}
+								value={registerInfo.email}
 								onChange={(e) =>
-									setRegisterInformation({
-										...registerInformation,
+									setRegisterInfo({
+										...registerInfo,
 										email: e.target.value
-									})
-								}
-							/>
-						</Form.Group>
-
-						<Form.Group className="mb-3" controlId="confirmEmail">
-							<Form.Label>Confirm Email address</Form.Label>
-							<Form.Control
-								type="email"
-								placeholder="Confirm Email"
-								value={registerInformation.confirmEmail}
-								onChange={(e) =>
-									setRegisterInformation({
-										...registerInformation,
-										confirmEmail: e.target.value
 									})
 								}
 							/>
@@ -108,10 +89,10 @@ export default function Welcome() {
 							<Form.Control
 								type="password"
 								placeholder="Password"
-								value={registerInformation.password}
+								value={registerInfo.password}
 								onChange={(e) =>
-									setRegisterInformation({
-										...registerInformation,
+									setRegisterInfo({
+										...registerInfo,
 										password: e.target.value
 									})
 								}
@@ -123,10 +104,10 @@ export default function Welcome() {
 							<Form.Control
 								type="password"
 								placeholder="Confirm Password"
-								value={registerInformation.confirmPassword}
+								value={registerInfo.confirmPassword}
 								onChange={(e) =>
-									setRegisterInformation({
-										...registerInformation,
+									setRegisterInfo({
+										...registerInfo,
 										confirmPassword: e.target.value
 									})
 								}
@@ -134,7 +115,7 @@ export default function Welcome() {
 						</Form.Group>
 
 						<div className="welcomeBtn">
-							<Button variant="primary" onClick={handleRegister}>
+							<Button variant="primary" type="submit">
 								Register
 							</Button>
 
@@ -144,7 +125,7 @@ export default function Welcome() {
 						</div>
 					</Form>
 				) : (
-					<Form>
+					<Form onSubmit={handleSignIn}>
 						<Form.Group className="mb-3" controlId="formBasicEmail">
 							<Form.Label>Email address</Form.Label>
 							<Form.Control type="email" value={email} onChange={handleEmailChange} placeholder="example@example.com" />
@@ -156,7 +137,7 @@ export default function Welcome() {
 						</Form.Group>
 
 						<div className="welcomeBtn">
-							<Button variant="primary" onClick={handleSignIn}>
+							<Button variant="primary" type="submit">
 								Sign In
 							</Button>
 
