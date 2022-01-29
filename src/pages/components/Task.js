@@ -58,11 +58,11 @@ export default function Task({ task }) {
                 <div className="card-body">
                     <div className="cardTitle sticky-top">
                         <h5 className="card-title">{input.name}</h5>
-                        <span className="listButton">
-                            <Button className="btn-sm listEdit" onClick={handleShow}>
+                        <span className="cardButton">
+                            <Button className="btn-sm cardEdit" onClick={handleShow}>
                                 <Edit />
                             </Button>
-                            <Button className="btn-sm listDelete" onClick={() => handleDelete(task.key)} >
+                            <Button className="btn-sm cardDelete" onClick={() => handleDelete(task.key)} >
                                 <Minus />
                             </Button>
                         </span>

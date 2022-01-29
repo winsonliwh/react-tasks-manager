@@ -27,7 +27,7 @@ export default function ScrollToTop() {
     return (
         <div>
             {showButton &&
-                <Button className="ArrowUp rounded-circle btn-sm btn-dark" onClick={handleBackToTop}><ArrowUp /></Button>
+                <Button className="ArrowUpBtn rounded-circle btn-sm btn-dark" onClick={handleBackToTop}><ArrowUp /></Button>
             }
         </div>
     )

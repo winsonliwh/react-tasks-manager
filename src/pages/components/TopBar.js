@@ -6,7 +6,6 @@ import SignOut from './SignOut';
 import { MaterialUISwitch } from './DarkModeBtn';
 
 export default function TopBar({ darkMode, handleDarkMode }) {
-
     return (
         <div>
             <Navbar className="topBar rounded-0" fixed='top'>

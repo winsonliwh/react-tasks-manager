@@ -35,16 +35,16 @@ export default function Menu() {
 	return (
 		<>
 			{/* <CustomToggle aria-controls="offcanvasNavbar" /> */}
-			<Button className="topBarBtn" onClick={handleShow}>
-				<Menuimg />
+			<Button className="menuBtn" onClick={handleShow}>
+				<Menuimg className="menuImg"/>
 			</Button>
 			<Offcanvas show={show} onHide={handleClose}>
 				<Offcanvas.Header closeButton>
 					<Offcanvas.Title><p>Task Manager</p></Offcanvas.Title>
 				</Offcanvas.Header>
 				<Offcanvas.Body>
-					<div><Link className="linkText" to="/react-tasks-manager"><p>HOME</p></Link></div>
-					<div><Link className="linkText" to="/react-tasks-manager/calendar"><p>Calendar</p></Link></div>
+					<div><Link className="menuLinkText" to="/react-tasks-manager"><p>HOME</p></Link></div>
+					<div><Link className="menuLinkText" to="/react-tasks-manager/calendar"><p>Calendar</p></Link></div>
 				</Offcanvas.Body>
 			</Offcanvas>
 		</>
