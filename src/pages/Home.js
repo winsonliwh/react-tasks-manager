@@ -1,7 +1,6 @@
 import NewTask from './components/NewTask';
 import ScrollToTop from './components/ScrollToTop';
 import TaskList from './components/TaskList';
-import TopBar from './components/TopBar';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { db, auth } from "../firebase";
@@ -39,9 +38,8 @@ export default function Home() {
     }, [navigate]);
 
     return (
-        <div>
-            <TopBar />
-            <div className='Homepage'>
+        <div className='homepage'>
+            <div>
                 <Filter />
                 <TaskList taskList={tasks} />
             </div>

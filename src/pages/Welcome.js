@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import TopBar from "./components/TopBar";
 import {
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword
@@ -18,7 +17,6 @@ export default function Welcome() {
 	const [signInValues, setSignInValues] = useState({
 		email: "",
 		password: "",
-		// showPassword: false
 	});
 
 	const handleSignInValues = e => {
@@ -35,7 +33,6 @@ export default function Welcome() {
 		email: "",
 		password: "",
 		confirmPassword: "",
-		// showPassword: false
 	});
 
 	const handleRegisterValues = e => {
@@ -90,8 +87,7 @@ export default function Welcome() {
 	};
 
 	return (
-		<div>
-			<TopBar />
+		<div className="welcomePage">
 			<Container className="welcomeForm">
 				<h1 style={{textAlign: "center"}}>LOGIN</h1>
 				{isRegistering ? (
@@ -105,12 +101,12 @@ export default function Welcome() {
 						className="welcomeInput"
 					>
 						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
-							<InputLabel htmlFor="component-simple">Email</InputLabel>
+							<InputLabel>Email</InputLabel>
 							<Input name="email" value={registerValues.email} onChange={handleRegisterValues} />
 						</FormControl>
 
 						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
-							<InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+							<InputLabel>Password</InputLabel>
 							<Input
 								name="password"
 								type={showPassword ? 'text' : 'password'}
@@ -130,7 +126,7 @@ export default function Welcome() {
 						</FormControl>
 
 						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
-							<InputLabel htmlFor="standard-adornment-password">Confirm Password</InputLabel>
+							<InputLabel>Confirm Password</InputLabel>
 							<Input
 								name="confirmPassword"
 								type={showPassword ? 'text' : 'password'}
@@ -169,12 +165,12 @@ export default function Welcome() {
 						className="welcomeInput"
 					>
 						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
-							<InputLabel htmlFor="component-simple">Email</InputLabel>
+							<InputLabel>Email</InputLabel>
 							<Input name="email" value={signInValues.email} onChange={handleSignInValues} />
 						</FormControl>
 
 						<FormControl fullWidth sx={{ m: 1 }} variant="standard">
-							<InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+							<InputLabel>Password</InputLabel>
 							<Input
 								name="password"
 								type={showPassword ? 'text' : 'password'}

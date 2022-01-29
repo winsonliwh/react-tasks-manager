@@ -18,6 +18,6 @@ export default function SignOut() {
 	};
 
 	return (
-		<Logout className="logout" onClick={handleSignOut} />
+		<Logout className="logoutBtn" onClick={handleSignOut} />
 	);
 }

@@ -3,6 +3,10 @@ import Welcome from './pages/Welcome';
 import Calendarfunc from './pages/Calendarfunc';
 import { Routes, Route } from 'react-router-dom';
 import Filter from './pages/components/Filter';
+import useLocalStorage from 'use-local-storage'
+import { Button } from '@mui/material';
+import TopBar from './pages/components/TopBar';
+
 // import { useState, useEffect } from 'react';
 // import { apiHost } from './Components/Const';
 // import { db, auth } from "./firebase";
@@ -39,15 +43,20 @@ function App() {
 	// 	fetchData(setTask)
 	// }, [])
 
+	const [darkMode, setDarkMode] = useLocalStorage("darkMode", false)
+    const handleDarkMode = () => {
+        setDarkMode(!darkMode)
+    }
+
 	return (
-		// <div>
+		<div className={darkMode ? "darkMode" : ""}>
+			<TopBar darkMode={darkMode} handleDarkMode={handleDarkMode} />
 			<Routes>
 				<Route path="/react-tasks-manager/" element={<Welcome />} />
 				<Route path="/react-tasks-manager/home" element={<Home />} />
 				<Route path="/react-tasks-manager/calendar" element={<Calendarfunc />} />
-				<Route path="/react-tasks-manager/filter" element={<Filter />} />
 			</Routes>
-		// </div>
+		</div>
 	);
 }
 

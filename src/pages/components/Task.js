@@ -13,22 +13,10 @@ export default function Task({ task }) {
     const handleShow = () => setShow(true);
     const handleClose = () => {
         setShow(false);
-        setInput({
-            name: task.name,
-            description: task.description,
-            taskType: task.taskType,
-            dueDate: task.dueDate,
-            done: task.done
-        })
+        setInput(task)
     }
 
-    const [input, setInput] = useState({
-        name: task.name,
-        description: task.description,
-        taskType: task.taskType,
-        dueDate: task.dueDate,
-        done: task.done
-    });
+    const [input, setInput] = useState(task);
 
     const handleInput = e => {
         const { id, value } = e.target;

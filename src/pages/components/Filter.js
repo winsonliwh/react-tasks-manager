@@ -29,7 +29,7 @@ export default function Filter(input, handleInput) {
 
                 <Form.Group>
                     <Form.Label className="filterDueDate">Due Date</Form.Label>
-                    <Form.Control className="filterInputBox" id="dueDate" value={input.dueDate} onChange={handleInput} type="date" />
+                    <Form.Control className="filterInputBox" id="dueDate" value={input.dueDate} type="date" />
                 </Form.Group>
 
                 <Form.Group>

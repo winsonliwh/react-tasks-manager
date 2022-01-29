@@ -1,25 +1,46 @@
 * {
     font-family: 'Outfit', sans-serif;
-    z-index: 1;
+}
+
+*::-webkit-scrollbar {
+    width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(92, 91, 91);
+    border-radius: 20px;
 }
 
 p {
     margin: 0px !important;
-    color: rgb(70, 70, 70);
+    color: #0F2540;
+}
+
+.darkMode p {
+    margin: 0px !important;
+    color: #dfdfdf;
 }
 
 .topBar {
     padding: 0px 10px;
-    border-radius: 10px;
+    background-color: rgba(250, 250, 250, 0.85);
+}
+
+.darkMode .topBar {
+    background-color: #0B1013;
+}
+
+.topBarBtn {
+    background-color: rgba(250, 250, 250, 0.85);
 }
 
 .filter {
     height: 100%;
-    width: 250px;
-    background-color: #434343;
-    color: #FCFAF2;
-    padding: 5px;
-    margin-top: 58.31px;
+    width: 300px;
+    background-color: rgb(255 255 255 / 25%);
+    color: #0F2540;
+    padding-top: 42px;
+    padding-left: 30px;
     position: fixed;
 }
 
@@ -37,7 +58,7 @@ p {
     padding-right: 84px;
     border-top-style: solid;
     border-width: 2px;
-    border-color: #FCFAF2;
+    border-color: #0F2540;
 }
 
 .filterInputBox {
@@ -50,32 +71,44 @@ p {
     padding-right: 84px;
     border-top-style: solid;
     border-width: 2px;
-    border-color: #FCFAF2;
+    border-color: #0F2540;
 }
 
 .filterCheckBox {
     margin-left: 10px;
 }
 
-.Homepage {
-    display: flex;
+.homepage {
+    background-image: url("./background/images.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
-*::-webkit-scrollbar {
-    width: 4px;
+.darkMode .homepage {
+    background-image: url("");
+    background-color: #12102E;
+    color: white;
 }
 
-*::-webkit-scrollbar-thumb {
-    background-color: grey;
-    border-radius: 20px;
-  }
+.darkModeBtn {
+    align-self: center;
+}
+
+.welcomePage {
+    background-image: url("./background/1.jpg");
+    background-size: cover;
+    height: 100vh;
+}
 
 .welcomeForm {
+    background-color:rgba(231, 231, 231, 0.385);
     font-size: calc(10px + 2vmin);
-    padding: 8rem 0 11rem 0;
-    background-color: silver;
+    padding: 12vh 0 16vh 0;
     border-radius: 20px;
-    margin: 10vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) ;
 }
 
 .welcomeInput {
@@ -87,18 +120,6 @@ p {
     margin-top: 20px;
     display: block;
     width: 100%;
-}
-
-.taskList {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 250px;
-    margin-top: 58.31px;
-    padding-top: 15px;
-}
-
-.eachTask {
-    padding: 20px;
 }
 
 .navbar-nav {
@@ -122,19 +143,38 @@ p {
     width: 250px !important;
 }
 
-.cardTitle {
+.taskListOutter {
     display: flex;
-    align-items: center;
-    padding: 15px 10px;
-    background-color: white;
+    margin-top: 58.31px;
+    margin-left: 250px;
+    justify-content: center;
 }
 
-.cardTitle h5 {
-    margin: auto 10px;
+.taskList {
+    flex-wrap: wrap;
+    max-width: 85%;
+    padding-top: 15px;
+}
+
+.eachTask {
+    padding: 20px;
 }
 
 .card {
     height: 250px;
+    background-color: rgb(255 253 247 / 36%) !important;
+    border-radius: 10px !important;
+}
+
+.cardTitle {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    /* background-color: white; */
+}
+
+.cardTitle h5 {
+    margin: auto 10px;
 }
 
 .card-body {
@@ -179,16 +219,13 @@ p {
     display: flex;
 }
 
-.btn-sm {
-    margin-left: 10px;
-}
-
 .listEdit {
     border: 0px !important;
     border-radius: 50% !important;
 }
 
 .listDelete {
+    margin-left: 10px;
     background-color: rgb(255, 77, 77) !important;
     border: 0px !important;
     border-radius: 50% !important;
@@ -212,17 +249,13 @@ p {
     z-index: 9999;
 }
 
-.hide {
-    display: none;
-}
-
 .react-calendar {
     width: 70vw !important;
     padding: 32px 16px !important;
     margin: 64px auto 0px;
 }
 
-.logout {
+.logoutBtn {
     cursor: pointer;
     align-self: center;
 }
@@ -232,7 +265,7 @@ p {
 }
 
 @media screen and (max-width: 767px) {
-    
+
     .topBarDateTime,
     .filter {
         display: none;
@@ -240,5 +273,9 @@ p {
 
     .taskList {
         margin-left: 0px; 
+    }
+
+    .taskListOutter {
+        margin-left: 0px;
     }
 }
