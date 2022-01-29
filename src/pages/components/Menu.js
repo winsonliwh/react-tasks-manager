@@ -27,26 +27,26 @@ import { ReactComponent as Menuimg } from '../../img/menu.svg';
 // ];
 
 export default function Menu() {
-  const [show, setShow] = useState(false);
+	const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow((s) => !s);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow((s) => !s);
 
-  return (
-    <>
-      {/* <CustomToggle aria-controls="offcanvasNavbar" /> */}
-      <Button variant="light" onClick={handleShow}>
-        <Menuimg />
-      </Button>
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title><p>Task Manager</p></Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <div><Link className="linkText" to="/react-tasks-manager"><p>HOME</p></Link></div>
-          <div><Link className="linkText" to="/react-tasks-manager/calendar"><p>Calendar</p></Link></div>
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
+	return (
+		<>
+			{/* <CustomToggle aria-controls="offcanvasNavbar" /> */}
+			<Button className="topBarBtn" onClick={handleShow}>
+				<Menuimg />
+			</Button>
+			<Offcanvas show={show} onHide={handleClose}>
+				<Offcanvas.Header closeButton>
+					<Offcanvas.Title><p>Task Manager</p></Offcanvas.Title>
+				</Offcanvas.Header>
+				<Offcanvas.Body>
+					<div><Link className="linkText" to="/react-tasks-manager"><p>HOME</p></Link></div>
+					<div><Link className="linkText" to="/react-tasks-manager/calendar"><p>Calendar</p></Link></div>
+				</Offcanvas.Body>
+			</Offcanvas>
+		</>
+	);
 }
