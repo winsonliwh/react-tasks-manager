@@ -72,7 +72,8 @@ export default function Task({ task }) {
                     </p>
                 </div>
                 <div className="card-footer">
-                    <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "DONE" : "In Progress"}</Badge><small className="text-muted">{task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>
+                    <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "DONE" : "In Progress"}</Badge>
+                    <small className="text-muted">{task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>
                 </div>
             </div>
 

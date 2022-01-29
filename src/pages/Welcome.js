@@ -60,8 +60,6 @@ export default function Welcome() {
 		});
 	}, [navigate]);
 
-	update
-
 	const handleSignIn = e => {
 		e.preventDefault()
 		signInWithEmailAndPassword(auth, signInValues.email, signInValues.password)

@@ -7,9 +7,6 @@ import TopBar from './pages/components/TopBar';
 
 // import { useState, useEffect } from 'react';
 // import { apiHost } from './Components/Const';
-// import { db, auth } from "./firebase";
-// import { onValue, ref } from "firebase/database";
-// import orderBy from 'lodash/orderBy'
 
 // async function fetchData(setTask) {
 // 	const res = await fetch(`${apiHost}`)

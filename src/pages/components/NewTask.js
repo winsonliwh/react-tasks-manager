@@ -65,7 +65,7 @@ export default function NewTask() {
 	}
 
 	return (
-		<div className="newTask" >
+		<div>
 			<Button className="addTaskbtn rounded-circle" size="md" onClick={handleShow}>
 				<AddTask />
 			</Button>

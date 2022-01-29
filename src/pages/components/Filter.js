@@ -19,35 +19,37 @@ export default function Filter(input, handleInput) {
     }
 
     return (
-        <div className="filter">
-            <h4 className="filterTitle">Filter</h4>
-            <Form>
-                <Form.Group>
-                    <Form.Label className="filterTaskName">Task Name</Form.Label>
-                    <Form.Control className="filterInputBox" />
-                </Form.Group>
+        <div className="filterOutter">
+            <div className="filter">
+                <h4 className="filterTitle"><p>Filter</p></h4>
+                <Form>
+                    <Form.Group>
+                        <Form.Label className="filterTaskName"><p>Task Name</p></Form.Label>
+                        <Form.Control className="filterInputBox" />
+                    </Form.Group>
 
-                <Form.Group>
-                    <Form.Label className="filterDueDate">Due Date</Form.Label>
-                    <Form.Control className="filterInputBox" id="dueDate" value={input.dueDate} type="date" />
-                </Form.Group>
+                    <Form.Group>
+                        <Form.Label className="filterDueDate"><p>Due Date</p></Form.Label>
+                        <Form.Control className="filterInputBox" id="dueDate" value={input.dueDate} type="date" />
+                    </Form.Group>
 
-                <Form.Group>
-                    <Form.Label className="filterTaskType">Task Type</Form.Label>
-                    <Form.Check className="filterCheckBox" checked={WorkCBstatus} onChange={handleWorkCB}
-                        type="checkbox"
-                        label="Work"
-                    />
-                    <Form.Check className="filterCheckBox" checked={HomeCBstatus} onChange={handleHomeCB}
-                        type="checkbox"
-                        label="Home"
-                    />
-                    <Form.Check className="filterCheckBox" checked={EntertainmentCBstatus} onChange={handleEntertainmentCB}
-                        type="checkbox"
-                        label="Entertainment"
-                    />
-                </Form.Group>
-            </Form>
+                    <Form.Group>
+                        <Form.Label className="filterTaskType"><p>Task Type</p></Form.Label>
+                        <Form.Check className="filterCheckBox" checked={WorkCBstatus} onChange={handleWorkCB}
+                            type="checkbox"
+                            label="Work"
+                        />
+                        <Form.Check className="filterCheckBox" checked={HomeCBstatus} onChange={handleHomeCB}
+                            type="checkbox"
+                            label="Home"
+                        />
+                        <Form.Check className="filterCheckBox" checked={EntertainmentCBstatus} onChange={handleEntertainmentCB}
+                            type="checkbox"
+                            label="Entertainment"
+                        />
+                    </Form.Group>
+                </Form>
+            </div>
         </div>
     )
 }
