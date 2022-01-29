@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import {
 	signInWithEmailAndPassword,
-	createUserWithEmailAndPassword
+	createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { Button, Box, FormControl, IconButton, Input, InputAdornment, InputLabel } from "@mui/material";
@@ -11,7 +11,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 export default function Welcome() {
-	
+
 	const [isRegistering, setIsRegistering] = useState(false);
 
 	const [signInValues, setSignInValues] = useState({
@@ -60,6 +60,8 @@ export default function Welcome() {
 		});
 	}, [navigate]);
 
+	update
+
 	const handleSignIn = e => {
 		e.preventDefault()
 		signInWithEmailAndPassword(auth, signInValues.email, signInValues.password)
@@ -89,12 +91,12 @@ export default function Welcome() {
 	return (
 		<div className="welcomePage">
 			<Container className="welcomeForm">
-				<h1 style={{textAlign: "center"}}>LOGIN</h1>
+				<h1 style={{ textAlign: "center" }}>LOGIN</h1>
 				{isRegistering ? (
 					<Box
 						component="form"
 						// sx={{'& > :not(style)': {m: 3, width: '25ch',}}}
-						sx={{m: 3, width: '25ch',}}
+						sx={{ m: 3, width: '25ch', }}
 						noValidate
 						autoComplete="off"
 						onSubmit={handleRegister}
@@ -158,7 +160,7 @@ export default function Welcome() {
 				) : (
 					<Box
 						component="form"
-						sx={{ width: '25ch', m: 3,}}
+						sx={{ width: '25ch', m: 3, }}
 						noValidate
 						autoComplete="off"
 						onSubmit={handleSignIn}
