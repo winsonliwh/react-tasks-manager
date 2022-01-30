@@ -114,13 +114,19 @@ p {
 /* Welcome Login page styles */
 /* ------------------------------------------------------------- */
 .welcomePage {
-    background-image: url("./background/1.jpg");
+    background: url("./background/welcomepage_BGwhite16-9.png");
+    background-size: cover;
+    height: 100vh;
+}
+
+.darkMode .welcomePage {
+    background-image: url("./background/welcomepage_BGdark16-9.png");
     background-size: cover;
     height: 100vh;
 }
 
 .welcomeForm {
-    background-color:rgba(231, 231, 231, 0.6);
+    background-color:rgba(216, 216, 216, 0.6);
     font-size: calc(10px + 2vmin);
     padding: 12vh 0 16vh 0;
     border-radius: 20px;
