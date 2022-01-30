@@ -115,15 +115,17 @@ p {
 /* ------------------------------------------------------------- */
 .welcomePage {
     background: url("./background/welcomepage_BGwhite16-9.png");
-    background-size: cover;
     height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-position-x: left;
+    background-position-y: bottom;
 }
 
 .darkMode .welcomePage {
     background-image: url("./background/welcomepage_BGdark16-9.png");
-    background-size: cover;
-    height: 100vh;
-    display: flex;
+    background-position-x: right;
+    background-position-y: top;
 }
 
 .welcomeForm {
