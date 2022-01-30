@@ -5,44 +5,64 @@ import Menu from './Menu';
 import Time from './Time';
 import SignOut from './SignOut';
 import { MaterialUISwitch } from './DarkModeBtn';
-import { getAuth } from "firebase/auth";
-
-async function getUserEmail() {
-    const auth = await getAuth();
-    const user = await auth.currentUser;
-    if (user !== null) {
-        console.log(user)
-        console.log(user.email)
-        // user.providerData.forEach(profile => {
-        //     return profile.email
-        // })
-        return user.email
-    } else {
-        return "123"
-    }
-}
+import { getAuth, updatePassword } from "firebase/auth";
 
 export default function TopBar({ darkMode, handleDarkMode }) {
 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setUserInfo({
+            email: user.email,
+            currentPassword: "",
+            newPassword: "",
+            confirmNewPassword: ""
+        })
+    }
 
-    // useEffect(() => {
-    //     const auth = getAuth();
-    //     const user = auth.currentUser;
-    //     if (user !== null) {
-    //         console.log(user)
-    //         console.log(user.email)
-    //     }
-    // }, [])
+    const user = getAuth().currentUser;
+    useEffect(() => {
+        if (user !== null) {
+            setUserInfo(prevUserInfo => {
+                return {
+                    ...prevUserInfo,
+                    email: user.email
+                }
+            })
+        }
+    }, [user])
 
-    const [userInfo, setUserInput] = useState({
-        email: getUserEmail(),
-        // email: getAuth().currentUser.email,
-        password: "",
-        confirmPassword: ""
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        currentPassword: "",
+        newPassword: "",
+        confirmNewPassword: ""
     })
+
+    const handleInput = e => {
+        const { id, value } = e.target;
+        setUserInfo(prevInput => {
+            return {
+                ...prevInput,
+                [id]: value
+            }
+        });
+    };
+
+    const handleUpdateUserInfo = e => {
+        e.preventDefault()
+        if (userInfo.newPassword !== userInfo.confirmNewPassword) {
+            alert("Please confirm that password are the same!");
+            return;
+        }
+
+        updatePassword(user, userInfo.newPassword).then(() => {
+            alert("Password Updated!")
+            handleClose()
+        }).catch(err => alert(err.message));
+    }
+
 
     return (
         <div>
@@ -56,7 +76,7 @@ export default function TopBar({ darkMode, handleDarkMode }) {
                             <MaterialUISwitch checked={darkMode} onChange={handleDarkMode} />
                         </span>
                         <NavDropdown className="settingImg" align="end" title={<Setting />} id="basic-nav-dropdown">
-                            <NavDropdown.Item onClick={handleShow}>My Account</NavDropdown.Item>
+                            <NavDropdown.Item onClick={handleShow}>Change Password</NavDropdown.Item>
                         </NavDropdown>
                         <SignOut className="signOut" />
                     </Nav>
@@ -69,11 +89,24 @@ export default function TopBar({ darkMode, handleDarkMode }) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form className="d-grid">
+                    <Form className="d-grid" onSubmit={handleUpdateUserInfo}>
                         <Form.Group className="mb-3">
                             <Form.Label>My Email</Form.Label>
-                            <Form.Control id="email" value={userInfo.email} /* onChange={handleInput} */ placeholder="Email" required />
+                            <Form.Control id="email" type="email" value={userInfo.email} onChange={handleInput} placeholder="Email" required disabled />
                         </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Current Password</Form.Label>
+                            <Form.Control id="currentPassword" type="password" value={userInfo.password} onChange={handleInput} placeholder="Current Password" required />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>New Password</Form.Label>
+                            <Form.Control id="newPassword" type="password" value={userInfo.password} onChange={handleInput} placeholder="New Password" required />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Confirm New Password</Form.Label>
+                            <Form.Control id="confirmNewPassword" type="password" value={userInfo.confirmPassword} onChange={handleInput} placeholder="Confirm New Password" required />
+                        </Form.Group>
+                        <Button type="submit">Save Changes</Button>
                     </Form>
                 </Modal.Body>
 

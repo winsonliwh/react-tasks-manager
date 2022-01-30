@@ -120,7 +120,7 @@ p {
 }
 
 .welcomeForm {
-    background-color:rgba(231, 231, 231, 0.385);
+    background-color:rgba(231, 231, 231, 0.6);
     font-size: calc(10px + 2vmin);
     padding: 12vh 0 16vh 0;
     border-radius: 20px;
