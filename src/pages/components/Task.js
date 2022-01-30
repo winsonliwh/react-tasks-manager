@@ -51,7 +51,7 @@ export default function Task({ task }) {
     }
 
     const checkStatus = input.done ? "secondary" : "success";
-    const checkTaskType = input.taskType === "Home" ? "danger" : input.taskType === "Entertainment" ? "info" : "primary";
+    const checkTaskType = input.taskType === "Home" ? "danger" : input.taskType === "Entertainment" ? "warning" : "primary";
 
     return (
         <div>
