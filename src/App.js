@@ -47,8 +47,8 @@ function App() {
 		<div className={darkMode ? "darkMode" : ""}>
 			<TopBar darkMode={darkMode} handleDarkMode={handleDarkMode} />
 			<Routes>
-				<Route path="/react-tasks-manager/" element={<Welcome />} />
-				<Route path="/react-tasks-manager/home" element={<Home />} />
+				<Route path="/react-tasks-manager/welcome" element={<Welcome />} />
+				<Route path="/react-tasks-manager/" element={<Home />} />
 				<Route path="/react-tasks-manager/calendar" element={<Calendarfunc />} />
 			</Routes>
 		</div>

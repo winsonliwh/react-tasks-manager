@@ -55,7 +55,7 @@ export default function Welcome() {
 	useEffect(() => {
 		auth.onAuthStateChanged((user) => {
 			if (user) {
-				navigate("/react-tasks-manager/home");
+				navigate("/react-tasks-manager/");
 			}
 		});
 	}, [navigate]);
@@ -64,7 +64,7 @@ export default function Welcome() {
 		e.preventDefault()
 		signInWithEmailAndPassword(auth, signInValues.email, signInValues.password)
 			.then(() => {
-				navigate("/react-tasks-manager/home");
+				navigate("/react-tasks-manager/");
 			})
 			.catch((err) => alert(err.message));
 	};
@@ -81,7 +81,7 @@ export default function Welcome() {
 			registerValues.password
 		)
 			.then(() => {
-				navigate("/react-tasks-manager/home");
+				navigate("/react-tasks-manager/");
 			})
 			.catch((err) => alert(err.message));
 	};

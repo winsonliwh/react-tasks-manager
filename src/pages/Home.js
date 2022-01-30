@@ -32,7 +32,7 @@ export default function Home() {
                     }
                 });
             } else if (!user) {
-                navigate("/react-tasks-manager/");
+                navigate("/react-tasks-manager/welcome");
             }
         });
     }, [navigate]);

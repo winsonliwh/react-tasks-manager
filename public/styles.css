@@ -117,6 +117,7 @@ p {
     background-image: url("./background/1.jpg");
     background-size: cover;
     height: 100vh;
+    display: flex;
 }
 
 .welcomeForm {
@@ -124,10 +125,11 @@ p {
     font-size: calc(10px + 2vmin);
     padding: 12vh 0 16vh 0;
     border-radius: 20px;
-    position: absolute;
+    margin: auto
+    /* position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
 
 .welcomeInput {
