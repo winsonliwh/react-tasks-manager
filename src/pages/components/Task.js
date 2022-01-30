@@ -55,7 +55,6 @@ export default function Task({ task }) {
     return (
         <div>
             <div className="card">
-                <div className="card-body">
                     <div className="cardTitle sticky-top">
                         <h5 className="card-title">{input.name}</h5>
                         <span className="cardButton">
@@ -67,9 +66,8 @@ export default function Task({ task }) {
                             </Button>
                         </span>
                     </div>
-                    <p className="card-body">
-                        {input.description}
-                    </p>
+                <div className="card-body">
+                    <p>{input.description}</p>
                 </div>
                 <div className="card-footer">
                     <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "DONE" : "In Progress"}</Badge>

@@ -183,13 +183,14 @@ p {
 }
 
 .cardTitle {
+    /* background-color: rgba(255, 253, 247, 0.35) !important; */
     display: flex;
     align-items: center;
-    padding: 15px 10px;
+    padding: 12px 16px;
 }
 
 .cardTitle h5 {
-    margin: auto 10px;
+    margin: auto 0;
     color: #0F2540;
 }
 
@@ -203,6 +204,7 @@ p {
 }
 
 .cardButton .cardEdit {
+    margin-left: 10px;
     border: 0px !important;
     border-radius: 100% !important;
 }
@@ -222,7 +224,7 @@ p {
 }
 
 .card-body p {
-    padding: 0px 20px !important;
+    padding: 0px 16px !important;
     color: #0F2540;;
 }
 
