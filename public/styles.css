@@ -194,6 +194,11 @@ p {
     color: #0F2540;
 }
 
+.dueDateText {
+    padding-left: 16px;
+    padding-bottom: 4px;
+}
+
 .darkMode .cardTitle h5 {
     color: #f1f1ee;
 }
@@ -204,13 +209,13 @@ p {
 }
 
 .cardButton .cardEdit {
-    margin-left: 10px;
+    margin-left: 8px;
     border: 0px !important;
     border-radius: 100% !important;
 }
 
 .cardButton .cardDelete {
-    margin-left: 10px;
+    margin-left: 8px;
     background-color: rgb(255, 77, 77) !important;
     border: 0px !important;
     border-radius: 100% !important;
@@ -241,7 +246,16 @@ p {
     justify-content: space-between;
 }
 
+.card-footer small {
+    align-self: center;
+}
+
+.badge {
+    margin: 3px 0;
+}
+
 .doneBtn {
+    margin-right: 6px;
     cursor: pointer;
 }
 
@@ -339,11 +353,12 @@ p {
 /* ------------------------------------------------------------- */
 @media screen and (max-width: 767px) {
 
-    .darkMode .topBarDateTime,
-    .topBarDateTime,
-    .filter
-    {
+    .filter {
         display: none;
+    }
+
+    .eachTask {
+        padding: 10px 0;
     }
     
     /* .filterOutter {
@@ -362,5 +377,16 @@ p {
     .taskListOutter {
         margin-left: 0px;
         /* padding-top: 350px; */
+    }
+}
+
+@media screen and (max-width: 575px) {
+
+    .topBarDateTime {
+        display: none;
+    }
+
+    .card-footer small {
+        font-size: 10px;
     }
 }

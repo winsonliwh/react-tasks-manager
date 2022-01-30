@@ -30,7 +30,7 @@ export default function NewTask() {
 	const [input, setInput] = useState({
 		name: "",
 		description: "",
-		taskType: "",
+		taskType: "Work",
 		dueDate: nowDay(),
 		done: false
 	});

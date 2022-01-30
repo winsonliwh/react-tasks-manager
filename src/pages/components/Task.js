@@ -51,27 +51,32 @@ export default function Task({ task }) {
     }
 
     const checkStatus = input.done ? "secondary" : "success";
+    const checkTaskType = input.taskType === "Home" ? "danger" : input.taskType === "Entertainment" ? "info" : "primary";
 
     return (
         <div>
             <div className="card">
-                    <div className="cardTitle sticky-top">
-                        <h5 className="card-title">{input.name}</h5>
-                        <span className="cardButton">
-                            <Button className="btn-sm cardEdit" onClick={handleShow}>
-                                <Edit />
-                            </Button>
-                            <Button className="btn-sm cardDelete" onClick={() => handleDelete(task.key)} >
-                                <Minus />
-                            </Button>
-                        </span>
-                    </div>
+                <div className="cardTitle sticky-top">
+                    <h5 className="card-title">{input.name}</h5>
+                    <span className="cardButton">
+                        <Button className="btn-sm cardEdit" onClick={handleShow}>
+                            <Edit />
+                        </Button>
+                        <Button className="btn-sm cardDelete" onClick={() => handleDelete(task.key)} >
+                            <Minus />
+                        </Button>
+                    </span>
+                </div>
                 <div className="card-body">
                     <p>{input.description}</p>
                 </div>
+                <small className="dueDateText text-muted">Due Date: {input.dueDate}</small>
                 <div className="card-footer">
-                    <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "DONE" : "In Progress"}</Badge>
-                    <small className="text-muted">{task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>
+                    <p>
+                        <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "Done" : "ToDo"}</Badge>
+                        <Badge bg={checkTaskType}>{input.taskType}</Badge>
+                    </p>
+                    <small className="text-muted">Created: {task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>
                 </div>
             </div>
 
