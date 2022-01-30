@@ -148,6 +148,7 @@ p {
     background-image: url("./background/images.jpg");
     background-position: center;
     background-size: cover;
+    height: 100vh;
 }
 
 .darkMode .homepage {
@@ -156,13 +157,12 @@ p {
 }
 
 .taskListOutter {
-    display: flex;
-    margin-top: 58.31px;
+    padding-top: 58.31px;
     margin-left: 300px;
-    justify-content: center;
 }
 
 .taskList {
+    margin: 0 auto;
     flex-wrap: wrap;
     max-width: 85%;
     padding-top: 15px;
@@ -268,7 +268,7 @@ p {
     height: 100%;
     width: 300px;
     background-color: rgba(255, 255, 255, 0.25);
-    padding-top: 42px;
+    padding-top: 100px;
     padding-left: 30px;
     position: fixed;
 }
