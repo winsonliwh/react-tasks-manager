@@ -10,6 +10,29 @@ import Filter from './components/Filter';
 
 
 export default function Home() {
+    // const [searchName, setSearchName] = useState("");
+    // const handleNameSearch = (event) => {
+    //     setSearchName(event.target.value);
+    // }
+
+    // const [searchDate, setSearchDate] = useState("");
+    // const handleDateSearch = (event) => {
+    //     setSearchDate(event.target.value);
+    // }
+
+    // const [workStatus, setWorkStatus] = useState(false);
+    // const handleWorkStatus = e => {
+    //     setWorkStatus(e.target.checked);
+    // }
+
+    // const [homeStatus, setHomeStatus] = useState(false);
+    // const handleHome = e => {
+    //     setHomeStatus(e.target.checked)
+    // }
+    // const [entertainmentStatus, setEntertainmentStatus] = useState(false);
+    // const handleEntertainment = e => {
+    //     setEntertainmentStatus(e.target.checked)
+    // }
 
     const [tasks, setTasks] = useState([]);
     const navigate = useNavigate();
@@ -40,7 +63,7 @@ export default function Home() {
     return (
         <div className='homepage'>
             <div>
-                <Filter />
+                <Filter tasks={tasks} />
                 <TaskList taskList={tasks} />
             </div>
             <NewTask />
