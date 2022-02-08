@@ -6,6 +6,8 @@ import { db, auth } from "../../firebase";
 import { update, remove, ref } from "firebase/database";
 import Badge from 'react-bootstrap/Badge';
 import TaskForm from "./TaskForm";
+import doneChecked from "../../img/doneChecked.png";
+import doneUnChecked from "../../img/doneUnChecked.png";
 
 export default function Task({ task }) {
 
@@ -50,13 +52,16 @@ export default function Task({ task }) {
         })
     }
 
-    const checkStatus = input.done ? "secondary" : "success";
+    const doneImg = { backgroundImage: `url(${input.done ? doneChecked : doneUnChecked})` }
+
+    // const checkStatus = input.done ? "secondary" : "success";
     const checkTaskType = input.taskType === "Home" ? "danger" : input.taskType === "Entertainment" ? "warning" : "primary";
 
     return (
         <div>
             <div className="card">
                 <div className="cardTitle sticky-top">
+                    <div className="doneCheckbox" style={doneImg} onClick={handleDone}></div>
                     <h5 className="card-title">{input.name}</h5>
                     <span className="cardButton">
                         <Button className="btn-sm cardEdit" onClick={handleShow}>
@@ -73,7 +78,7 @@ export default function Task({ task }) {
                 <small className="dueDateText text-muted">Due Date: {input.dueDate}</small>
                 <div className="card-footer">
                     <p>
-                        <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "Done" : "ToDo"}</Badge>
+                        {/* <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "Done" : "ToDo"}</Badge> */}
                         <Badge bg={checkTaskType}>{input.taskType}</Badge>
                     </p>
                     <small className="text-muted">Created: {task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>

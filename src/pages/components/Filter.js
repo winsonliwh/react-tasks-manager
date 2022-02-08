@@ -54,7 +54,6 @@ export default function Filter({tasks}) {
 		});
 	};
 
-
     return (
         <div className="filterOutter">
             <div className="filter">
