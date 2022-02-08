@@ -24,7 +24,11 @@ export default function Time() {
                 month: "2-digit",
                 day: "2-digit"
             }));
-            setClockState(date.toLocaleTimeString('en-US', { hourCycle: 'h23' }));
+            setClockState(date.toLocaleTimeString('en-US', { 
+                hourCycle: 'h23',
+                hour: '2-digit',
+                minute: '2-digit'
+            }));
         }, 1000);
     }, []);
 
