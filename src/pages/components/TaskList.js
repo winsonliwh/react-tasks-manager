@@ -28,6 +28,7 @@ export default function TaskList({ taskList }) {
             <div className="d-flex taskList">
                 {taskList.map(task => {
                     return (
+                        // !task.done &&
                         <div className="eachTask col-12 col-lg-6" key={task.key} >
                             <Task task={task} />
                         </div>

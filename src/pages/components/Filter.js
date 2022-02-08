@@ -5,17 +5,14 @@ export default function Filter(input, handleInput) {
     const [WorkCBstatus, setWorkCBstatus] = useState(false);
     const handleWorkCB = e => {
         setWorkCBstatus(e.target.checked)
-        console.log(WorkCBstatus)
     }
     const [HomeCBstatus, setHomeCBstatus] = useState(false);
     const handleHomeCB = e => {
         setHomeCBstatus(e.target.checked)
-        console.log(HomeCBstatus)
     }
     const [EntertainmentCBstatus, setEntertainmentCBstatus] = useState(false);
     const handleEntertainmentCB = e => {
         setEntertainmentCBstatus(e.target.checked)
-        console.log(EntertainmentCBstatus)
     }
 
     return (
