@@ -30,11 +30,10 @@ export default function Menu() {
 	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);
-	const handleShow = () => setShow((s) => !s);
+	const handleShow = () => setShow(prevShow => !prevShow);
 
 	return (
 		<>
-			{/* <CustomToggle aria-controls="offcanvasNavbar" /> */}
 			<Button className="menuBtn" onClick={handleShow}>
 				<Menuimg className="menuImg"/>
 			</Button>

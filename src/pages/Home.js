@@ -35,10 +35,12 @@ export default function Home() {
     // }
 
     const [tasks, setTasks] = useState([]);
+    const [filterTasks, setfilterTasks] = useState(tasks);
+
     const navigate = useNavigate();
 
     useEffect(() => {
-        auth.onAuthStateChanged((user) => {
+        const login = auth.onAuthStateChanged((user) => {
             if (user) {
                 // read user's data
                 const dbRef = ref(db, `/${auth.currentUser.uid}`)
@@ -58,13 +60,14 @@ export default function Home() {
                 navigate("/react-tasks-manager/welcome");
             }
         });
+        return login;
     }, [navigate]);
 
     return (
         <div className='homepage'>
             <div>
-                <Filter tasks={tasks} />
-                <TaskList taskList={tasks} />
+                <Filter tasks={tasks} setfilterTasks={setfilterTasks} />
+                <TaskList taskList={filterTasks} />
             </div>
             {/* <NewTask /> */}
             <ScrollToTop />

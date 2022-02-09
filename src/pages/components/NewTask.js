@@ -5,7 +5,7 @@ import { ReactComponent as AddTask } from '../../img/addTask.svg';
 import { db, auth } from "../../firebase";
 import { set, ref } from "firebase/database";
 import TaskForm from "./TaskForm";
-import { ReactComponent as TaskListAddTask } from '../../img/taskListAddTask.svg';
+import { ReactComponent as TaskListAddTask } from '../../img/Add.svg';
 
 
 export default function NewTask() {
@@ -70,7 +70,7 @@ export default function NewTask() {
 		<>
 			<div className="eachTask col-12 col-lg-6 mobileHide">
 				<div className="card taskListAddTaskBtn" onClick={handleShow}>
-					<TaskListAddTask className="mobileHide"/>
+					<TaskListAddTask className="mobileHide plusImg"/>
 				</div>
 			</div>
 
