@@ -5,6 +5,8 @@ import { ReactComponent as AddTask } from '../../img/addTask.svg';
 import { db, auth } from "../../firebase";
 import { set, ref } from "firebase/database";
 import TaskForm from "./TaskForm";
+import { ReactComponent as TaskListAddTask } from '../../img/taskListAddTask.svg';
+
 
 export default function NewTask() {
 	const [show, setShow] = useState(false);
@@ -58,14 +60,20 @@ export default function NewTask() {
 		setInput({
 			name: "",
 			description: "",
-			taskType: "",
+			taskType: "Work",
 			dueDate: nowDay(),
 			done: false
 		});
 	}
 
 	return (
-		<div>
+		<>
+			<div className="eachTask col-12 col-lg-6 mobileHide">
+				<div className="card taskListAddTaskBtn" onClick={handleShow}>
+					<TaskListAddTask className="mobileHide"/>
+				</div>
+			</div>
+
 			<Button className="addTaskbtn rounded-circle" size="md" onClick={handleShow}>
 				<AddTask />
 			</Button>
@@ -87,6 +95,6 @@ export default function NewTask() {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-		</div>
+		</>
 	);
 }

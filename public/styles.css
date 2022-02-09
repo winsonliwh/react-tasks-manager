@@ -25,6 +25,10 @@ p {
     color: #f1f1ee;
 }
 
+.lineThrough {
+    text-decoration: line-through;
+}
+
 /* ------------------------------------------------------------- */
 /* Top Bar styles */
 /* ------------------------------------------------------------- */
@@ -182,14 +186,38 @@ p {
     padding: 20px;
 }
 
+.taskListAddTaskBtn {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.taskListAddTaskBtn:hover {
+    opacity: 1;
+}
+
 .card {
     height: 250px;
-    background-color: rgba(255, 253, 247, 0.35) !important;
+    background-color: rgba(255, 253, 247, 0.5) !important;
     border-radius: 10px !important;
 }
 
+.isDoneStyle {
+    opacity: 0.5;
+}
+
+.card:hover {
+    background-color: rgba(255, 253, 247, 0.5) !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
 .darkMode .card {
-    background-color: rgba(0, 0, 0, 0.15) !important;
+    background-color: rgba(0, 0, 0, 0.35) !important;
+}
+
+.darkMode .card:hover {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.15);
 }
 
 .cardTitle {
@@ -370,7 +398,8 @@ p {
 /* ------------------------------------------------------------- */
 @media screen and (max-width: 767px) {
 
-    .filter {
+    .filter,
+    .mobileHide {
         display: none;
     }
 
@@ -398,7 +427,7 @@ p {
 }
 
 @media screen and (max-width: 575px) {
-
+    
     .topBarDateTime {
         display: none;
     }

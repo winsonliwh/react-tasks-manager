@@ -52,6 +52,9 @@ export default function Task({ task }) {
         })
     }
 
+    const doneStrike = input.done ? "lineThrough" : "";
+    const isDoneStyle = input.done ? "isDoneStyle" : "";
+
     const doneImg = { backgroundImage: `url(${input.done ? Checked : Unchecked})` }
 
     // const checkStatus = input.done ? "secondary" : "success";
@@ -59,10 +62,10 @@ export default function Task({ task }) {
 
     return (
         <div>
-            <div className="card">
+            <div className={`card ${isDoneStyle}`}>
                 <div className="cardTitle sticky-top">
                     <div className="doneCheckbox" style={doneImg} onClick={handleDone}></div>
-                    <h5 className="card-title">{input.name}</h5>
+                    <h5 className={`card-title ${doneStrike}`}>{input.name}</h5>
                     <span className="cardButton">
                         <Button className="btn-sm cardEdit" onClick={handleShow}>
                             <Edit />
@@ -73,7 +76,7 @@ export default function Task({ task }) {
                     </span>
                 </div>
                 <div className="card-body">
-                    <p>{input.description}</p>
+                    <p className={doneStrike}>{input.description}</p>
                 </div>
                 <small className="dueDateText text-muted">Due Date: {input.dueDate}</small>
                 <div className="card-footer">

@@ -1,4 +1,4 @@
-import NewTask from './components/NewTask';
+// import NewTask from './components/NewTask';
 import ScrollToTop from './components/ScrollToTop';
 import TaskList from './components/TaskList';
 import { useNavigate } from 'react-router-dom';
@@ -50,7 +50,7 @@ export default function Home() {
                             setTasks(prevTasks => [...prevTasks, task])
                         });
                         setTasks(prevTasks => {
-                            return orderBy(prevTasks, ['createdDate', 'createdTime'], ['desc', 'desc'])
+                            return orderBy(prevTasks, ['done', 'createdDate', 'createdTime'], ['esc', 'desc', 'desc'])
                         })
                     }
                 });
@@ -66,7 +66,7 @@ export default function Home() {
                 <Filter tasks={tasks} />
                 <TaskList taskList={tasks} />
             </div>
-            <NewTask />
+            {/* <NewTask /> */}
             <ScrollToTop />
         </div>
     )
