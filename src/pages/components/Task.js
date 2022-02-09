@@ -6,8 +6,8 @@ import { db, auth } from "../../firebase";
 import { update, remove, ref } from "firebase/database";
 import Badge from 'react-bootstrap/Badge';
 import TaskForm from "./TaskForm";
-import doneChecked from "../../img/doneChecked.png";
-import doneUnChecked from "../../img/doneUnChecked.png";
+import Checked from "../../img/Checked.png"
+import Unchecked from "../../img/Unchecked.png"
 
 export default function Task({ task }) {
 
@@ -52,7 +52,7 @@ export default function Task({ task }) {
         })
     }
 
-    const doneImg = { backgroundImage: `url(${input.done ? doneChecked : doneUnChecked})` }
+    const doneImg = { backgroundImage: `url(${input.done ? Checked : Unchecked})` }
 
     // const checkStatus = input.done ? "secondary" : "success";
     const checkTaskType = input.taskType === "Home" ? "danger" : input.taskType === "Entertainment" ? "warning" : "primary";
