@@ -2,9 +2,12 @@ import { Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import $ from "jquery";
 import { IoIosArrowDown } from "react-icons/io";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Filter({ tasks, setfilterTasks }) {
 
+    const [startDate, setStartDate] = useState("");
     const [filterStatus, setFilterStatus] = useState({
         searchName: "",
         searchDate: "",
@@ -12,6 +15,13 @@ export default function Filter({ tasks, setfilterTasks }) {
         homeStatus: false,
         entertainmentStatus: false
     })
+
+    const handleDateChange = date => {
+        setFilterStatus({
+            ...filterStatus,
+            searchDate: date
+        })
+    }
 
     const handleFilterStatus = e => {
         const { id, value } = e.target;
@@ -37,7 +47,11 @@ export default function Filter({ tasks, setfilterTasks }) {
         setfilterTasks(tasks);
         setfilterTasks(prevTasks => prevTasks.filter(task => {
             return task.name.toLowerCase().includes(filterStatus.searchName.toLowerCase())
-                && (filterStatus.searchDate ? task.dueDate <= filterStatus.searchDate : true)
+                && (filterStatus.searchDate ? task.dueDate <= filterStatus.searchDate.toLocaleDateString('en-CA', {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit"
+                }) : true)
                 && (filterStatus.workStatus ? task.taskType === "Work" : true)
                 && (filterStatus.homeStatus ? task.taskType === "Home" : true)
                 && (filterStatus.entertainmentStatus ? task.taskType === "Entertainment" : true)
@@ -66,6 +80,7 @@ export default function Filter({ tasks, setfilterTasks }) {
                 <Form.Group>
                     <Form.Label className="filterDueDate"><p>Due Date</p></Form.Label>
                     <Form.Control className="filterInputBox" type="date" onChange={handleFilterStatus} id="searchDate" />
+                    <DatePicker className="filterInputBox" isClearable dateFormat="yyyy-MM-dd" placeholderText="YYYY-MM-DD" selected={filterStatus.searchDate} onChange={handleDateChange} />
                 </Form.Group>
 
                 <Form.Group>
