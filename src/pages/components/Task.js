@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Button, Form } from 'react-bootstrap';
 import { ReactComponent as Edit } from '../../img/pencil.svg';
 import { ReactComponent as Minus } from '../../img/minus.svg';
@@ -30,6 +30,20 @@ export default function Task({ task }) {
         });
     };
 
+    const handleStartDateChange = date => {
+        setInput({
+            ...input,
+            startDate: date.getTime()
+        })
+    }
+
+    const handleDueDateChange = date => {
+        setInput({
+            ...input,
+            dueDate: date.getTime()
+        })
+    }
+
     const handleDelete = key => {
         const confirmDelete = window.confirm("Are you sure to delete this task?");
         if (confirmDelete) {
@@ -47,10 +61,18 @@ export default function Task({ task }) {
 
     const handleDone = () => {
         setInput(prevInput => ({ ...prevInput, done: !prevInput.done }))
-        update(ref(db, `/${auth.currentUser.uid}/${task.key}`), {
-            ...input, done: !input.done
-        })
+        setTimeout(() => {
+            update(ref(db, `/${auth.currentUser.uid}/${task.key}`), {
+                ...input, done: !input.done
+            })
+        }, 3000)
     }
+
+    const dueDate = new Date(input.dueDate).toLocaleDateString('en-CA', {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    });
 
     const doneStrike = input.done ? "lineThrough" : "";
     const isDoneStyle = input.done ? "isDoneStyle" : "";
@@ -78,7 +100,7 @@ export default function Task({ task }) {
                 <div className="card-body">
                     <p className={doneStrike}>{input.description}</p>
                 </div>
-                <small className="dueDateText text-muted">Due Date: {input.dueDate}</small>
+                <small className="dueDateText text-muted">Due Date: {dueDate}</small>
                 <div className="card-footer">
                     <p>
                         {/* <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "Done" : "ToDo"}</Badge> */}
@@ -95,7 +117,7 @@ export default function Task({ task }) {
 
                 <Modal.Body>
                     <Form onSubmit={handleUpdate} className="d-grid">
-                        <TaskForm input={input} handleInput={handleInput} btnText="Save Changes" />
+                        <TaskForm input={input} handleInput={handleInput} handleStartDateChange={handleStartDateChange} handleDueDateChange={handleDueDateChange} btnText="Save Changes" />
                     </Form>
                 </Modal.Body>
 

@@ -37,7 +37,7 @@ export default function Menu() {
 			<Button className="menuBtn" onClick={handleShow}>
 				<Menuimg className="menuImg"/>
 			</Button>
-			<Offcanvas show={show} onHide={handleClose}>
+			<Offcanvas show={show} onHide={handleClose} scroll={true} onClick={handleClose}>
 				<Offcanvas.Header closeButton>
 					<Offcanvas.Title><p>Task Manager</p></Offcanvas.Title>
 				</Offcanvas.Header>

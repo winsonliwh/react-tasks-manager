@@ -33,7 +33,8 @@ export default function NewTask() {
 		name: "",
 		description: "",
 		taskType: "Work",
-		dueDate: nowDay(),
+		startDate: new Date().setHours(0, 0, 0),
+		dueDate: new Date().setHours(0, 0, 0),
 		done: false
 	});
 
@@ -46,6 +47,21 @@ export default function NewTask() {
 			}
 		});
 	};
+
+	const handleStartDateChange = date => {
+		console.log(input)
+        setInput({
+            ...input,
+            startDate: date.getTime()
+        })
+    }
+
+	const handleDueDateChange = date => {
+        setInput({
+            ...input,
+            dueDate: date.getTime()
+        })
+    }
 
 	const key = v4()
 	const handleSubmit = e => {
@@ -61,7 +77,8 @@ export default function NewTask() {
 			name: "",
 			description: "",
 			taskType: "Work",
-			dueDate: nowDay(),
+			startDate: new Date().setHours(0, 0, 0),
+			dueDate: new Date().setHours(0, 0, 0),
 			done: false
 		});
 	}
@@ -85,7 +102,7 @@ export default function NewTask() {
 
 				<Modal.Body>
 					<Form onSubmit={handleSubmit} className="d-grid">
-						<TaskForm input={input} handleInput={handleInput} btnText="Submit" />
+						<TaskForm input={input} handleInput={handleInput} handleStartDateChange={handleStartDateChange} handleDueDateChange={handleDueDateChange} btnText="Submit" />
 					</Form>
 				</Modal.Body>
 
