@@ -434,6 +434,7 @@ p {
     position: fixed;
     right: 12vw;
     top: 80px;
+    opacity: 1;
     z-index: 9999;
 }
 
