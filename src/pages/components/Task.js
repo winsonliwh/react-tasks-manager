@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal, Button, Form } from 'react-bootstrap';
 import { ReactComponent as Edit } from '../../img/pencil.svg';
 import { ReactComponent as Minus } from '../../img/minus.svg';

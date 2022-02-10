@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import $ from "jquery";
 import { IoIosArrowDown } from "react-icons/io";
 import DatePicker from "react-datepicker";
+import useLocalStorage from "use-local-storage";
 
 
 export default function Filter({ tasks, setfilterTasks }) {
 
+    const [filterDone, setFilterDone] = useLocalStorage("filterDone", false);
     const [filterStatus, setFilterStatus] = useState({
         searchName: "",
         searchDate: "",
@@ -50,8 +52,9 @@ export default function Filter({ tasks, setfilterTasks }) {
                 && (filterStatus.workStatus ? task.taskType === "Work" : true)
                 && (filterStatus.homeStatus ? task.taskType === "Home" : true)
                 && (filterStatus.entertainmentStatus ? task.taskType === "Entertainment" : true)
+                && (filterDone ? !task.done : true)
         }));
-    }, [filterStatus, tasks, setfilterTasks]);
+    }, [filterStatus, filterDone, tasks, setfilterTasks]);
 
     const toggleFilter = () => {
         $(".filter").toggleClass("filterActive");
@@ -69,7 +72,7 @@ export default function Filter({ tasks, setfilterTasks }) {
                 <h4 className="filterTitle mobileHide"><p>Filter</p></h4>
                 <Form.Group>
                     <Form.Label className="filterTaskName"><p>Task Name</p></Form.Label>
-                    <Form.Control className="filterInputBox" onChange={handleFilterStatus} id="searchName" />
+                    <Form.Control className="filterInputBox" onChange={handleFilterStatus} id="searchName" placeholder="Task Name"/>
                 </Form.Group>
 
                 <Form.Group>
@@ -79,6 +82,11 @@ export default function Filter({ tasks, setfilterTasks }) {
 
                 <Form.Group>
                     <Form.Label className="filterTaskType"><p>Task Type</p></Form.Label>
+                    <Form.Check className="filterCheckBox" checked={filterDone} onChange={() => setFilterDone(!filterDone)}
+                        type="checkbox"
+                        label="To Do"
+                        id="doneStatus"
+                    />
                     <Form.Check className="filterCheckBox" checked={filterStatus.workStatus} onChange={handleCheckBoxStatus}
                         type="checkbox"
                         label="Work"
