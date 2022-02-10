@@ -4,7 +4,7 @@ import { ReactComponent as Setting } from '../../img/setting.svg';
 import Menu from './Menu';
 import Time from './Time';
 import SignOut from './SignOut';
-import { MaterialUISwitch } from './DarkModeBtn';
+import { DarkModeBtn } from './DarkModeBtn';
 import { getAuth, updatePassword } from "firebase/auth";
 
 export default function TopBar({ darkMode, handleDarkMode }) {
@@ -73,7 +73,7 @@ export default function TopBar({ darkMode, handleDarkMode }) {
                     <Nav>
                         <Time />
                         <span className="darkModeBtn">
-                            <MaterialUISwitch checked={darkMode} onChange={handleDarkMode} />
+                            <DarkModeBtn checked={darkMode} onChange={handleDarkMode} />
                         </span>
                         <NavDropdown className="settingImg" align="end" title={<Setting />} id="basic-nav-dropdown">
                             <NavDropdown.Item onClick={handleShow}>Change Password</NavDropdown.Item>

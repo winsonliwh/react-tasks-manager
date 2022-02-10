@@ -30,15 +30,14 @@ export default function Menu() {
 	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);
-	const handleShow = () => setShow((s) => !s);
+	const handleShow = () => setShow(prevShow => !prevShow);
 
 	return (
 		<>
-			{/* <CustomToggle aria-controls="offcanvasNavbar" /> */}
 			<Button className="menuBtn" onClick={handleShow}>
 				<Menuimg className="menuImg"/>
 			</Button>
-			<Offcanvas show={show} onHide={handleClose}>
+			<Offcanvas show={show} onHide={handleClose} scroll={true} onClick={handleClose}>
 				<Offcanvas.Header closeButton>
 					<Offcanvas.Title><p>Task Manager</p></Offcanvas.Title>
 				</Offcanvas.Header>

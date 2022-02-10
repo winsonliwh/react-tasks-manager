@@ -5,6 +5,8 @@ import { ReactComponent as AddTask } from '../../img/addTask.svg';
 import { db, auth } from "../../firebase";
 import { set, ref } from "firebase/database";
 import TaskForm from "./TaskForm";
+import { ReactComponent as TaskListAddTask } from '../../img/Add.svg';
+
 
 export default function NewTask() {
 	const [show, setShow] = useState(false);
@@ -31,7 +33,8 @@ export default function NewTask() {
 		name: "",
 		description: "",
 		taskType: "Work",
-		dueDate: nowDay(),
+		startDate: new Date().setHours(0, 0, 0),
+		dueDate: new Date().setHours(0, 0, 0),
 		done: false
 	});
 
@@ -45,9 +48,27 @@ export default function NewTask() {
 		});
 	};
 
+	const handleStartDateChange = date => {
+        setInput({
+            ...input,
+            startDate: date.getTime()
+        })
+    }
+
+	const handleDueDateChange = date => {
+        setInput({
+            ...input,
+            dueDate: date.getTime()
+        })
+    }
+
 	const key = v4()
 	const handleSubmit = e => {
 		e.preventDefault()
+		if (input.startDate > input.dueDate) {
+			alert("Start date must be before due date")
+			return
+		}
 		set(ref(db, `/${auth.currentUser.uid}/${key}`), {
 			key: key,
 			createdDate: nowDay(),
@@ -58,14 +79,21 @@ export default function NewTask() {
 		setInput({
 			name: "",
 			description: "",
-			taskType: "",
-			dueDate: nowDay(),
+			taskType: "Work",
+			startDate: new Date().setHours(0, 0, 0),
+			dueDate: new Date().setHours(0, 0, 0),
 			done: false
 		});
 	}
 
 	return (
-		<div>
+		<>
+			<div className="eachTask col-12 col-lg-6 mobileHide">
+				<div className="card taskListAddTaskBtn" onClick={handleShow}>
+					<TaskListAddTask className="mobileHide plusImg"/>
+				</div>
+			</div>
+
 			<Button className="addTaskbtn rounded-circle" size="md" onClick={handleShow}>
 				<AddTask />
 			</Button>
@@ -77,7 +105,7 @@ export default function NewTask() {
 
 				<Modal.Body>
 					<Form onSubmit={handleSubmit} className="d-grid">
-						<TaskForm input={input} handleInput={handleInput} btnText="Submit" />
+						<TaskForm input={input} handleInput={handleInput} handleStartDateChange={handleStartDateChange} handleDueDateChange={handleDueDateChange} btnText="Submit" />
 					</Form>
 				</Modal.Body>
 
@@ -87,6 +115,6 @@ export default function NewTask() {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-		</div>
+		</>
 	);
 }

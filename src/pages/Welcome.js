@@ -66,7 +66,7 @@ export default function Welcome() {
 			.then(() => {
 				navigate("/react-tasks-manager/");
 			})
-			.catch((err) => alert(err.message));
+			.catch(() => alert("Invalid email or password!"));
 	};
 
 	const handleRegister = e => {

@@ -25,6 +25,10 @@ p {
     color: #f1f1ee;
 }
 
+.lineThrough {
+    text-decoration: line-through;
+}
+
 /* ------------------------------------------------------------- */
 /* Top Bar styles */
 /* ------------------------------------------------------------- */
@@ -70,7 +74,7 @@ p {
     background-color: #f1f1ee !important;
 }
 
-.darkMode .offcanvas {
+.offcanvas .darkMode {
     background-color: #0B1013 !important;
 }
 
@@ -155,7 +159,8 @@ p {
 /* Homepage styles */
 /* ------------------------------------------------------------- */
 .homepage {
-    background-image: url("./background/images.jpg"); 
+    background-image: url("./background/images.jpg");
+    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     min-height: 100vh;
@@ -167,8 +172,10 @@ p {
 }
 
 .taskListOutter {
-    padding-top: 58.31px;
+    padding-top: 100px;
     margin-left: 300px;
+    /* padding-top: 10vh; */
+    /* margin-left: 30vh; */
 }
 
 .taskList {
@@ -182,31 +189,68 @@ p {
     padding: 20px;
 }
 
+.taskListAddTaskBtn {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.taskListAddTaskBtn:hover {
+    opacity: 1;
+}
+
 .card {
     height: 250px;
-    background-color: rgba(255, 253, 247, 0.35) !important;
+    background-color: rgba(255, 253, 247, 0.5) !important;
     border-radius: 10px !important;
 }
 
+.card .plusImg {
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    filter: invert(61%) sepia(24%) saturate(1408%) hue-rotate(156deg) brightness(92%) contrast(90%);
+}
+
+.card:hover {
+    background-color: rgba(255, 253, 247, 0.5) !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+.card:hover .plusImg {
+    transform: rotate(-90deg);
+}
+
 .darkMode .card {
-    background-color: rgba(0, 0, 0, 0.15) !important;
+    background-color: rgba(0, 0, 0, 0.35) !important;
+}
+
+.darkMode .card:hover {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.15);
+}
+
+.isDoneStyle {
+    opacity: 0.5;
+}
+
+.doneCheckbox{
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    filter: invert(58%) sepia(38%) saturate(945%) hue-rotate(156deg) brightness(94%) contrast(86%);
 }
 
 .cardTitle {
-    /* background-color: rgba(255, 253, 247, 0.35) !important; */
     display: flex;
     align-items: center;
     padding: 12px 16px;
 }
 
 .cardTitle h5 {
-    margin: auto 0;
+    margin: 0 0 0 8px;
     color: #0F2540;
-}
-
-.dueDateText {
-    padding-left: 16px;
-    padding-bottom: 4px;
+    z-index: 0;
 }
 
 .darkMode .cardTitle h5 {
@@ -247,6 +291,11 @@ p {
     color: #f1f1ee;
 }
 
+.dueDateText {
+    padding-left: 16px;
+    padding-bottom: 4px;
+}
+
 .text-muted {
     color: #f1f1ee !important;
 }
@@ -266,7 +315,6 @@ p {
 
 .doneBtn {
     margin-right: 6px;
-    cursor: pointer;
 }
 
 .addTaskbtn {
@@ -275,7 +323,8 @@ p {
     bottom: 30px;
     border-radius: 100%;
     border: 0px !important;
-    background-color: rgba(54, 90, 252, 0.6) !important;
+    background-color: rgba(54, 90, 252, 0.8) !important;
+    z-index: 9999;
 }
 
 .ArrowUpBtn {
@@ -289,18 +338,19 @@ p {
 /* ------------------------------------------------------------- */
 /* filter styles */
 /* ------------------------------------------------------------- */
-
 .filter {
+    position: fixed;
     height: 100%;
     width: 300px;
     background-color: rgba(255, 255, 255, 0.25);
-    padding-top: 100px;
-    padding-left: 30px;
-    position: fixed;
 }
 
 .darkMode .filter {
     background-color: rgba(0, 0, 0, 0.20);
+}
+
+.filterForm {
+    padding: 100px 30px 0px 30px;
 }
 
 .filterTitle {
@@ -324,9 +374,30 @@ p {
     border-color: #f1f1ee;
 }
 
+.filterStartDate {
+    margin: 15px 10px;
+    margin-right: 0px;
+    padding-right: 84px;
+    border-top-style: solid;
+    border-width: 2px;
+    border-color: #0F2540;
+}
+
+.darkMode .filterStartDate {
+    border-color: #f1f1ee;
+}
+
 .filterInputBox {
-    width: 80% !important;
-    margin-left: 10px;
+    width: 90% !important;
+    margin: 0 10px;
+}
+
+.react-datepicker__input-container input {
+    width: 100%;
+}
+
+.react-datepicker__close-icon {
+    padding-right: 10% !important;
 }
 
 .filterTaskType {
@@ -352,10 +423,28 @@ p {
 /* ------------------------------------------------------------- */
 /* Calendar page styles */
 /* ------------------------------------------------------------- */
-.react-calendar {
-    width: 70vw !important;
-    padding: 32px 16px !important;
-    margin: 64px auto 0px;
+.calendarDiv {
+    margin: 100px auto;
+    height: 70vh;
+    width: 80vw;
+}
+
+.calendarDiv .card {
+    border-radius: 50% !important;
+    position: fixed;
+    right: 12vw;
+    top: 80px;
+    opacity: 1;
+    z-index: 9999;
+}
+
+.calendarDiv .plusImg {
+    padding: 0px;
+}
+
+.calendarDiv .taskListAddTaskBtn {
+    height: 80px;
+    width: 80px;
 }
 
 /* ------------------------------------------------------------- */
@@ -363,40 +452,105 @@ p {
 /* ------------------------------------------------------------- */
 @media screen and (max-width: 767px) {
 
-    .filter {
+    .calendarDiv .addTaskbtn,
+    .mobileHide {
         display: none;
+    }
+
+    .calendarDiv .mobileHide {
+        display: unset;
+    }
+    
+    .calendarDiv .card {
+        top: 88px;
+        right: 52px;
+        height: 60px;
+        width: 60px;
+    }
+    
+    .filter {
+        margin-top: -505px;
+        width: 100%;
+        height: 602px;
+        z-index: 1;
+    }
+    
+    .filterActive {
+        margin-top: 0px;
+        position: unset;
+    }
+
+    .filterForm {
+        padding: 68px 30px 0px 30px;
+    }
+
+    .filterInputBox {
+        width: 95% !important;
+    }
+
+    .react-datepicker__close-icon {
+        padding-right: 5% !important;
+    }
+
+    .filterToggle {
+        cursor: pointer;
+        text-align: center;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        color: #0F2540;
+    }
+
+    .darkMode .filterToggle {
+        color: #f1f1ee;
+    }
+
+    .filterToggleArrow {
+        align-self: center;
+        margin-left: 4px;
+        color: #0F2540;
+        transition: 0ms !important;
+    }
+
+    .darkMode .filterToggleArrow {
+        color: #f1f1ee;
+    }
+
+    .filterToggleArrowActive {
+        transform: rotate(180deg);
     }
 
     .eachTask {
         padding: 10px 0;
     }
-    
-    /* .filterOutter {
-        height: 5%;
-    }
-
-    .filter {
-        display: flex;
-        height: 20%;
-        width: 100%;
-        background-color: rgba(255, 125, 125, 0.884);
-        padding: 0px;
-        position: fixed;
-    }  */
 
     .taskListOutter {
+        padding-top: 90px;
         margin-left: 0px;
-        /* padding-top: 350px; */
+        min-height: 100vh;
+    }
+    
+    .taskListOutterActive {
+        padding-top: 0px;
     }
 }
 
 @media screen and (max-width: 575px) {
-
+    
     .topBarDateTime {
         display: none;
     }
 
     .card-footer small {
         font-size: 10px;
+    }
+
+}
+
+@media screen and (min-width: 767px) {
+
+    .filterToggle,
+    .addTaskbtn {
+        display: none !important;
     }
 }

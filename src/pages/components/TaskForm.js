@@ -1,7 +1,7 @@
 import { Button, Form } from "react-bootstrap";
+import DatePicker from "react-datepicker";
 
-
-export default function TaskForm({ input, handleInput, btnText }) {
+export default function TaskForm({ input, handleInput, handleStartDateChange, handleDueDateChange, btnText }) {
     return (
         <>
             <Form.Group className="mb-3">
@@ -24,8 +24,15 @@ export default function TaskForm({ input, handleInput, btnText }) {
             </Form.Group>
 
             <Form.Group className="mb-3">
+                <Form.Label>Start Date</Form.Label>
+                {/* <Form.Control id="dueDate" value={input.dueDate} onChange={handleInput} type="date" /> */}
+                <DatePicker dateFormat="yyyy-MM-dd" placeholderText="YYYY-MM-DD" selected={input.startDate} onChange={handleStartDateChange} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
                 <Form.Label>Due Date</Form.Label>
-                <Form.Control id="dueDate" value={input.dueDate} onChange={handleInput} type="date" />
+                {/* <Form.Control id="dueDate" value={input.dueDate} onChange={handleInput} type="date" /> */}
+                <DatePicker dateFormat="yyyy-MM-dd" placeholderText="YYYY-MM-DD" selected={input.dueDate} onChange={handleDueDateChange} />
             </Form.Group>
 
             <Button variant="success" type="submit">
