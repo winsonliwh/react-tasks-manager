@@ -57,7 +57,8 @@ export default function Filter({ tasks, setfilterTasks }) {
     useEffect(() => {
         setfilterTasks(tasks);
         setfilterTasks(prevTasks => prevTasks.filter(task => {
-            return task.name.toLowerCase().includes(filterStatus.searchName.toLowerCase())
+            return (task.name.toLowerCase().includes(filterStatus.searchName.toLowerCase()) 
+                || task.description.toLowerCase().includes(filterStatus.searchName.toLowerCase()))
                 && (filterStatus.startDate ? task.startDate >= filterStatus.startDate.getTime() : true)
                 && (filterStatus.dueDate ? task.dueDate <= filterStatus.dueDate.getTime() : true)
                 && (filterStatus.workStatus ? task.taskType === "Work" : true)
@@ -91,8 +92,8 @@ export default function Filter({ tasks, setfilterTasks }) {
             <Form className="filterForm">
                 <h4 className="filterTitle mobileHide"><p>Filter</p></h4>
                 <Form.Group>
-                    <Form.Label className="filterTaskName"><p>Task Name</p></Form.Label>
-                    <Form.Control className="filterInputBox" onChange={handleFilterStatus} id="searchName" placeholder="Task Name" />
+                    <Form.Label className="filterTaskName"><p>Search Tasks</p></Form.Label>
+                    <Form.Control className="filterInputBox" onChange={handleFilterStatus} id="searchName" placeholder="Keywords" />
                 </Form.Group>
 
                 <Form.Group>
