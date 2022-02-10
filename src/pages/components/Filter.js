@@ -83,10 +83,10 @@ export default function Filter({ tasks, setfilterTasks }) {
                 <Form.Group>
                     <Form.Label className="filterTaskType"><p>Task Type</p></Form.Label>
                     <Form.Check className="filterCheckBox" checked={filterDone} onChange={() => setFilterDone(!filterDone)}
-                        type="checkbox"
-                        label="To Do"
-                        id="doneStatus"
-                    />
+                            type="checkbox"
+                            label="Hide Done Tasks"
+                            id="doneStatus"
+                        />
                     <Form.Check className="filterCheckBox" checked={filterStatus.workStatus} onChange={handleCheckBoxStatus}
                         type="checkbox"
                         label="Work"
