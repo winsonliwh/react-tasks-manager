@@ -68,6 +68,12 @@ export default function Task({ task }) {
         }, 3000)
     }
 
+    const startDate = new Date(input.startDate).toLocaleDateString('en-CA', {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    });
+
     const dueDate = new Date(input.dueDate).toLocaleDateString('en-CA', {
         year: "numeric",
         month: "2-digit",
@@ -79,7 +85,7 @@ export default function Task({ task }) {
 
     const doneImg = { backgroundImage: `url(${input.done ? Checked : Unchecked})` }
 
-    // const checkStatus = input.done ? "secondary" : "success";
+    const checkStatus = input.done ? "secondary" : "success";
     const checkTaskType = input.taskType === "Home" ? "danger" : input.taskType === "Entertainment" ? "warning" : "primary";
 
     return (
@@ -100,10 +106,12 @@ export default function Task({ task }) {
                 <div className="card-body">
                     <p className={doneStrike}>{input.description}</p>
                 </div>
-                <small className="dueDateText text-muted">Due Date: {dueDate}</small>
+                {/* <small className="dueDateText text-muted">Start Date: {startDate}</small>
+                <small className="dueDateText text-muted">Due Date: {dueDate}</small> */}
+                <small className="dueDateText text-muted">{startDate} to {dueDate}</small>
                 <div className="card-footer">
                     <p>
-                        {/* <Badge className="doneBtn" bg={checkStatus} onClick={handleDone} >{input.done ? "Done" : "ToDo"}</Badge> */}
+                        <Badge className="doneBtn" bg={checkStatus}>{input.done ? "Done" : "ToDo"}</Badge>
                         <Badge bg={checkTaskType}>{input.taskType}</Badge>
                     </p>
                     <small className="text-muted">Created: {task.createdDate}&nbsp;&nbsp;{task.createdTime}</small>

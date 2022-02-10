@@ -49,7 +49,6 @@ export default function NewTask() {
 	};
 
 	const handleStartDateChange = date => {
-		console.log(input)
         setInput({
             ...input,
             startDate: date.getTime()

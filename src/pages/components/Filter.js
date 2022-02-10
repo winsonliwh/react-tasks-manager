@@ -11,16 +11,24 @@ export default function Filter({ tasks, setfilterTasks }) {
     const [filterDone, setFilterDone] = useLocalStorage("filterDone", false);
     const [filterStatus, setFilterStatus] = useState({
         searchName: "",
-        searchDate: "",
+        startDate: "",
+        dueDate: "",
         workStatus: false,
         homeStatus: false,
         entertainmentStatus: false
     })
 
-    const handleDateChange = date => {
+    const handleStartDateChange = date => {
         setFilterStatus({
             ...filterStatus,
-            searchDate: date
+            startDate: date
+        })
+    }
+
+    const handleDueDateChange = date => {
+        setFilterStatus({
+            ...filterStatus,
+            dueDate: date
         })
     }
 
@@ -48,7 +56,8 @@ export default function Filter({ tasks, setfilterTasks }) {
         setfilterTasks(tasks);
         setfilterTasks(prevTasks => prevTasks.filter(task => {
             return task.name.toLowerCase().includes(filterStatus.searchName.toLowerCase())
-                && (filterStatus.searchDate ? task.dueDate <= filterStatus.searchDate.getTime() : true)
+                && (filterStatus.startDate ? task.startDate >= filterStatus.startDate.getTime() : true)
+                && (filterStatus.dueDate ? task.dueDate <= filterStatus.dueDate.getTime() : true)
                 && (filterStatus.workStatus ? task.taskType === "Work" : true)
                 && (filterStatus.homeStatus ? task.taskType === "Home" : true)
                 && (filterStatus.entertainmentStatus ? task.taskType === "Entertainment" : true)
@@ -72,21 +81,26 @@ export default function Filter({ tasks, setfilterTasks }) {
                 <h4 className="filterTitle mobileHide"><p>Filter</p></h4>
                 <Form.Group>
                     <Form.Label className="filterTaskName"><p>Task Name</p></Form.Label>
-                    <Form.Control className="filterInputBox" onChange={handleFilterStatus} id="searchName" placeholder="Task Name"/>
+                    <Form.Control className="filterInputBox" onChange={handleFilterStatus} id="searchName" placeholder="Task Name" />
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label className="filterStartDate"><p>Start Date</p></Form.Label>
+                    <DatePicker className="filterInputBox" isClearable dateFormat="yyyy-MM-dd" placeholderText="YYYY-MM-DD" selected={filterStatus.startDate} onChange={handleStartDateChange} />
                 </Form.Group>
 
                 <Form.Group>
                     <Form.Label className="filterDueDate"><p>Due Date</p></Form.Label>
-                    <DatePicker className="filterInputBox" isClearable dateFormat="yyyy-MM-dd" placeholderText="YYYY-MM-DD" selected={filterStatus.searchDate} onChange={handleDateChange} />
+                    <DatePicker className="filterInputBox" isClearable dateFormat="yyyy-MM-dd" placeholderText="YYYY-MM-DD" selected={filterStatus.dueDate} onChange={handleDueDateChange} />
                 </Form.Group>
 
                 <Form.Group>
                     <Form.Label className="filterTaskType"><p>Task Type</p></Form.Label>
                     <Form.Check className="filterCheckBox" checked={filterDone} onChange={() => setFilterDone(!filterDone)}
-                            type="checkbox"
-                            label="Hide Done Tasks"
-                            id="doneStatus"
-                        />
+                        type="checkbox"
+                        label="Hide Done Tasks"
+                        id="doneStatus"
+                    />
                     <Form.Check className="filterCheckBox" checked={filterStatus.workStatus} onChange={handleCheckBoxStatus}
                         type="checkbox"
                         label="Work"

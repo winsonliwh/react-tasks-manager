@@ -313,7 +313,6 @@ p {
 
 .doneBtn {
     margin-right: 6px;
-    cursor: pointer;
 }
 
 .addTaskbtn {
@@ -322,8 +321,8 @@ p {
     bottom: 30px;
     border-radius: 100%;
     border: 0px !important;
-    background-color: rgba(54, 90, 252, 0.6) !important;
-    z-index: 1;
+    background-color: rgba(54, 90, 252, 0.8) !important;
+    z-index: 9999;
 }
 
 .ArrowUpBtn {
@@ -370,6 +369,19 @@ p {
 }
 
 .darkMode .filterDueDate {
+    border-color: #f1f1ee;
+}
+
+.filterStartDate {
+    margin: 15px 10px;
+    margin-right: 0px;
+    padding-right: 84px;
+    border-top-style: solid;
+    border-width: 2px;
+    border-color: #0F2540;
+}
+
+.darkMode .filterStartDate {
     border-color: #f1f1ee;
 }
 
@@ -441,9 +453,10 @@ p {
     }
     
     .filter {
-        margin-top: -318px;
+        margin-top: -405px;
         width: 100%;
-        height: 415px;
+        height: 502px;
+        z-index: 1;
     }
     
     .filterActive {
@@ -452,7 +465,7 @@ p {
     }
 
     .filterForm {
-        padding: 60px 30px 0px 30px;
+        padding: 68px 30px 0px 30px;
     }
 
     .filterInputBox {
@@ -469,11 +482,22 @@ p {
         font-size: 1.5rem;
         display: flex;
         justify-content: center;
+        color: #0F2540;
+    }
+
+    .darkMode .filterToggle {
+        color: #f1f1ee;
     }
 
     .filterToggleArrow {
         align-self: center;
         margin-left: 4px;
+        color: #0F2540;
+        transition: 0ms !important;
+    }
+
+    .darkMode .filterToggleArrow {
+        color: #f1f1ee;
     }
 
     .filterToggleArrowActive {
