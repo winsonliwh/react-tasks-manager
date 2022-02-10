@@ -405,10 +405,10 @@ p {
 /* ------------------------------------------------------------- */
 /* Calendar page styles */
 /* ------------------------------------------------------------- */
-.react-calendar {
-    width: 70vw !important;
-    padding: 32px 16px !important;
-    margin: 64px auto 0px;
+.calendarDiv {
+    margin: 200px auto;
+    height: 50vh;
+    width: 80vw;
 }
 
 /* ------------------------------------------------------------- */
