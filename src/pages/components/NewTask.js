@@ -65,6 +65,10 @@ export default function NewTask() {
 	const key = v4()
 	const handleSubmit = e => {
 		e.preventDefault()
+		if (input.startDate > input.dueDate) {
+			alert("Start date must be before due date")
+			return
+		}
 		set(ref(db, `/${auth.currentUser.uid}/${key}`), {
 			key: key,
 			createdDate: nowDay(),
