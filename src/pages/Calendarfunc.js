@@ -37,22 +37,29 @@ const localizer = dateFnsLocalizer({
 export default function Calendarfunc({ tasks }) {
 
     const allEvents = tasks.filter(task => task.done === false);
+    const eventsDateChangeFormat = allEvents.map(task => {
+        return {
+            ...task,
+            startDate: new Date(task.startDate),
+            dueDate: new Date(task.dueDate + 86400000)
+        }
+    })
 
     return (
         <div className="calendarPage">
-        <div className="calendarDiv">
-            <h1 className="calendarTitle">calendar</h1>
-            <NewTask />
-            <Calendar
-                localizer={localizer}
-                events={allEvents}
-                popup
-                views={['month', 'agenda']}
-                titleAccessor="name"
-                startAccessor="startDate"
-                endAccessor="dueDate"
-            />
-        </div>
+            <div className="calendarDiv">
+                <h1 className="calendarTitle">calendar</h1>
+                <NewTask />
+                <Calendar
+                    localizer={localizer}
+                    events={eventsDateChangeFormat}
+                    popup
+                    views={['month', 'agenda']}
+                    titleAccessor="name"
+                    startAccessor="startDate"
+                    endAccessor="dueDate"
+                />
+            </div>
         </div>
     )
 }
