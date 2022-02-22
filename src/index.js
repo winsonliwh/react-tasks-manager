@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-	<BrowserRouter>
+	<BrowserRouter basename='/react-tasks-manager'>
 		<App />
 	</BrowserRouter>,
 	document.getElementById('root')

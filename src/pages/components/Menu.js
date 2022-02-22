@@ -42,8 +42,8 @@ export default function Menu() {
 					<Offcanvas.Title><p>Task Manager</p></Offcanvas.Title>
 				</Offcanvas.Header>
 				<Offcanvas.Body>
-					<div><Link className="menuLinkText" to="/react-tasks-manager"><p>HOME</p></Link></div>
-					<div><Link className="menuLinkText" to="/react-tasks-manager/calendar"><p>Calendar</p></Link></div>
+					<div><Link className="menuLinkText" to="/home"><p>HOME</p></Link></div>
+					<div><Link className="menuLinkText" to="/calendar"><p>Calendar</p></Link></div>
 				</Offcanvas.Body>
 			</Offcanvas>
 		</>

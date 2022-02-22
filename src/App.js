@@ -66,7 +66,7 @@ function App() {
                     }
                 });
             } else if (!user) {
-                navigate("/react-tasks-manager/welcome");
+                navigate("/");
             }
         });
         return login;
@@ -81,9 +81,9 @@ function App() {
 		<div className={darkMode ? "darkMode" : ""}>
 			<TopBar darkMode={darkMode} handleDarkMode={handleDarkMode} />
 			<Routes>
-				<Route path="/react-tasks-manager/welcome" element={<Welcome />} />
-				<Route path="/react-tasks-manager/" element={<Home tasks={tasks} filterTasks={filterTasks} setfilterTasks={setfilterTasks} />} />
-				<Route path="/react-tasks-manager/calendar" element={<Calendarfunc tasks={tasks} />} />
+				<Route path="/" element={<Welcome />} />
+				<Route path="/home" element={<Home tasks={tasks} filterTasks={filterTasks} setfilterTasks={setfilterTasks} />} />
+				<Route path="/calendar" element={<Calendarfunc tasks={tasks} />} />
 			</Routes>
 		</div>
 	);
