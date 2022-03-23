@@ -198,6 +198,20 @@ export default function Welcome() {
 								Create an account
 							</Button>
 						</div>
+
+						<div style={{ fontSize: 20, marginTop: 24 }}>
+							<h4 style={{ textAlign: "center" }}>Or login the demo account.</h4>
+							<table style={{ margin: "auto" }}>
+								<tr>
+									<td style={{ textAlign: "right" }}>Email:&nbsp;</td>
+									<td>demo@gmail.com</td>
+								</tr>
+								<tr>
+									<td>Password:&nbsp;</td>
+									<td>demo123</td>
+								</tr>
+							</table>
+						</div>
 					</Box>
 				)}
 			</Container>
